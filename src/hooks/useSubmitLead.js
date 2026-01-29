@@ -31,14 +31,9 @@ export const useSubmitLead = () => {
             const apiUrl = import.meta.env.VITE_API_URL;
             const apiToken = import.meta.env.VITE_API_TOKEN;
 
-            // --- MODO SIMULACIÓN (Si falta URL) ---
-            if (!apiUrl || apiUrl === "") {
-                console.log("🔒 MODO SIMULACIÓN (Token detectado):", apiToken ? "SÍ" : "NO");
-                console.log("Payload:", payload);
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                setSuccess(true);
-                return true;
-            }
+            // --- MODO SIMULACIÓN (ELIMINADO POR SOLICITUD) ---
+            // Se fuerza el paso a producción. Si falta URL o Token, fallará en la validación siguiente o en el fetch.
+
 
             // --- VALIDACIÓN DE SEGURIDAD ---
             if (!apiToken) {
