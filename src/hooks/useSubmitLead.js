@@ -31,6 +31,14 @@ export const useSubmitLead = () => {
             const apiUrl = import.meta.env.VITE_API_URL;
             const apiToken = import.meta.env.VITE_API_TOKEN;
 
+            // DEBUG: Ver qué está llegando realmente en producción
+            console.log("--- DEBUG VANTRA ---");
+            console.log("VITE_API_URL:", apiUrl);
+            // No loguear el token completo por seguridad, solo si existe o los primeros caracteres
+            console.log("VITE_API_TOKEN exists:", !!apiToken);
+            console.log("Env keys:", Object.keys(import.meta.env));
+            console.log("--------------------");
+
             // --- MODO SIMULACIÓN (ELIMINADO POR SOLICITUD) ---
             // Se fuerza el paso a producción. Si falta URL o Token, fallará en la validación siguiente o en el fetch.
 
