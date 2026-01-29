@@ -3,6 +3,15 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
+
+# Recepcion de argumentos de build
+ARG VITE_API_URL
+ARG VITE_API_TOKEN
+
+# Exponerlos como variables de entorno para Vite
+ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_API_TOKEN=$VITE_API_TOKEN
+
 RUN npm run build
 
 FROM nginx:alpine
