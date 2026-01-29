@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    /* Optimizar scroll táctil */
+    touch-action: pan-y;
+  }
+
+  body {
+    @apply bg-vantra-bg text-white font-sans antialiased selection:bg-vantra-neon selection:text-vantra-bg;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tighter;
+  }
+
+  button {
+    @apply outline-none focus:outline-none focus:ring-0 active:outline-none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Reset especifico para asegurar que no haya bordes extraños en focus */
+  button:focus,
+  button:active,
+  button:focus-visible {
+    outline: none !important;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-vantra-surface/30 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(237, 242, 70, 0.3);
+  }
+
+  .text-outline-transparent {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    color: transparent;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/40;
+  }
+}
+
+/* Ocultar cursor nativo en desktop para usar el GlobalCursor */
+@media (pointer: fine) {
+
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  .interactive {
+    cursor: none !important;
+  }
+}
