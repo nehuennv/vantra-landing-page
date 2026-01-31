@@ -222,7 +222,7 @@ const QuestionCard = ({ step, onSelect }) => (
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
                     onClick={() => onSelect(opt)}
-                    className="group relative flex flex-col items-start gap-4 p-6 rounded-2xl bg-[#121215]/50 border border-white/5 hover:border-[var(--product-primary)]/50 hover:bg-[var(--product-primary)]/5 transition-all duration-300 text-left backdrop-blur-sm"
+                    className="group relative flex flex-col items-start gap-4 p-6 rounded-2xl bg-[#121215] md:bg-[#121215]/50 border border-white/5 hover:border-[var(--product-primary)]/50 hover:bg-[var(--product-primary)]/5 transition-all duration-300 text-left md:backdrop-blur-sm"
                 >
                     <div className="w-12 h-12 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center text-zinc-400 group-hover:text-[var(--product-primary)] group-hover:scale-110 group-hover:border-[var(--product-primary)]/30 transition-all duration-300 shadow-lg">
                         <opt.icon size={22} strokeWidth={1.5} />
@@ -337,7 +337,7 @@ const InteractiveQuiz = ({ onSchedule }) => {
                             transition={{ delay: 0.2, type: "spring" }}
                             className="flex flex-col items-center gap-2"
                         >
-                            <div className="px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full flex items-center gap-2 shadow-[0_0_20px_rgba(34,197,94,0.15)] backdrop-blur-md">
+                            <div className="px-4 py-2 bg-[#0C0C0E] md:bg-green-500/10 border border-green-500/20 rounded-full flex items-center gap-2 shadow-[0_0_20px_rgba(34,197,94,0.15)] md:backdrop-blur-md">
                                 <ScanLine size={16} className="text-green-400" />
                                 <span className="text-xs font-bold text-green-400 uppercase tracking-widest">Compatibilidad: {matchScore}%</span>
                             </div>
@@ -373,7 +373,7 @@ const InteractiveQuiz = ({ onSchedule }) => {
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.4 }}
-                                className="relative rounded-[24px] bg-[#121215]/80 backdrop-blur-xl border border-white/10 overflow-hidden shadow-2xl group"
+                                className="relative rounded-[24px] bg-[#121215] md:bg-[#121215]/80 md:backdrop-blur-xl border border-white/10 overflow-hidden shadow-2xl group"
                             >
                                 {/* Top Highlight Line */}
                                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--product-primary)] to-transparent opacity-50" />
@@ -444,7 +444,7 @@ const InteractiveQuiz = ({ onSchedule }) => {
 
     // --- VISTA DE PREGUNTAS (WIZARD) ---
     return (
-        <div className="flex flex-col min-h-[600px] md:min-h-[500px] bg-[#09090b]/80 backdrop-blur-md rounded-[24px] overflow-hidden relative">
+        <div className="flex flex-col min-h-[600px] md:min-h-[500px] bg-[#09090b] md:bg-[#09090b]/80 md:backdrop-blur-md rounded-[24px] overflow-hidden relative">
 
             {/* Background Texture */}
             <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 0%, #333 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
@@ -505,7 +505,7 @@ const InteractiveQuiz = ({ onSchedule }) => {
 
             {/* Footer sutil */}
             {activeStep.type !== 'cover' && (
-                <div className="px-8 py-4 border-t border-white/5 flex justify-between items-center relative z-10 bg-black/20 backdrop-blur-sm mt-auto">
+                <div className="px-8 py-4 border-t border-white/5 flex justify-between items-center relative z-10 bg-black md:bg-black/20 md:backdrop-blur-sm mt-auto">
                     <button
                         onClick={() => setCurrentStepIndex(prev => Math.max(0, prev - 1))}
                         className="text-xs font-bold text-zinc-500 hover:text-white transition-colors uppercase tracking-wider flex items-center gap-2"

@@ -47,7 +47,7 @@ const VisualCapture = () => {
         <div className="w-full h-full bg-zinc-900 rounded-3xl border border-white/5 flex flex-col relative overflow-hidden font-sans shadow-2xl">
 
             {/* HEADER TIPO WHATSAPP BUSINESS */}
-            <div className="h-14 border-b border-white/5 flex items-center px-5 bg-white/[0.02] z-20 backdrop-blur-sm">
+            <div className="h-14 border-b border-white/5 flex items-center px-5 bg-[#0A0A0B] md:bg-white/[0.02] z-20 md:backdrop-blur-sm">
                 <div className="relative">
                     <div className="w-9 h-9 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 border border-emerald-500/10">
                         <MessageCircle size={18} />

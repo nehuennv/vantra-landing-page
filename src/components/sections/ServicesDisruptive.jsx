@@ -84,7 +84,7 @@ const ServicesDisruptive = () => {
                                 {/* Top: Icono y Subtitulo */}
                                 <div className="flex items-start justify-between">
                                     <div className={cn(
-                                        "p-3 rounded-xl backdrop-blur-md border border-white/20 text-white transition-colors duration-300",
+                                        "p-3 rounded-xl md:backdrop-blur-md border border-white/20 text-white transition-colors duration-300",
                                         isActive ? "bg-vantra-neon text-black" : "bg-white/10"
                                     )}>
                                         <service.icon size={24} />
@@ -103,7 +103,7 @@ const ServicesDisruptive = () => {
                                 <div>
                                     <motion.span
                                         layout="position"
-                                        className="inline-block px-3 py-1 rounded-full border border-white/20 bg-black/30 backdrop-blur-sm text-xs text-white mb-2 uppercase tracking-widest"
+                                        className="inline-block px-3 py-1 rounded-full border border-white/20 bg-black/80 md:bg-black/30 md:backdrop-blur-sm text-xs text-white mb-2 uppercase tracking-widest"
                                     >
                                         {service.subtitle}
                                     </motion.span>

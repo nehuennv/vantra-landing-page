@@ -221,7 +221,7 @@ const TheAbyssPot = ({ ready }) => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.5 }}
-                            className="flex items-center gap-3 px-4 py-2 mb-8 rounded bg-black/50 border border-[#FD6A10]/20 backdrop-blur-xl"
+                            className="flex items-center gap-3 px-4 py-2 mb-8 rounded bg-black md:bg-black/50 border border-[#FD6A10]/20 md:backdrop-blur-xl"
                         >
                             <div className="flex gap-1">
                                 <span className="w-1 h-3 bg-[#FD6A10] animate-pulse" />

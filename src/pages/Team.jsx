@@ -31,7 +31,7 @@ const TEAM = [
         name: 'Nehuen Villavicencio',
         role: 'Frontend Developer',
         image: nehuenImg,
-        linkedin: 'https://www.linkedin.com/in/nehuenvillavicencio/'
+        linkedin: 'https://www.linkedin.com/in/nehuennv/'
     },
     {
         id: 5,

@@ -44,7 +44,7 @@ const VisualContext = () => {
         <div className="w-full h-full bg-zinc-900 rounded-3xl border border-white/5 relative overflow-hidden flex flex-col font-sans shadow-2xl">
 
             {/* HEADER */}
-            <div className="h-14 border-b border-white/5 bg-white/[0.01] flex items-center justify-between px-5 z-30 backdrop-blur-sm relative">
+            <div className="h-14 border-b border-white/5 bg-white/[0.01] flex items-center justify-between px-5 z-30 md:backdrop-blur-sm relative">
                 <div className="flex items-center gap-2">
                     <div className={`w-2 h-2 rounded-full ${phase === 'searching' ? 'bg-amber-500 animate-pulse' : 'bg-blue-500'}`} />
                     <span className="text-base font-normal font-righteous text-white uppercase tracking-wider">
@@ -152,7 +152,7 @@ const VisualContext = () => {
                         transition={{ type: "spring", stiffness: 260, damping: 20, delay: node.delay + 0.2 }}
                     >
                         {/* Translate -50% para centrar el nodo en la coordenada exacta */}
-                        <div className="-translate-x-1/2 -translate-y-1/2 bg-zinc-800/90 backdrop-blur-md border border-white/10 p-3 rounded-xl shadow-xl flex items-center gap-3 w-max min-w-[140px]">
+                        <div className="-translate-x-1/2 -translate-y-1/2 bg-zinc-800 md:bg-zinc-800/90 md:backdrop-blur-md border border-white/10 p-3 rounded-xl shadow-xl flex items-center gap-3 w-max min-w-[140px]">
                             <div className="bg-blue-500/10 p-2 rounded-lg border border-blue-500/20 shrink-0">
                                 <node.icon size={14} className="text-blue-400" />
                             </div>

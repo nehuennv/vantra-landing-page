@@ -72,7 +72,7 @@ const VisualAction = () => {
         <div className="w-full h-full bg-zinc-900 rounded-3xl border border-white/5 flex flex-col relative overflow-hidden font-sans shadow-2xl">
 
             {/* --- HEADER --- */}
-            <div className="h-14 flex items-center justify-between px-5 border-b border-white/5 bg-zinc-800/30 backdrop-blur-sm z-20">
+            <div className="h-14 flex items-center justify-between px-5 border-b border-white/5 bg-zinc-900 md:bg-zinc-800/30 md:backdrop-blur-sm z-20">
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                     <div>
@@ -126,7 +126,7 @@ const VisualAction = () => {
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         className="absolute bottom-4 left-4 right-4 z-50"
                     >
-                        <div className="bg-zinc-800 border border-white/10 p-3 rounded-xl shadow-2xl flex items-center gap-3 backdrop-blur-md">
+                        <div className="bg-zinc-900 md:bg-zinc-800 border border-white/10 p-3 rounded-xl shadow-2xl flex items-center gap-3 md:backdrop-blur-md">
                             <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-500 ${isProcessing ? 'bg-violet-500/20 text-violet-400' : 'bg-blue-500/20 text-blue-400'}`}>
                                 {isProcessing ? (
                                     <Clock size={16} className="animate-spin" />

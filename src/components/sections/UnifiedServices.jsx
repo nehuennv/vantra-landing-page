@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
     Zap, TrendingUp, Users, HeartHandshake, ArrowRight,
     CheckCircle2, Cpu, Rocket, ShoppingBag, LayoutTemplate,
-    ChevronRight, CreditCard, MousePointer2, MessageCircle
+    ChevronRight, ChevronLeft, CreditCard, MousePointer2, MessageCircle
 } from 'lucide-react';
 
 // ==========================================
@@ -11,7 +11,7 @@ import {
 // ==========================================
 
 const MacOSWindow = ({ children, speed = 20 }) => (
-    <div className="w-full h-full bg-[#1e1e20] relative overflow-hidden flex flex-col font-sans select-none rounded-t-xl group-hover:rounded-xl transition-all">
+    <div className="w-full h-full md:bg-[#1e1e20] relative overflow-hidden flex flex-col font-sans select-none rounded-t-xl group-hover:rounded-xl transition-all">
 
         {/* MacOS Header */}
         <div className="h-8 w-full bg-[#252529] border-b border-white/5 flex items-center px-4 gap-2 z-20 shrink-0 shadow-sm">
@@ -60,7 +60,7 @@ const Line = ({ className, width = "100%" }) => (
 const LandingWireframe = () => (
     <MacOSWindow speed={25}>
         {/* Navbar */}
-        <div className="h-14 flex items-center justify-between px-6 border-b border-white/5 bg-[#121214]/50 backdrop-blur-sm">
+        <div className="h-14 flex items-center justify-between px-6 border-b border-white/5 bg-[#121214] md:bg-[#121214]/50 md:backdrop-blur-sm">
             <Block width={30} height={30} className="rounded-lg bg-white/10" />
             <div className="flex gap-4">
                 <Line width={60} />
@@ -394,6 +394,18 @@ const UnifiedServices = () => {
         if (section) section.scrollIntoView({ behavior: 'smooth' });
     };
 
+    const nextService = () => {
+        const currentIndex = services.findIndex(s => s.id === activeService.id);
+        const nextIndex = (currentIndex + 1) % services.length;
+        setActiveService(services[nextIndex]);
+    };
+
+    const prevService = () => {
+        const currentIndex = services.findIndex(s => s.id === activeService.id);
+        const prevIndex = (currentIndex - 1 + services.length) % services.length;
+        setActiveService(services[prevIndex]);
+    };
+
     return (
         <section className="relative py-24 lg:py-32 text-white overflow-hidden" id="unified-services">
 
@@ -414,32 +426,15 @@ const UnifiedServices = () => {
                 {/* --- SEPARATED LAYOUT (Floating Modules) --- */}
                 <div className="flex flex-col gap-6">
 
-                    {/* TOP: PILLARS MODULE */}
-                    <div className="rounded-2xl overflow-hidden border border-[#EDF246]/10 bg-[#08080A]/80 backdrop-blur-3xl p-2">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-transparent">
-                            {pillars.map((pillar) => (
-                                <div key={pillar.id} className="p-6 lg:p-8 group hover:bg-white/[0.02] hover: transition-all duration-300 ease-out rounded-xl">
-                                    <div className="mb-4 text-gray-400 group-hover:text-[#EDF246] transition-colors duration-300">
-                                        <pillar.icon size={28} strokeWidth={1.5} />
-                                    </div>
-                                    <h4 className="font-display text-lg text-white mb-2">
-                                        {pillar.title}
-                                    </h4>
-                                    <p className="text-sm text-gray-500 leading-relaxed font-sans">
-                                        {pillar.desc}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+
 
                     {/* BOTTOM: SERVICES MODULE */}
-                    <div className="rounded-3xl overflow-hidden shadow-2xl relative border border-[#EDF246]/10 bg-[#08080A]/80 backdrop-blur-3xl min-h-[600px]">
+                    <div className="rounded-3xl overflow-hidden shadow-2xl relative border border-[#EDF246]/10 bg-black/30 md:bg-[#08080A]/80 md:backdrop-blur-3xl min-h-[600px]">
                         <div className="absolute inset-0 bg-white/5 pointer-events-none mix-blend-overlay" />
 
                         <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
-                            {/* NAV SIDEBAR */}
-                            <div className="lg:col-span-4 border-r border-white/5 bg-transparent flex flex-col">
+                            {/* NAV SIDEBAR (Desktop) */}
+                            <div className="hidden lg:flex lg:col-span-4 border-r border-white/5 bg-transparent flex-col">
                                 <div className="flex-1 overflow-y-auto">
                                     {services.map((service) => {
                                         const isActive = activeService.id === service.id;
@@ -470,6 +465,34 @@ const UnifiedServices = () => {
 
                             {/* CONTENT AREA */}
                             <div className="lg:col-span-8 bg-transparent flex flex-col relative">
+
+                                {/* MOBILE NAV (Restored Header) */}
+                                <div className="flex lg:hidden items-center justify-between px-6 py-4 border-b border-white/5 bg-black/40 rounded-t-3xl">
+                                    {/* Title Left */}
+                                    <span className="text-sm font-bold uppercase tracking-widest text-[#EDF246]">
+                                        {activeService.title}
+                                    </span>
+
+                                    {/* Arrows Right */}
+                                    <div className="flex gap-2">
+                                        <button
+                                            onClick={prevService}
+                                            className="p-2 rounded-full bg-white/[0.03] hover:bg-white/10 text-white transition-colors"
+                                        >
+                                            <ChevronLeft size={20} />
+                                        </button>
+                                        <button
+                                            onClick={nextService}
+                                            className="p-2 rounded-full bg-white/[0.03] hover:bg-white/10 text-white transition-colors"
+                                        >
+                                            <ChevronRight size={20} />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* MOBILE NAV (Arrows) */}
+
+
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={activeService.id}
@@ -477,16 +500,18 @@ const UnifiedServices = () => {
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
                                         transition={{ duration: 0.4 }}
-                                        className="flex flex-col h-full relative z-10"
+                                        className="bg-black/30 flex flex-col h-full relative z-10"
                                     >
-                                        <div className="p-8 md:p-12 pb-0 flex-1">
-                                            <h3 className="text-4xl md:text-5xl font-display text-white mb-6">
+                                        <div className="p-8 md:p-12 pb-0 flex-1  lg:bg-transparent rounded-b-3xl lg:rounded-none">
+                                            {/* Unified Header Removed - Title is in Top Nav now */}
+                                            <h3 className="hidden lg:block text-4xl md:text-5xl font-display text-white mb-6">
                                                 {activeService.title}
                                             </h3>
                                             <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-2xl font-light">
                                                 {activeService.desc}
                                             </p>
-                                            <div className="flex flex-wrap gap-4 mb-10">
+
+                                            <div className="hidden lg:flex flex-wrap gap-4 mb-10">
                                                 {activeService.specs.map((spec, i) => (
                                                     <div key={i} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
                                                         <CheckCircle2 size={14} className="text-[#EDF246]" />
@@ -517,9 +542,30 @@ const UnifiedServices = () => {
                             </div>
                         </div>
                     </div>
+
+
+                    {/* TOP: PILLARS MODULE (Moved to Bottom & Hidden on Mobile) */}
+                    <div className="hidden lg:block rounded-2xl overflow-hidden border border-[#EDF246]/10 bg-black/30 md:bg-[#08080A]/80 md:backdrop-blur-3xl p-2">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-transparent">
+                            {pillars.map((pillar) => (
+                                <div key={pillar.id} className="p-6 lg:p-8 group hover:bg-white/[0.02] hover: transition-all duration-300 ease-out rounded-xl">
+                                    <div className="mb-4 text-gray-400 group-hover:text-[#EDF246] transition-colors duration-300">
+                                        <pillar.icon size={28} strokeWidth={1.5} />
+                                    </div>
+                                    <h4 className="font-display text-lg text-white mb-2">
+                                        {pillar.title}
+                                    </h4>
+                                    <p className="text-sm text-gray-500 leading-relaxed font-sans">
+                                        {pillar.desc}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 

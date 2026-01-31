@@ -244,7 +244,7 @@ export default function DemoTriggerWrapper() {
 
                 {/* 2. OVERLAY SUAVE */}
                 <motion.div
-                    className="absolute inset-0 bg-white/40 backdrop-blur-[1px]"
+                    className="absolute inset-0 bg-white/40 md:backdrop-blur-[1px]"
                     variants={{
                         idle: { opacity: 0, transition: { duration: 0.3 } },
                         hover: { opacity: 1, transition: { duration: 0.3 } }
@@ -299,7 +299,7 @@ export default function DemoTriggerWrapper() {
                     {isOpen && (
                         <div className="fixed inset-0 z-[9999] flex items-center justify-center isolate">
                             <motion.div
-                                className="absolute inset-0 bg-slate-950/80 backdrop-blur-xl"
+                                className="absolute inset-0 bg-slate-950 md:bg-slate-950/80 md:backdrop-blur-xl"
                                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                                 onClick={() => setIsOpen(false)}
                             />

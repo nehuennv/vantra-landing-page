@@ -81,7 +81,7 @@ const PricingSection = ({ data, onPlanSelect }) => {
                                 className={`
                                     group relative flex flex-col h-full rounded-[24px] overflow-hidden transition-all duration-500 ease-out
                                     /* ESTILO BASE: Glassmorphism (Transparente + Blur) */
-                                    bg-zinc-900/60 backdrop-blur-2xl
+                                    bg-[#0A0A0B] md:bg-zinc-900/60 md:backdrop-blur-2xl
                                     /* BORDE: Unificado */
                                     border border-white/10
                                     /* HOVER BASE (Sutil aclarado) */

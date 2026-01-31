@@ -35,14 +35,13 @@ const FAQCard = ({ item, isOpen, onClick }) => {
         <motion.div
             initial={false}
             animate={{
-                backgroundColor: isOpen ? "rgba(10, 10, 11, 1)" : "rgba(10, 10, 11, 0.6)",
                 borderColor: isOpen ? "rgba(237, 242, 70, 0.5)" : "rgba(255, 255, 255, 0.08)"
             }}
             transition={{ duration: 0.3 }}
             className={`
                 group relative overflow-hidden rounded-2xl border
-                backdrop-blur-md transition-all duration-300
-                ${isOpen ? 'shadow-[0_0_40px_-10px_rgba(237,242,70,0.15)]' : 'hover:border-white/20'}
+                md:backdrop-blur-md transition-all duration-300
+                ${isOpen ? 'bg-black/30 md:bg-[#0A0A0B] shadow-[0_0_40px_-10px_rgba(237,242,70,0.15)]' : 'bg-black/30 md:bg-[#0A0A0B]/60 hover:border-white/20'}
             `}
         >
             <button
@@ -65,7 +64,7 @@ const FAQCard = ({ item, isOpen, onClick }) => {
                     shrink-0 flex items-center justify-center w-12 h-12 rounded-xl border transition-all duration-300
                     ${isOpen
                         ? 'bg-[#EDF246] border-[#EDF246] text-black rotate-0'
-                        : 'bg-white/5 border-white/10 text-white group-hover:bg-white/10'
+                        : 'bg-black/20 border-white/5 text-white group-hover:bg-white/10'
                     }
                 `}>
                     {isOpen ? <Minus size={20} /> : <Plus size={20} />}
@@ -131,7 +130,7 @@ const FAQ = () => {
 
                 {/* CTA Final */}
                 <div className="mt-20 text-center">
-                    <p className="text-gray-500 mb-6">¿Tu duda es más específica?</p>
+                    <p className="text-gray-300 mb-6">¿Tu duda es más específica?</p>
                     <a
                         href="https://wa.me/"
                         className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#EDF246] text-black font-bold transition-all duration-300 shadow-[0_0_20px_rgba(237,242,70,0.3)] hover:shadow-[0_0_40px_rgba(237,242,70,0.6)] hover:-translate-y-1 hover:scale-105 active:scale-95 uppercase tracking-widest text-sm"

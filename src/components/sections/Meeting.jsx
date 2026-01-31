@@ -98,7 +98,7 @@ const Meeting = () => {
                         {/* Glow detrás del formulario */}
                         <div className="absolute inset-0 bg-[#EDF246]/5 blur-[80px] rounded-full -z-10" />
 
-                        <Card hover={false} className="group border-[#EDF246]/10 bg-[#08080A]/80 backdrop-blur-3xl shadow-2xl relative overflow-hidden">
+                        <Card hover={false} className="group border-[#EDF246]/10 bg-black/30 md:bg-[#08080A]/80 md:backdrop-blur-3xl shadow-2xl relative overflow-hidden">
 
                             {/* Línea decorativa superior animada (Hover) */}
                             <div className="absolute top-0 left-0 w-0 h-[2px] bg-[#EDF246] transition-all duration-500 ease-out group-hover:w-full z-20" />
@@ -141,7 +141,7 @@ const Meeting = () => {
                                         >
                                             {/* Name Input */}
                                             <div className="group">
-                                                <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">Nombre Completo</label>
+                                                <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 ml-1">Nombre Completo</label>
                                                 <div className="relative">
                                                     <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#EDF246] transition-colors duration-300">
                                                         <User size={20} />
@@ -153,7 +153,7 @@ const Meeting = () => {
                                                         placeholder="Tu Nombre o Empresa"
                                                         value={formState.name}
                                                         onChange={handleChange}
-                                                        className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#EDF246]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
+                                                        className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#EDF246]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
                                                     />
                                                 </div>
                                             </div>
@@ -161,7 +161,7 @@ const Meeting = () => {
                                             {/* Stacked: Email & Phone */}
                                             <div className="flex flex-col gap-6">
                                                 <div className="group">
-                                                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">Email</label>
+                                                    <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 ml-1">Email</label>
                                                     <div className="relative">
                                                         <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#EDF246] transition-colors duration-300">
                                                             <Mail size={20} />
@@ -173,13 +173,13 @@ const Meeting = () => {
                                                             placeholder="tu@email.com"
                                                             value={formState.email}
                                                             onChange={handleChange}
-                                                            className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#EDF246]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
+                                                            className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#EDF246]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
                                                         />
                                                     </div>
                                                 </div>
 
                                                 <div className="group">
-                                                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">WhatsApp</label>
+                                                    <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 ml-1">WhatsApp</label>
                                                     <div className="relative">
                                                         <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#EDF246] transition-colors duration-300">
                                                             <Phone size={20} />
@@ -191,7 +191,7 @@ const Meeting = () => {
                                                             placeholder="+54 9 11 1234 5678"
                                                             value={formState.phone}
                                                             onChange={handleChange}
-                                                            className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#EDF246]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
+                                                            className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#EDF246]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
                                                         />
                                                     </div>
                                                 </div>
@@ -199,7 +199,7 @@ const Meeting = () => {
 
                                             {/* Product Select */}
                                             <div className="group">
-                                                <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">Interés Principal</label>
+                                                <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 ml-1">Interés Principal</label>
                                                 <div className="relative">
                                                     <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#EDF246] transition-colors duration-300">
                                                         <Layers size={20} />

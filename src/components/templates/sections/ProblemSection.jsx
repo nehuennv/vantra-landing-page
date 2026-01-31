@@ -34,17 +34,17 @@ const ProblemCard = ({ item, index }) => {
             className="
                 group relative h-full rounded-2xl overflow-hidden
                 /* ESTILO BASE: Glassmorphism (Transparente + Blur) */
-                bg-white/[0.02] backdrop-blur-md
+                bg-black/30 md:bg-white/[0.02] md:backdrop-blur-md
                 /* BORDE: Unificado en el contenedor principal */
                 border border-white/10
-                /* HOVER: Borde rojo sutil y fondo un poco más claro */
-                hover:border-red-500/30 hover:bg-white/[0.05]
+                /* HOVER: Borde rojo sutil y fondo un poco más claro (SOLO DESKTOP) */
+                md:hover:border-red-500/30 md:hover:bg-white/[0.05]
                 transition-colors duration-500 ease-out
                 flex flex-col
             "
         >
-            {/* 1. INNER GLOW (ROJO) */}
-            <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 via-red-500/0 to-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            {/* 1. INNER GLOW (ROJO - SOLO DESKTOP) */}
+            <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 via-red-500/0 to-red-500/10 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
             {/* 2. CONTENIDO */}
             <div className="relative p-8 flex flex-col h-full z-10">
@@ -55,9 +55,9 @@ const ProblemCard = ({ item, index }) => {
                         w-12 h-12 rounded-xl flex items-center justify-center
                         /* ESTADO NORMAL: Transparente + Borde sutil */
                         bg-transparent border border-white/10 text-zinc-400
-                        /* HOVER: Rojo Sólido + Texto Blanco + Borde Rojo */
-                        group-hover:bg-red-600 group-hover:text-white group-hover:border-red-600
-                        group-hover:shadow-[0_0_20px_rgba(239,68,68,0.4)]
+                        /* HOVER: Rojo Sólido + Texto Blanco + Borde Rojo (SOLO DESKTOP) */
+                        md:group-hover:bg-red-600 md:group-hover:text-white md:group-hover:border-red-600
+                        md:group-hover:shadow-[0_0_20px_rgba(239,68,68,0.4)]
                         transition-all duration-300
                     ">
                         <Icon size={22} strokeWidth={1.5} />
@@ -65,10 +65,10 @@ const ProblemCard = ({ item, index }) => {
                 </div>
 
                 <div className="mt-auto">
-                    <h3 className="text-xl font-display font-medium text-zinc-100 mb-3 group-hover:text-white transition-colors">
+                    <h3 className="text-xl font-display font-medium text-zinc-100 mb-3 md:group-hover:text-white transition-colors">
                         {item.title || "Punto de Dolor"}
                     </h3>
-                    <p className="text-base text-zinc-400 leading-relaxed font-light group-hover:text-zinc-200 transition-colors duration-300">
+                    <p className="text-base text-zinc-400 leading-relaxed font-light md:group-hover:text-zinc-200 transition-colors duration-300">
                         {item.description || item}
                     </p>
                 </div>
@@ -104,7 +104,7 @@ const ProblemSection = ({ data }) => {
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-red-950/30 border border-red-900/50 backdrop-blur-sm"
+                            className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-[#1A1A1E] md:bg-red-950/30 border border-red-900/50 md:backdrop-blur-sm"
                         >
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>

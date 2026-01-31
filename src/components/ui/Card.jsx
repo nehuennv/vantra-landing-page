@@ -12,8 +12,8 @@ export default function Card({ children, className, hover = true, ...props }) {
             className={cn(
                 "relative overflow-hidden rounded-3xl",
                 // CAPA 2: CONTENCIÓN GLASS
-                "bg-[#0A0A0B]/60", // Negro al 60%
-                "backdrop-blur-xl", // Vidrio ahumado
+                "bg-[#0A0A0B] md:bg-[#0A0A0B]/60", // Mobile: Solid, Desktop: Glass
+                "md:backdrop-blur-xl", // Mobile: None, Desktop: Blur
                 "border border-white/[0.08]", // Borde sutil
                 className
             )}

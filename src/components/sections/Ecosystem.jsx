@@ -77,8 +77,8 @@ const Ecosystem = () => {
                                 Ecosistema
                             </span>
                         </div>
-                        <h2 className="font-display font-normal text-5xl md:text-6xl text-white mb-6 leading-[0.95]">
-                            Elegí tu <br />
+                        <h2 className="font-display font-normal text-4xl sm:text-5xl md:text-6xl text-white mb-6 leading-[0.95]">
+                            Elegí tu <br className="hidden md:block" />
                             <span className="relative inline-block pr-2">
                                 <span className="opacity-0">Rubro</span>
                                 <AnimatePresence mode="popLayout">
@@ -99,6 +99,35 @@ const Ecosystem = () => {
                         <p className="text-white/50 text-lg font-light leading-relaxed">
                             Tecnología invisible y potente. Diseñada para escalar tu negocio sin fricción.
                         </p>
+                    </div>
+
+                    {/* MOVILE DASHBOARD INJECTION (Entre Texto y Selectores) */}
+                    <div className="w-full h-[400px] relative mb-12 block lg:hidden group">
+                        <AnimatePresence>
+                            <motion.div
+                                key={activeSector.id + '-aura-mobile'}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 0.3, scale: 1 }}
+                                exit={{ opacity: 0, scale: 1.2 }}
+                                transition={{ duration: 1.2 }}
+                                className="absolute inset-0 -z-10 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen"
+                                style={{ background: activeSector.color }}
+                            />
+                        </AnimatePresence>
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeSector.id}
+                                initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                                transition={{ duration: 0.5 }}
+                                className="w-full h-full relative"
+                            >
+                                <Link to={activeSector.href} className="w-full h-full block">
+                                    <EcosystemDashboard theme={activeSector.theme} color={activeSector.color} />
+                                </Link>
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
 
                     {/* LISTA DE SELECTORES */}
@@ -196,7 +225,7 @@ const Ecosystem = () => {
                 {/* ==========================================
                     2. VISOR PRINCIPAL (Derecha) - WITH BLUR/REVEAL
                    ========================================== */}
-                <div className="w-full lg:w-2/3 perspective-1000 h-[500px] lg:h-[650px] relative flex justify-center items-center"
+                <div className="hidden lg:flex w-full lg:w-2/3 perspective-1000 h-[500px] lg:h-[650px] relative justify-center items-center"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >

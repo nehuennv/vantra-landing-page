@@ -113,8 +113,8 @@ const CTASection = ({ data, theme, preSelectedPlan }) => {
                         className="relative"
                     >
                         <div className="absolute -inset-0.5 bg-gradient-to-b from-zinc-700 to-zinc-900 rounded-[26px] opacity-30 blur-sm" />
-
-                        <div className="group relative bg-[#08080A]/80 backdrop-blur-3xl border border-zinc-800 rounded-[24px] overflow-hidden shadow-2xl">
+                        {/* CARD PRINCIPAL (Formulario) -> Glassmorphism */}
+                        <div className="relative z-10 w-full max-w-lg mx-auto bg-[#08080A] md:bg-[#08080A]/80 md:backdrop-blur-3xl rounded-[32px] p-8 md:p-12 border border-white/10 shadow-2xl overflow-hidden">
                             <div className="absolute top-0 left-0 w-0 h-[2px] bg-[var(--product-primary)] transition-all duration-500 ease-out group-hover:w-full z-20" />
 
                             {/* Switch Header */}

@@ -9,7 +9,7 @@ import Card from '../ui/Card';
 const LandingWireframe = () => (
     <div className="w-full h-full bg-[#1A1A1E] flex flex-col relative overflow-hidden font-sans">
         {/* Navbar Sticky */}
-        <div className="h-12 border-b border-white/5 flex items-center justify-between px-4 bg-[#1A1A1E]/80 backdrop-blur-md z-10">
+        <div className="h-12 border-b border-white/5 flex items-center justify-between px-4 bg-[#1A1A1E] md:bg-[#1A1A1E]/80 md:backdrop-blur-md z-10">
             <div className="w-6 h-6 rounded-md bg-white/20" />
             <div className="flex gap-2">
                 <div className="w-16 h-2 rounded-full bg-white/10" />

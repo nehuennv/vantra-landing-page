@@ -10,10 +10,11 @@ export const vantraMedData = {
         badge: 'EL NUEVO ESTÁNDAR',
         title: 'Tu consultorio, <span style="color:var(--product-primary)">automatizado.</span>',
         subtitle: 'Unificamos <span class="text-white font-medium">Agenda, WhatsApp e Historial</span> en una plataforma que gestiona tus pacientes en piloto automático. Menos tareas administrativas, más <span class="text-white font-medium">medicina real.</span>',
+        mobileSubtitle: 'Unificamos <span class="text-white font-medium">Agenda, WhatsApp e Historial</span> en una plataforma que gestiona tus pacientes en piloto automático.',
         benefits: ['Respuestas inmediatas', 'Agenda blindada', 'Historial ordenado', 'Cero ausentismo'],
         cta: {
-            primary: { text: 'Agendar llamada', action: () => console.log('Agendar') },
-            secondary: { text: 'Ver Demo Interactiva', href: '#demo-section' } // Changed action to href for generic Link support or kept action if button
+            primary: { text: 'Agendar llamada', href: '#cta-section' },
+            secondary: { text: 'Ver Demo Interactiva', href: '#demo-section' }
         }
     },
     presentation: {

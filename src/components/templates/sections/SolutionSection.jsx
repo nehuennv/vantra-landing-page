@@ -170,15 +170,15 @@ const SolutionSection = () => {
             <div className="container mx-auto max-w-7xl px-4 md:px-6 relative z-10 flex-grow flex flex-col justify-center">
 
                 {/* CONTENT GRID */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center min-h-[600px]">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-12 lg:gap-24 items-center min-h-[600px]">
 
                     {/* TEXT CONTENT (HERO STYLE) */}
-                    <div className="relative z-10 select-none flex flex-col justify-between h-full order-2 lg:order-1 py-12"
+                    <div className="relative z-10 select-none flex flex-col justify-between h-full order-2 lg:order-1 py-2 md:py-12"
                         onMouseDown={() => timer.setPaused(true)}
                         onMouseUp={() => timer.setPaused(false)}
                     >
                         {/* Wrapper with fixed min-height to prevent jumping */}
-                        <div className="relative w-full min-h-[300px] flex flex-col justify-center">
+                        <div className="relative w-full min-h-0 md:min-h-[300px] flex flex-col justify-center">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={currentFeature.id}
@@ -189,27 +189,29 @@ const SolutionSection = () => {
                                     className="w-full"
                                 >
                                     <div
-                                        className="p-3 w-fit rounded-xl flex items-center justify-center mb-8 transition-colors duration-500"
+                                        className="hidden md:flex p-3 w-fit rounded-xl items-center justify-center mb-8 transition-colors duration-500"
                                         style={{ backgroundColor: `${currentFeature.color}15`, color: currentFeature.color }}
                                     >
                                         <currentFeature.icon size={32} strokeWidth={2} />
                                     </div>
 
-                                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium text-white mb-6 leading-[1.1] tracking-tight">
+                                    <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-medium text-white mb-6 leading-[1.1] tracking-tight truncate w-full">
                                         {currentFeature.title}
                                     </h2>
-                                    <p className="text-xl md:text-2xl text-zinc-400 leading-relaxed max-w-lg font-light">
-                                        {currentFeature.description}
-                                    </p>
+                                    <div className="h-[120px] md:h-auto overflow-hidden">
+                                        <p className="text-lg md:text-2xl text-zinc-400 leading-relaxed max-w-lg font-light line-clamp-4 md:line-clamp-none">
+                                            {currentFeature.description}
+                                        </p>
+                                    </div>
                                 </motion.div>
                             </AnimatePresence>
                         </div>
 
                         {/* --- CONTROLS (Pinned to bottom of flex col) --- */}
-                        <div className="mt-8 flex items-center justify-between lg:justify-start gap-8">
+                        <div className="mt-4 md:mt-8 flex items-center justify-between lg:justify-start gap-8">
 
                             {/* PILL INDICATORS */}
-                            <div className="flex items-center gap-2 bg-zinc-900/50 p-2 rounded-full backdrop-blur-sm border border-white/5">
+                            <div className="flex items-center gap-2 bg-[#0A0A0B] md:bg-zinc-900/50 p-2 rounded-full md:backdrop-blur-sm border border-white/5">
                                 {features.map((feature, index) => {
                                     const isActive = activeIndex === index;
                                     return (
@@ -260,7 +262,7 @@ const SolutionSection = () => {
                     </div>
 
                     {/* VISUAL CONTENT (Static Position, Crossfade) */}
-                    <div className="order-1 lg:order-2 relative h-[400px] md:h-[600px] w-full flex items-center justify-center">
+                    <div className="order-1 lg:order-2 relative h-[500px] md:h-[600px] w-full flex items-center justify-center">
                         <Suspense fallback={<div className="w-full h-full flex items-center justify-center"><Loader2 className="animate-spin text-zinc-800" /></div>}>
                             <AnimatePresence mode="wait">
                                 <motion.div

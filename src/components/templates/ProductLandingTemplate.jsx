@@ -51,7 +51,7 @@ const ProductLandingTemplate = ({ data }) => {
     if (!data) return null;
 
     return (
-        <div className="pt-20 min-h-screen text-white overflow-hidden selection:bg-[color:var(--product-primary)] selection:text-black font-sans">
+        <div className="lg:pt-20 min-h-screen text-white overflow-hidden selection:bg-[color:var(--product-primary)] selection:text-black font-sans">
 
             {/* Dynamic Background Wrapper */}
             <div className="fixed inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
@@ -97,7 +97,9 @@ const ProductLandingTemplate = ({ data }) => {
 
                 {solution && <SolutionSection data={solution} theme={theme} />}
 
-                {demo && <DemoSection data={demo} theme={theme} />}
+                <div id="demo-section">
+                    {demo && <DemoSection data={demo} theme={theme} />}
+                </div>
 
                 {pricing && <PricingSection data={pricing} theme={theme} onPlanSelect={handlePlanSelect} />}
 

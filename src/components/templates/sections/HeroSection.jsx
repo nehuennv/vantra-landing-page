@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Activity, Users, CheckCircle2, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -23,10 +24,75 @@ const DataRow = ({ icon: Icon, label, value, color = "text-white", delay = 0 }) 
     </motion.div>
 );
 
+// --- COMPONENTE RADAR (Reutilizable) ---
+const RadarBackground = () => (
+    <div className="relative w-[800px] h-[800px] flex items-center justify-center pointer-events-none select-none">
+
+        {/* Static Rings (Base) - Low Opacity */}
+        <div className="absolute inset-0 border border-white/5 rounded-full" />
+        <div className="absolute w-[600px] h-[600px] border border-white/5 rounded-full" />
+        <div className="absolute w-[400px] h-[400px] border border-white/5 rounded-full" />
+
+        {/* Moving Ring 1 - Slow Rotation */}
+        <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[700px] h-[700px] border border-dashed border-white/10 rounded-full opacity-50 will-change-transform"
+        />
+
+        {/* Moving Ring 2 - Counter Rotation */}
+        <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[500px] h-[500px] rounded-full border border-transparent border-t-white/10 border-b-white/5 will-change-transform"
+        />
+
+        {/* High-Tech Scanner Effect (Gradient Sweep) */}
+        <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 rounded-full mix-blend-screen will-change-transform"
+            style={{
+                background: 'conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 270deg, var(--product-primary) 360deg)',
+                maskImage: 'radial-gradient(circle, transparent 30%, black 70%)',
+                WebkitMaskImage: 'radial-gradient(circle, transparent 30%, black 70%)',
+                opacity: 0.15
+            }}
+        />
+
+        {/* Digital Pulse Waves (Outgoing) */}
+        <motion.div
+            animate={{ scale: [1, 1.5], opacity: [0.3, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+            className="absolute w-[200px] h-[200px] border border-[var(--product-primary)] rounded-full will-change-transform"
+        />
+
+        {/* Core Glow */}
+        <motion.div
+            animate={{ opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute w-[150px] h-[150px] bg-[var(--product-primary)] rounded-full blur-[80px] will-change-opacity"
+        />
+    </div>
+);
+
 const HeroSection = ({ data }) => {
     const { title, subtitle, cta, badge } = data;
     const containerRef = useRef(null);
     const [isHighlighted, setIsHighlighted] = React.useState(false);
+    const lenis = useLenis();
+
+    const handleScroll = (e, href) => {
+        e.preventDefault();
+        if (lenis) {
+            lenis.scrollTo(href);
+        } else {
+            const element = document.querySelector(href);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    };
 
     // Variants originales que te gustaban
     const containerVariants = {
@@ -51,6 +117,14 @@ const HeroSection = ({ data }) => {
             ref={containerRef}
             className="relative min-h-[100dvh] pt-0 flex flex-col justify-center overflow-hidden bg-transparent perspective-1000"
         >
+
+            {/* MOBILE ONLY RADAR (Centered Background) */}
+            <div className="absolute inset-0 w-full h-full flex lg:hidden items-center justify-center z-0 overflow-hidden pointer-events-none">
+                <div className="scale-75 sm:scale-90 opacity-40">
+                    <RadarBackground />
+                </div>
+            </div>
+
             <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center h-full">
 
                 {/* --- COLUMNA 1: TU CÓDIGO ORIGINAL (INTACTO) --- */}
@@ -64,7 +138,7 @@ const HeroSection = ({ data }) => {
                     {badge && (
                         <motion.div
                             variants={itemVariants}
-                            className="mb-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md cursor-default transition-colors duration-300 hover:bg-white/10"
+                            className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 md:bg-white/5 border border-white/10 md:backdrop-blur-md cursor-default transition-colors duration-300 hover:bg-white/10"
                             onMouseEnter={() => setIsHighlighted(true)}
                             onMouseLeave={() => setIsHighlighted(false)}
                         >
@@ -116,8 +190,17 @@ const HeroSection = ({ data }) => {
                     <motion.div
                         variants={itemVariants}
                         className="text-lg md:text-xl text-zinc-400 font-light max-w-lg leading-relaxed mb-8"
-                        dangerouslySetInnerHTML={{ __html: subtitle }}
-                    />
+                    >
+                        {/* Mobile Subtitle */}
+                        {data.mobileSubtitle && (
+                            <div className="lg:hidden" dangerouslySetInnerHTML={{ __html: data.mobileSubtitle }} />
+                        )}
+                        {/* Desktop Subtitle */}
+                        <div
+                            className={data.mobileSubtitle ? "hidden lg:block" : "block"}
+                            dangerouslySetInnerHTML={{ __html: subtitle }}
+                        />
+                    </motion.div>
 
                     {/* 3. CTAS (BOTONES) (Tu código original: los dos botones) */}
                     {cta && (
@@ -127,26 +210,45 @@ const HeroSection = ({ data }) => {
                         >
                             {/* Primary Button */}
                             {cta.primary && (
-                                <button
-                                    onClick={cta.primary.action}
-                                    onMouseEnter={() => setIsHighlighted(true)}
-                                    onMouseLeave={() => setIsHighlighted(false)}
-                                    className="group relative px-8 py-4 bg-[color:var(--product-primary)] text-[color:var(--product-on-primary,#18181b)] font-bold text-sm uppercase tracking-widest rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(14,165,233,0.3)] hover:shadow-[0_0_40px_rgba(14,165,233,0.5)]"
-                                >
-                                    <div className="relative z-10 flex items-center justify-center gap-3">
-                                        {cta.primary.text} <ArrowRight size={18} />
-                                    </div>
-                                </button>
+                                cta.primary.href ? (
+                                    <a
+                                        href={cta.primary.href}
+                                        onClick={(e) => handleScroll(e, cta.primary.href)}
+                                        onMouseEnter={() => setIsHighlighted(true)}
+                                        onMouseLeave={() => setIsHighlighted(false)}
+                                        className="group relative px-8 py-4 bg-[color:var(--product-primary)] text-[color:var(--product-on-primary,#18181b)] font-bold text-sm uppercase tracking-widest rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(14,165,233,0.3)] hover:shadow-[0_0_40px_rgba(14,165,233,0.5)] flex items-center justify-center cursor-pointer"
+                                    >
+                                        <div className="relative z-10 flex items-center justify-center gap-3">
+                                            {cta.primary.text} <ArrowRight size={18} />
+                                        </div>
+                                    </a>
+                                ) : (
+                                    <button
+                                        onClick={cta.primary.action}
+                                        onMouseEnter={() => setIsHighlighted(true)}
+                                        onMouseLeave={() => setIsHighlighted(false)}
+                                        className="group relative px-8 py-4 bg-[color:var(--product-primary)] text-[color:var(--product-on-primary,#18181b)] font-bold text-sm uppercase tracking-widest rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(14,165,233,0.3)] hover:shadow-[0_0_40px_rgba(14,165,233,0.5)]"
+                                    >
+                                        <div className="relative z-10 flex items-center justify-center gap-3">
+                                            {cta.primary.text} <ArrowRight size={18} />
+                                        </div>
+                                    </button>
+                                )
                             )}
 
                             {/* Secondary Button */}
                             {cta.secondary && (
-                                <Link
-                                    to={cta.secondary.href || "#"}
-                                    className="px-8 py-4 rounded-xl border border-white/10 bg-white/[0.02] text-white font-bold text-sm uppercase tracking-widest transition-all duration-300 hover:bg-white/10 hover:border-white/20 active:scale-[0.98] flex items-center justify-center backdrop-blur-md"
+                                <a
+                                    href={cta.secondary.href || "#"}
+                                    onClick={(e) => {
+                                        if (cta.secondary.href && cta.secondary.href.startsWith('#')) {
+                                            handleScroll(e, cta.secondary.href);
+                                        }
+                                    }}
+                                    className="px-8 py-4 rounded-xl bg-black/30 md:bg-white/5 border border-white/10 text-white font-semibold md:backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:border-white/20 active:scale-[0.98] flex items-center justify-center cursor-pointer"
                                 >
                                     {cta.secondary.text}
-                                </Link>
+                                </a>
                             )}
                         </motion.div>
                     )}
@@ -155,57 +257,12 @@ const HeroSection = ({ data }) => {
 
                 {/* --- COLUMNA 2: DERECHA NUEVA (SIN COSAS FLOTANDO CUTRES) --- */}
                 {/* Usamos el concepto "Sidebar Dashboard" que se siente UI Real, no marketing */}
-                <div className="relative w-full h-[45vh] min-h-[350px] lg:min-h-0 lg:h-[95vh] flex items-end justify-center lg:justify-end order-2 mt-8 lg:mt-0">
+                {/* HIDDEN ON MOBILE (BELOW LG) */}
+                <div className="relative hidden w-full h-[45vh] min-h-[350px] lg:min-h-0 lg:h-[95vh] lg:flex items-end justify-center lg:justify-end order-2 mt-8 lg:mt-0">
 
                     {/* 1. Radar Sutil de Fondo (Tecnológico) */}
-                    {/* 1. Radar Sutil de Fondo (Tecnológico & Optimizado) */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] z-0 flex items-center justify-center pointer-events-none select-none">
-
-                        {/* Static Rings (Base) - Low Opacity */}
-                        <div className="absolute inset-0 border border-white/5 rounded-full" />
-                        <div className="absolute w-[600px] h-[600px] border border-white/5 rounded-full" />
-                        <div className="absolute w-[400px] h-[400px] border border-white/5 rounded-full" />
-
-                        {/* Moving Ring 1 - Slow Rotation */}
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                            className="absolute w-[700px] h-[700px] border border-dashed border-white/10 rounded-full opacity-50 will-change-transform"
-                        />
-
-                        {/* Moving Ring 2 - Counter Rotation */}
-                        <motion.div
-                            animate={{ rotate: -360 }}
-                            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-                            className="absolute w-[500px] h-[500px] rounded-full border border-transparent border-t-white/10 border-b-white/5 will-change-transform"
-                        />
-
-                        {/* High-Tech Scanner Effect (Gradient Sweep) */}
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-0 rounded-full mix-blend-screen will-change-transform"
-                            style={{
-                                background: 'conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 270deg, var(--product-primary) 360deg)',
-                                maskImage: 'radial-gradient(circle, transparent 30%, black 70%)',
-                                WebkitMaskImage: 'radial-gradient(circle, transparent 30%, black 70%)',
-                                opacity: 0.15
-                            }}
-                        />
-
-                        {/* Digital Pulse Waves (Outgoing) */}
-                        <motion.div
-                            animate={{ scale: [1, 1.5], opacity: [0.3, 0] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
-                            className="absolute w-[200px] h-[200px] border border-[var(--product-primary)] rounded-full will-change-transform"
-                        />
-
-                        {/* Core Glow */}
-                        <motion.div
-                            animate={{ opacity: [0.2, 0.4, 0.2] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute w-[150px] h-[150px] bg-[var(--product-primary)] rounded-full blur-[80px] will-change-opacity"
-                        />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
+                        <RadarBackground />
                     </div>
 
                     {/* 2. Personaje con Mascara Fade-Out y Floating Effect */}
@@ -235,7 +292,7 @@ const HeroSection = ({ data }) => {
                     </motion.div>
 
                     {/* 3. DASHBOARD PANEL (A la derecha, firme, limpio, sin lag) */}
-                    <div className="absolute right-0 lg:-right-4 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col gap-4 w-64">
+                    <div className="absolute right-0 lg:-right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-4 w-64">
 
                         {/* Panel Principal Flotante */}
                         <motion.div
@@ -275,9 +332,6 @@ const HeroSection = ({ data }) => {
                                 <Zap size={10} className="text-[var(--product-primary)]" />
                             </div>
                         </motion.div>
-
-
-
                     </div>
                 </div>
 

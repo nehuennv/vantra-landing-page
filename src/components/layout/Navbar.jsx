@@ -93,7 +93,7 @@ const Navbar = () => {
         {/* LOGO MÓVIL */}
         <Link
           to="/"
-          className="pointer-events-auto px-4 py-2 rounded-full bg-[#08080A]/60 backdrop-blur-xl border border-white/[0.08] shadow-lg active:scale-95 transition-transform flex items-center"
+          className="pointer-events-auto px-4 py-2 rounded-full bg-black/60 md:bg-[#08080A]/60 md:backdrop-blur-xl border border-white/[0.08] shadow-lg active:scale-95 transition-transform flex items-center"
           onClick={(e) => handleNavigation(e, '/')}
         >
           <img src={LogoCompleto} alt="Vantra" className="h-6 w-auto drop-shadow-lg" />
@@ -102,7 +102,7 @@ const Navbar = () => {
         {/* HAMBURGER BUTTON */}
         <button
           onClick={() => setMobileMenuOpen(true)}
-          className="pointer-events-auto p-2.5 rounded-full bg-[#08080A]/60 backdrop-blur-xl border border-white/[0.08] shadow-lg text-white active:scale-95 transition-transform"
+          className="pointer-events-auto p-2.5 rounded-full bg-black/60 md:bg-[#08080A]/60 md:backdrop-blur-xl border border-white/[0.08] shadow-lg text-white active:scale-95 transition-transform"
         >
           <Menu size={20} />
         </button>

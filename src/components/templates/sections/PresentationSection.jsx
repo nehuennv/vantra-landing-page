@@ -374,7 +374,7 @@ const AgendaSimulator = ({ themeColor, data }) => {
                         {/* Next Hour */}
                         <div className="flex gap-4 items-center opacity-40 pt-2">
                             <div className="text-sm font-semibold text-zinc-600 w-12 text-right">{data.nextTime}</div>
-                            <div className="h-14 flex-1 rounded-xl border-2 border-dashed border-zinc-200 hover:bg-zinc-50 transition-colors" />
+                            <div className="group p-4 rounded-xl bg-[#0A0A0B] md:bg-white/[0.02] border border-white/5 md:backdrop-blur-md hover:bg-white/[0.05] transition-all duration-300" />
                         </div>
                     </motion.div>
                 </AnimatePresence>
@@ -533,7 +533,7 @@ const MiniFeature = ({ icon: Icon, title, desc }) => (
     <div
         className="
             group relative h-full rounded-2xl overflow-hidden
-            bg-white/[0.02] backdrop-blur-md
+            bg-black/30 backdrop-blur-md
             border border-white/10
             hover:border-[var(--theme-color)]/30 hover:bg-white/[0.05]
             transition-colors duration-500 ease-out
@@ -631,7 +631,7 @@ const PresentationSection = ({ data, themeColor = '#06B6D4' }) => {
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-white/5 border border-white/5 backdrop-blur-sm"
+                            className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-[#1A1A1E] md:bg-blue-950/30 border border-blue-900/50 md:backdrop-blur-sm"
                         >
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--theme-color)] opacity-75"></span>
@@ -676,7 +676,7 @@ const PresentationSection = ({ data, themeColor = '#06B6D4' }) => {
                         viewport={{ once: true }}
                         className="w-full max-w-[360px] z-20 shrink-0"
                     >
-                        <div className="w-full h-[450px] md:aspect-[3.8/5]">
+                        <div className="w-full h-[500px] md:aspect-[3.8/5]">
                             {/* REMOVED key={simulationKey} to avoid hard-unmount */}
                             <ChatSimulator data={simData} />
                         </div>
@@ -694,7 +694,7 @@ const PresentationSection = ({ data, themeColor = '#06B6D4' }) => {
                         viewport={{ once: true }}
                         className="w-full max-w-[360px] z-20 shrink-0"
                     >
-                        <div className="w-full h-[450px] md:aspect-[3.8/5]">
+                        <div className="w-full h-[500px] md:aspect-[3.8/5]">
                             <AgendaSimulator themeColor={themeColor} data={simData} />
                         </div>
                     </motion.div>

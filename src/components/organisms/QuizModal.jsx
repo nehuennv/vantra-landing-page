@@ -40,7 +40,7 @@ const QuizModal = ({ isOpen, onClose, onSchedule }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-zinc-950/90 backdrop-blur-md z-[99999]"
+                        className="fixed inset-0 bg-zinc-950 md:bg-zinc-950/90 md:backdrop-blur-md z-[99999]"
                     />
 
                     {/* Modal Container */}
@@ -57,7 +57,7 @@ const QuizModal = ({ isOpen, onClose, onSchedule }) => {
                             {/* Close Button */}
                             <button
                                 onClick={onClose}
-                                className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-zinc-900/50 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all backdrop-blur-md"
+                                className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-zinc-900 md:bg-zinc-900/50 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all md:backdrop-blur-md"
                             >
                                 <X size={20} />
                             </button>

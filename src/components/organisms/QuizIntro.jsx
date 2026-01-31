@@ -20,7 +20,7 @@ const QuizIntro = ({ onStart }) => {
 
             {/* --- VISUAL CUES (Puntos de dolor) --- */}
             <div className="space-y-4 mb-8">
-                <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/5 flex items-start gap-4">
+                <div className="p-4 rounded-xl bg-[#1A1A1E] md:bg-white/5 md:backdrop-blur-sm border border-white/5 flex items-start gap-4">
                     <div className="mt-1 p-2 bg-zinc-950/50 rounded-lg border border-white/10 text-zinc-400">
                         <Clock size={18} />
                     </div>
@@ -30,7 +30,7 @@ const QuizIntro = ({ onStart }) => {
                     </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/5 flex items-start gap-4">
+                <div className="p-4 rounded-xl bg-[#1A1A1E] md:bg-white/5 md:backdrop-blur-sm border border-white/5 flex items-start gap-4">
                     <div className="mt-1 p-2 bg-zinc-950/50 rounded-lg border border-white/10 text-zinc-400">
                         <Activity size={18} />
                     </div>

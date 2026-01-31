@@ -66,7 +66,7 @@ const MOCK_HISTORY = [
 
 const UI = {
     // Aumentamos la opacidad del bg-white/90 para evitar que se vea oscuro si el fondo de atrás es negro
-    glass: "bg-white/90 backdrop-blur-xl border border-white/60 shadow-xl shadow-slate-200/50",
+    glass: "bg-white md:bg-white/90 md:backdrop-blur-xl border border-white/60 shadow-xl shadow-slate-200/50",
     glassHover: "hover:bg-white transition-all duration-300",
     card: "bg-white rounded-[1.5rem] border border-slate-100 shadow-sm",
     primaryText: "text-[hsl(199,89%,48%)]",
@@ -212,7 +212,7 @@ const Sidebar = ({ activeTab, setActiveTab, mobileOpen, setMobileOpen }) => {
             <AnimatePresence>
                 {mobileOpen && (
                     <>
-                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMobileOpen(false)} className="md:hidden fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-40" />
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMobileOpen(false)} className="md:hidden fixed inset-0 bg-slate-900/20 md:backdrop-blur-sm z-40" />
                         <motion.div initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} className={`md:hidden fixed top-0 left-0 bottom-0 w-3/4 max-w-[280px] bg-white z-50 p-6 shadow-2xl`}>
                             <button onClick={() => setMobileOpen(false)} className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-800"><X size={20} /></button>
                             {Content}
@@ -495,7 +495,7 @@ const NewAppointmentModal = ({ isOpen, onClose, patients, onSave, executeAction,
         <AnimatePresence>
             {isOpen && (
                 <>
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="absolute inset-0 bg-slate-900/30 backdrop-blur-md z-[70]" />
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="absolute inset-0 bg-slate-900/30 md:backdrop-blur-md z-[70]" />
                     <div className="absolute inset-0 z-[80] flex items-center justify-center pointer-events-none">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -541,7 +541,7 @@ const NewPatientModal = ({ isOpen, onClose, onSave, executeAction }) => {
         <AnimatePresence>
             {isOpen && (
                 <>
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="absolute inset-0 bg-slate-900/30 backdrop-blur-md z-[70]" />
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="absolute inset-0 bg-slate-900/30 md:backdrop-blur-md z-[70]" />
                     <div className="absolute inset-0 z-[80] flex items-center justify-center pointer-events-none">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -570,7 +570,7 @@ const PatientHistoryModal = ({ patient, onClose }) => {
     if (!patient) return null;
     return (
         <AnimatePresence>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="absolute inset-0 bg-slate-900/30 backdrop-blur-md z-[70] flex justify-end">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="absolute inset-0 bg-slate-900/30 md:backdrop-blur-md z-[70] flex justify-end">
                 <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25, stiffness: 200 }} onClick={e => e.stopPropagation()} className="w-full max-w-md bg-white h-full shadow-2xl p-6 overflow-y-auto border-l border-slate-100 flex flex-col">
                     <div className="flex justify-between items-start mb-6">
                         <div className="flex items-center gap-4">
