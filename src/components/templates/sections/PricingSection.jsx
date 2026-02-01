@@ -32,7 +32,7 @@ const PricingSection = ({ data, onPlanSelect }) => {
     };
 
     return (
-        <section className="py-24 px-6 relative overflow-hidden">
+        <section className="py-24 md:py-32 px-6 relative overflow-hidden">
 
             {/* Fondo limpio y oscuro */}
             <div className="absolute inset-0 pointer-events-none" />
@@ -40,12 +40,12 @@ const PricingSection = ({ data, onPlanSelect }) => {
             <div className="container mx-auto max-w-7xl relative z-10">
 
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-20">
+                <div className="text-center max-w-3xl mx-auto mb-10 md:mb-20">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-6xl font-display font-normal text-white mb-6 tracking-tight leading-tight"
+                        className="text-3xl md:text-6xl font-display font-medium text-white mb-4 md:mb-6 tracking-tight leading-tight"
                     >
                         {title}
                     </motion.h2>
@@ -54,7 +54,7 @@ const PricingSection = ({ data, onPlanSelect }) => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-lg text-zinc-400 font-light"
+                        className="text-base md:text-xl text-zinc-400 font-light leading-relaxed"
                     >
                         {subtitle}
                     </motion.p>
@@ -79,9 +79,9 @@ const PricingSection = ({ data, onPlanSelect }) => {
                                 onMouseEnter={() => setHoveredIndex(idx)}
                                 onMouseLeave={() => setHoveredIndex(null)}
                                 className={`
-                                    group relative flex flex-col h-full rounded-[24px] overflow-hidden transition-all duration-500 ease-out
+                                    group relative flex flex-col h-full rounded-[24px] overflow-hidden transition-colors duration-500
                                     /* ESTILO BASE: Glassmorphism (Transparente + Blur) */
-                                    bg-[#0A0A0B] md:bg-zinc-900/60 md:backdrop-blur-2xl
+                                    bg-black/30 md:bg-zinc-900/60 md:backdrop-blur-2xl
                                     /* BORDE: Unificado */
                                     border border-white/10
                                     /* HOVER BASE (Sutil aclarado) */
@@ -106,22 +106,22 @@ const PricingSection = ({ data, onPlanSelect }) => {
                                 <div className="p-8 flex flex-col h-full relative z-10">
 
                                     {/* Header + Badge */}
-                                    <div className="flex justify-between items-start mb-6 h-8">
-                                        <h3 className="text-2xl font-medium tracking-tight text-white transition-colors duration-300 group-hover:text-[var(--product-primary)]">
+                                    <div className="flex justify-between items-center mb-6 h-8 gap-3">
+                                        <h3 className="text-2xl font-medium tracking-tight text-white transition-colors duration-300 group-hover:text-[var(--product-primary)] whitespace-nowrap">
                                             {plan.title}
                                         </h3>
 
                                         {isHighlight && (
                                             <div
-                                                className="px-3 py-1 rounded-full flex items-center gap-1.5"
+                                                className="w-8 h-8 md:w-auto md:h-auto md:px-3 md:py-1 rounded-full flex items-center justify-center md:gap-1.5 aspect-square md:aspect-auto shrink-0"
                                                 style={{
                                                     backgroundColor: 'var(--product-primary-opacity-10, rgba(14, 165, 233, 0.1))',
                                                     border: '1px solid var(--product-primary)',
                                                     color: 'var(--product-primary)',
                                                 }}
                                             >
-                                                <Star size={10} fill="currentColor" strokeWidth={0} />
-                                                <span className="text-[10px] font-bold uppercase tracking-wider">
+                                                <Star size={12} fill="currentColor" strokeWidth={0} />
+                                                <span className="hidden md:block text-[10px] font-bold uppercase tracking-wider">
                                                     Recomendado
                                                 </span>
                                             </div>

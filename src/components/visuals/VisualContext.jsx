@@ -57,7 +57,8 @@ const VisualContext = () => {
                 </div>
             </div>
 
-            <div className="flex-1 relative w-full h-full">
+            {/* --- DESKTOP VIEW (ORBITAL) --- */}
+            <div className="hidden md:block flex-1 relative w-full h-full">
 
                 {/* 1. FONDO GRID */}
                 <div className="absolute inset-0 z-0 opacity-10"
@@ -65,7 +66,6 @@ const VisualContext = () => {
                 />
 
                 {/* 2. CAPA DE LÍNEAS (SVG GLOBAL) - Z-INDEX 10 */}
-                {/* Esta capa dibuja las líneas desde el centro (50%, 50%) hacia las coordenadas de cada nodo */}
                 <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none">
                     <defs>
                         <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -137,7 +137,6 @@ const VisualContext = () => {
                         animate={{ opacity: phase !== 'searching' ? 1 : 0, y: phase !== 'searching' ? 0 : -10 }}
                     >
                         <div className="text-lg font-normal font-righteous text-white">Carlos Ruiz</div>
-
                     </motion.div>
                 </div>
 
@@ -167,7 +166,54 @@ const VisualContext = () => {
                         </div>
                     </motion.div>
                 ))}
+            </div>
 
+            {/* --- MOBILE VIEW (GRID) --- */}
+            <div className="md:hidden flex-1 p-4 flex flex-col items-center justify-center gap-4 relative z-10">
+
+                {/* Central Avatar Mobile */}
+                <div className="flex flex-col items-center mb-2">
+                    <div className="w-16 h-16 bg-zinc-900 rounded-full border border-blue-500/30 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.1)] mb-2 relative">
+                        {phase === 'searching' ? (
+                            <DbIcon size={24} className="text-blue-500/50 animate-pulse" />
+                        ) : (
+                            <User size={28} className="text-blue-400" />
+                        )}
+                        {phase !== 'searching' && (
+                            <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-blue-500 rounded-full border-2 border-zinc-900 flex items-center justify-center">
+                                <Check size={10} className="text-white" />
+                            </div>
+                        )}
+                    </div>
+                    <div className="text-base font-righteous text-white">
+                        {phase === 'searching' ? 'Buscando...' : 'Carlos Ruiz'}
+                    </div>
+                </div>
+
+                {/* Grid de Datos */}
+                <div className="grid grid-cols-1 w-full gap-2">
+                    {nodes.map((node) => (
+                        <motion.div
+                            key={node.id}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={(phase === 'fetching' || phase === 'complete') ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                            transition={{ delay: node.delay }}
+                            className="bg-zinc-800/80 border border-white/5 p-3 rounded-xl flex items-center gap-3"
+                        >
+                            <div className="bg-blue-500/10 p-2 rounded-lg border border-blue-500/20 shrink-0">
+                                <node.icon size={14} className="text-blue-400" />
+                            </div>
+                            <div className="flex-1">
+                                <div className="text-[10px] text-zinc-500 uppercase font-medium tracking-wider mb-0.5">
+                                    {node.title}
+                                </div>
+                                <div className="text-sm font-medium text-white">
+                                    {node.val}
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </div>
     );

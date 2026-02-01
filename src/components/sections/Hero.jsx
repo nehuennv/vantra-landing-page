@@ -48,7 +48,21 @@ const StatusBarItem = ({ icon: Icon, value, label, color, active, className = ""
 
 const Hero = () => {
   const containerRef = useRef(null);
+  const [activeBadge, setActiveBadge] = useState(0);
   const [isMultiplicaActive, setIsMultiplicaActive] = useState(false);
+
+  const BADGES = [
+    { label: "Transparencia 100%", icon: ShieldCheck, color: "text-[#EDF246]" },
+    { label: "+15 Alianzas", icon: Globe, color: "text-[#EDF246]" },
+    { label: "8x ROAS Promedio", icon: Zap, color: "text-[#EDF246]" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveBadge((prev) => (prev + 1) % BADGES.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Spotlight y background removidos para usar los globales (App.jsx)
   // Variants para entrada escalonada premium
@@ -79,24 +93,89 @@ const Hero = () => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[100dvh] md:h-[100dvh] md:min-h-[700px] flex flex-col justify-between md:justify-center md:overflow-hidden bg-transparent group"
+      className="relative min-h-[100dvh] md:h-[100dvh] md:min-h-[700px] flex flex-col justify-center items-center md:overflow-hidden bg-transparent group"
     >
       {/* --- LAYER 0 y 1 REMOVIDOS para consistencia global --- */}
 
       {/* --- CONTENIDO --- */}
+      {/* --- 4. STATUS BAR (Desktop Only - Hidden on Mobile) --- */}
       <motion.div
-        className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center pt-32 md:pt-0 md:h-full"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.8, type: "spring", stiffness: 30 }}
+        className="hidden md:flex absolute bottom-12 left-0 w-full justify-center px-6 z-20"
+      >
+        <div className="flex flex-row items-center justify-center gap-5 w-auto max-w-none bg-transparent border-0 shadow-none">
+
+          {/* ITEM 1: TRANSPARENCIA */}
+          <StatusBarItem
+            icon={ShieldCheck}
+            value="100%"
+            label="Transparencia"
+            color="text-[#EDF246]"
+            active={isMultiplicaActive}
+            className="md:bg-white/[0.03] md:backdrop-blur-md md:border md:border-white/10 md:rounded-2xl md:w-auto md:flex-row md:text-left md:px-8 md:py-5 md:shadow-lg"
+          />
+
+          {/* ITEM 2: ALIANZAS */}
+          <StatusBarItem
+            icon={Globe}
+            value="15+"
+            label="Alianzas"
+            color="text-[#EDF246]"
+            active={isMultiplicaActive}
+            className="md:bg-white/[0.03] md:backdrop-blur-md md:border md:border-white/10 md:rounded-2xl md:w-auto md:flex-row md:text-left md:px-8 md:py-5 md:shadow-lg"
+          />
+
+          {/* ITEM 3: ROAS */}
+          <StatusBarItem
+            icon={Zap}
+            value="8x"
+            label="ROAS Promedio"
+            color="text-[#EDF246]"
+            active={isMultiplicaActive}
+            className="md:bg-white/[0.03] md:backdrop-blur-md md:border md:border-white/10 md:rounded-2xl md:w-auto md:flex-row md:justify-start md:text-left md:px-8 md:py-5 md:shadow-lg gap-4"
+          />
+
+        </div>
+      </motion.div>
+
+      {/* --- CONTENIDO PRINCIPAL (Middle) --- */}
+      <motion.div
+        className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center h-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
 
+        {/* MOBILE ONLY: ROTATING BADGE */}
+        <div className="md:hidden h-10 mb-8 flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeBadge}
+              initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
+            >
+              {(() => {
+                const BadgeIcon = BADGES[activeBadge].icon;
+                return <BadgeIcon size={14} className="text-[#EDF246]" />;
+              })()}
+              <span className="text-xs font-bold text-white tracking-widest uppercase">
+                {BADGES[activeBadge].label}
+              </span>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
         {/* 2. TÍTULO PRINCIPAL (Multiplica Italic + Cursor Inclinado) */}
         <motion.div
-          className="max-w-6xl text-center relative mb-10"
+          className="max-w-6xl text-center relative mb-6 md:mb-8"
           variants={itemVariants}
         >
-          <h1 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] leading-[0.9] tracking-tight text-white drop-shadow-2xl">
+          <h1 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] leading-[0.9] tracking-tight text-white drop-shadow-2xl">
             <span className="block text-white font-medium">Tecnología que</span>
 
             {/* Bloque interactivo completo */}
@@ -122,7 +201,7 @@ const Hero = () => {
               <motion.div
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 1, repeat: Infinity, ease: "steps(2)" }}
-                className="absolute right-0 top-2 md:top-6 h-10 md:h-20 w-[2px] md:w-[3px] bg-white -skew-x-12 origin-bottom"
+                className="absolute right-0 top-2 md:top-6 h-8 md:h-16 w-[2px] md:w-[3px] bg-white -skew-x-12 origin-bottom"
               />
 
               {/* Corchete Derecho */}
@@ -140,7 +219,7 @@ const Hero = () => {
         {/* 3. DESCRIPCIÓN & CTA */}
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-gray-400 font-normal max-w-2xl text-center leading-relaxed mb-12"
+          className="text-base md:text-xl text-gray-400 font-light max-w-2xl text-center leading-relaxed mb-10 md:mb-14"
         >
           Unimos <span className="text-white font-medium">desarrollo web</span>, <span className="text-white font-medium">automatización con IA</span> y <span className="text-white font-medium">estrategia digital</span> en un ecosistema integrado.
         </motion.p>
@@ -184,50 +263,7 @@ const Hero = () => {
 
       </motion.div>
 
-      {/* --- 4. STATUS BAR (Datos Reales) --- */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.8, type: "spring", stiffness: 30 }}
-        className="relative mt-auto pb-12 md:absolute md:bottom-12 md:pb-0 md:mt-0 left-0 w-full flex justify-center px-6 z-20"
-      >
-        {/* CONTAINER OPTIMIZATION: 2/1 Grid on mobile, Separate Cards on Desktop */}
-        <div className="grid grid-cols-2 gap-3 w-full max-w-[340px] md:flex md:flex-row md:items-center md:justify-center md:gap-5 md:w-auto md:max-w-none md:bg-transparent md:border-0 md:shadow-none">
 
-          {/* ITEM 1: TRANSPARENCIA (Vertical Mobile / Horizontal Desktop) */}
-          <StatusBarItem
-            icon={ShieldCheck}
-            value="100%"
-            label="Transparencia"
-            color="text-[#EDF246]"
-            active={isMultiplicaActive}
-            className="col-span-1 bg-black/30 md:bg-white/[0.03] md:backdrop-blur-md border border-white/10 rounded-xl w-full flex-col justify-center text-center p-3 md:border md:border-white/10 md:rounded-2xl md:w-auto md:flex-row md:text-left md:px-8 md:py-5 md:shadow-lg"
-            hideIconOnMobile={true}
-          />
-
-          {/* ITEM 2: ALIANZAS (Vertical Mobile / Horizontal Desktop) */}
-          <StatusBarItem
-            icon={Globe}
-            value="15+"
-            label="Alianzas"
-            color="text-[#EDF246]"
-            active={isMultiplicaActive}
-            className="col-span-1 bg-black/30 md:bg-white/[0.03] md:backdrop-blur-md border border-white/10 rounded-xl w-full flex-col justify-center text-center p-3 md:border md:border-white/10 md:rounded-2xl md:w-auto md:flex-row md:text-left md:px-8 md:py-5 md:shadow-lg"
-            hideIconOnMobile={true}
-          />
-
-          {/* ITEM 3: ROAS (HORIZONTAL Mobile / Horizontal Desktop) */}
-          <StatusBarItem
-            icon={Zap}
-            value="8x"
-            label="ROAS Promedio"
-            color="text-[#EDF246]"
-            active={isMultiplicaActive}
-            className="col-span-2 md:col-span-1 bg-black/30 md:bg-white/[0.03] md:backdrop-blur-md border border-white/10 rounded-xl w-full flex-row items-center justify-center px-6 py-4 md:border md:border-white/10 md:rounded-2xl md:w-auto md:flex-row md:justify-start md:text-left md:px-8 md:py-5 md:shadow-lg gap-4"
-          />
-
-        </div>
-      </motion.div>
 
     </section>
   );

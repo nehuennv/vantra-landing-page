@@ -97,7 +97,7 @@ const VisualCapture = () => {
                                 exit={{ opacity: 0, y: -20 }} // Se va hacia arriba al reiniciar
                                 className="bg-zinc-800 self-start p-4 rounded-2xl rounded-tl-sm max-w-[95%] border border-white/5 shadow-sm relative group"
                             >
-                                <p className="text-[15px] text-zinc-300 leading-relaxed font-light">
+                                <p className="text-[13px] md:text-[15px] text-zinc-300 leading-relaxed font-light">
                                     Hola, soy <Highlight active={phase === 'scanning' || phase === 'extracted'} delay={0}>Sofía Martinez</Highlight>.
                                     Necesito turno para <Highlight active={phase === 'scanning' || phase === 'extracted'} delay={0.6} color="blue">Dermatología</Highlight> el <Highlight active={phase === 'scanning' || phase === 'extracted'} delay={1.2} color="purple">martes a la mañana</Highlight>.
                                 </p>
@@ -144,7 +144,7 @@ const VisualCapture = () => {
                                 </div>
 
                                 {/* Cuerpo de la Tarjeta */}
-                                <div className="p-3 grid grid-cols-2 gap-3">
+                                <div className="p-2 md:p-3 grid grid-cols-2 gap-2 md:gap-3">
                                     {/* Campo: Paciente */}
                                     <div className="bg-zinc-800/50 p-2 rounded-lg border border-white/5">
                                         <div className="flex items-center gap-1.5 mb-1">

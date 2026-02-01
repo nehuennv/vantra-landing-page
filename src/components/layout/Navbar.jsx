@@ -93,7 +93,7 @@ const Navbar = () => {
         {/* LOGO MÓVIL */}
         <Link
           to="/"
-          className="pointer-events-auto px-4 py-2 rounded-full bg-black/60 md:bg-[#08080A]/60 md:backdrop-blur-xl border border-white/[0.08] shadow-lg active:scale-95 transition-transform flex items-center"
+          className="pointer-events-auto px-4 py-2 rounded-full bg-black/60 md:bg-[#08080A]/60 md:backdrop-blur-xl border border-white/[0.08] shadow-lg active:scale-95 transition-transform flex items-center cursor-none"
           onClick={(e) => handleNavigation(e, '/')}
         >
           <img src={LogoCompleto} alt="Vantra" className="h-6 w-auto drop-shadow-lg" />
@@ -102,7 +102,7 @@ const Navbar = () => {
         {/* HAMBURGER BUTTON */}
         <button
           onClick={() => setMobileMenuOpen(true)}
-          className="pointer-events-auto p-2.5 rounded-full bg-black/60 md:bg-[#08080A]/60 md:backdrop-blur-xl border border-white/[0.08] shadow-lg text-white active:scale-95 transition-transform"
+          className="pointer-events-auto p-2.5 rounded-full bg-black/60 md:bg-[#08080A]/60 md:backdrop-blur-xl border border-white/[0.08] shadow-lg text-white active:scale-95 transition-transform cursor-none"
         >
           <Menu size={20} />
         </button>
@@ -130,7 +130,7 @@ const Navbar = () => {
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-3 rounded-full bg-white/5 border border-white/10 text-white active:scale-95 transition-transform"
+                className="p-3 rounded-full bg-white/5 border border-white/10 text-white active:scale-95 transition-transform cursor-none"
               >
                 <X size={20} />
               </button>
@@ -151,7 +151,7 @@ const Navbar = () => {
                             key={subItem.name}
                             to={subItem.path}
                             onClick={(e) => handleNavigation(e, subItem.path)}
-                            className="group flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.05] active:bg-white/[0.08] transition-colors"
+                            className="group flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.05] active:bg-white/[0.08] transition-colors cursor-none"
                           >
                             <div className="p-2.5 rounded-full bg-[#EDF246]/10 text-[#EDF246] group-active:scale-110 transition-transform">
                               <subItem.icon size={18} />
@@ -167,7 +167,7 @@ const Navbar = () => {
                       <Link
                         to={link.path}
                         onClick={(e) => handleNavigation(e, link.path)}
-                        className="flex items-center justify-between p-3 rounded-xl text-xl font-medium text-white hover:text-[#EDF246] transition-colors"
+                        className="flex items-center justify-between p-3 rounded-xl text-xl font-medium text-white hover:text-[#EDF246] transition-colors cursor-none"
                       >
                         {link.name}
                         <ArrowRight size={18} className="text-white/20 -rotate-45" />
@@ -182,9 +182,9 @@ const Navbar = () => {
             {/* FOOTER CTA */}
             <div className="p-6 border-t border-white/[0.05] pb-10">
               <Link
-                to="/configurar"
-                onClick={(e) => handleNavigation(e, '/configurar')}
-                className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-[#EDF246] text-black font-bold text-lg active:scale-[0.98] transition-transform"
+                to="/#contacto"
+                onClick={(e) => handleNavigation(e, '/#contacto')}
+                className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-[#EDF246] text-black font-bold text-lg active:scale-[0.98] transition-transform cursor-none"
               >
                 Empezar Proyecto
                 <ArrowRight size={20} />
@@ -226,7 +226,7 @@ const Navbar = () => {
             <div className="flex items-center md:gap-4 lg:gap-6 md:px-4 lg:px-6 py-2.5">
 
               {/* 1. LOGO */}
-              <Link to="/" className="shrink-0 block" onClick={(e) => handleNavigation(e, '/')}>
+              <Link to="/" className="shrink-0 block cursor-none" onClick={(e) => handleNavigation(e, '/')}>
                 <motion.img
                   src={LogoCompleto}
                   alt="Vantra"
@@ -255,46 +255,53 @@ const Navbar = () => {
                       onMouseEnter={() => setHoveredTab(link.name)}
                     >
                       {/* WRAPPER DEL LINK/BUTTON */}
-                      {/* RESPONSIVE TEXT SIZE & PADDING */}
-                      <div className={`
-                        relative px-3 lg:px-5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 cursor-pointer
-                        ${(isHovered || isEcosistemaTrigger || isActive) ? 'text-white' : 'text-gray-400 hover:text-white'}
-                      `}>
-
-                        {isDropdown ? (
-                          <button className="flex items-center gap-1.5 w-full h-full bg-transparent border-none p-0 text-inherit font-inherit outline-none">
+                      {isDropdown ? (
+                        <button className="relative px-3 lg:px-5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 cursor-none outline-none group">
+                          <span className={`${(isHovered || isEcosistemaTrigger) ? 'text-white' : 'text-gray-400 group-hover:text-white'}`}>
                             {link.name}
-                            <ChevronDown
-                              size={12}
-                              className={`transition-transform duration-300 lg:w-3.5 lg:h-3.5 ${isHovered || isEcosistemaTrigger ? 'rotate-180' : ''}`}
+                          </span>
+                          <ChevronDown
+                            size={12}
+                            className={`text-gray-400 group-hover:text-white transition-transform duration-300 lg:w-3.5 lg:h-3.5 ${isHovered || isEcosistemaTrigger ? 'rotate-180' : ''}`}
+                          />
+
+                          {/* Hover Background */}
+                          {(isHovered || isEcosistemaTrigger) && (
+                            <motion.div
+                              layoutId="nav-bg"
+                              className="absolute inset-0 bg-white/[0.08] rounded-xl -z-10"
+                              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                             />
-                          </button>
-                        ) : (
-                          <Link
-                            to={link.path}
-                            onClick={(e) => handleNavigation(e, link.path)}
-                            className="w-full h-full flex items-center"
-                          >
-                            {link.name}
-                          </Link>
-                        )}
+                          )}
+                        </button>
+                      ) : (
+                        <Link
+                          to={link.path}
+                          onClick={(e) => handleNavigation(e, link.path)}
+                          className={`
+                            relative px-3 lg:px-5 py-2 rounded-xl text-xs lg:text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 cursor-none
+                            ${(isHovered || isActive) ? 'text-white' : 'text-gray-400 hover:text-white'}
+                          `}
+                        >
+                          {link.name}
 
-                        {/* Hover/Active Background Logic */}
-                        {(isHovered || isEcosistemaTrigger) && !isActive && (
-                          <motion.div
-                            layoutId="nav-bg"
-                            className="absolute inset-0 bg-white/[0.08] rounded-xl -z-10"
-                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                          />
-                        )}
-                        {isActive && (
-                          <motion.div
-                            layoutId="nav-active"
-                            className="absolute inset-0 bg-white/[0.06] border border-white/[0.05] rounded-xl -z-10"
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                          />
-                        )}
-                      </div>
+                          {/* Hover/Active Background Logic - INSIDE LINK NOW */}
+                          {(isHovered) && !isActive && (
+                            <motion.div
+                              layoutId="nav-bg"
+                              className="absolute inset-0 bg-white/[0.08] rounded-xl -z-10"
+                              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                            />
+                          )}
+                          {isActive && (
+                            <motion.div
+                              layoutId="nav-active"
+                              className="absolute inset-0 bg-white/[0.06] border border-white/[0.05] rounded-xl -z-10"
+                              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            />
+                          )}
+                        </Link>
+                      )}
                     </div>
                   );
                 })}
@@ -304,8 +311,8 @@ const Navbar = () => {
               <div className="w-px h-6 bg-white/[0.08]" />
 
               {/* 3. CTA BUTTON - RESPONSIVE */}
-              <Link to="/configurar" onClick={(e) => handleNavigation(e, '/configurar')}>
-                <motion.button
+              <Link to="/#contacto" onClick={(e) => handleNavigation(e, '/#contacto')} className="cursor-none">
+                <motion.div
                   whileHover={{ scale: 1.05, backgroundColor: "#F5F876", boxShadow: "0 0 25px rgba(237, 242, 70, 0.5)" }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -315,12 +322,13 @@ const Navbar = () => {
                     md:p-0 lg:px-6 md:py-2.5 lg:py-3 rounded-xl 
                     bg-[#EDF246] text-black 
                     font-bold md:text-xs lg:text-sm tracking-wide
+                    cursor-none
                   "
                 >
                   {/* TEXTO OCULTO EN TABLET, VISIBLE EN DESKTOP */}
                   <span className="hidden lg:inline">Empezar</span>
                   <ArrowRight size={16} className="text-black/70" />
-                </motion.button>
+                </motion.div>
               </Link>
 
             </div>

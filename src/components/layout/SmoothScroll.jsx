@@ -3,24 +3,42 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const LenisScrollHandler = () => {
-    const { pathname } = useLocation();
+    const { pathname, hash } = useLocation();
     const lenis = useLenis();
 
     useEffect(() => {
         if (lenis) {
-            lenis.scrollTo(0, { immediate: true });
+            if (hash) {
+                // Esperamos a que termine la transición de página (aprox 500ms)
+                // y forzamos un recálculo del layout por si cambió la altura
+                setTimeout(() => {
+                    lenis.resize();
+                    lenis.scrollTo(hash, { offset: 0, duration: 1.5, lock: true }); // Lock para evitar interrupciones
+                }, 600);
+            } else {
+                lenis.scrollTo(0, { immediate: true });
+            }
         }
-    }, [pathname, lenis]);
+    }, [pathname, hash, lenis]);
 
     return null;
 };
 
 const NativeScrollHandler = () => {
-    const { pathname } = useLocation();
+    const { pathname, hash } = useLocation();
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
+        if (hash) {
+            const element = document.querySelector(hash);
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        } else {
+            window.scrollTo(0, 0);
+        }
+    }, [pathname, hash]);
 
     return null;
 };

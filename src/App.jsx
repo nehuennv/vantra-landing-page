@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AnimatePresence, motion } from 'framer-motion';
 
 // Componentes Layout & UI
-import Navbar from './components/layout/Navbar'; // Asegúrate de tener Navbar aquí si no está en Layout
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 import GlobalAuroraBackground from './components/layout/GlobalAuroraBackground';
 import GlobalCursor from './components/layout/GlobalCursor';
 import GlobalSpotlight from './components/layout/GlobalSpotlight';
@@ -35,15 +36,23 @@ function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative min-h-screen"
+              className="flex flex-col min-h-screen relative overflow-hidden"
             >
               {/* COMPONENTES GLOBALES (Se montan solo cuando termina la carga) */}
               <GlobalCursor />
               <GlobalAuroraBackground />
               <GlobalSpotlight />
 
-              {/* RUTAS ANIMADAS */}
-              <AnimatedRoutes />
+              {/* BARRA DE NAVEGACIÓN PERSISTENTE */}
+              <Navbar />
+
+              {/* CONTENIDO PRINCIPAL ANIMADO */}
+              <main className="flex-grow z-10 w-full">
+                <AnimatedRoutes />
+              </main>
+
+              {/* FOOTER PERSISTENTE */}
+              <Footer />
 
             </motion.div>
           )}
@@ -61,7 +70,7 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="popLayout">
       <Routes location={location} key={location.pathname}>
-        {/* Layout envuelve todas las rutas principales */}
+        {/* Layout ahora es transparente, solo envuelve rutas */}
         <Route element={<Layout />}>
           <Route path="/" element={
             <PageTransition>

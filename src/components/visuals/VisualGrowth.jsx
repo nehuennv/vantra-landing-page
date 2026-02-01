@@ -25,24 +25,24 @@ const VisualGrowth = () => {
             {/* GRID BENTO (Layout Robusto: Filas fijas + Flex) */}
             <div className="flex-1 flex flex-col gap-3 min-h-0 p-5">
 
-                {/* FILA SUPERIOR: 2 KPIs Críticos (Altura fija para no aplastarse) */}
-                <div className="h-[120px] grid grid-cols-2 gap-3 shrink-0">
+                {/* FILA SUPERIOR: 2 KPIs Críticos (Altura auto en mobile, fija en desktop) */}
+                <div className="h-auto md:h-[120px] flex flex-col md:grid md:grid-cols-2 gap-3 shrink-0">
 
                     {/* KPI 1: TASA DE AUSENTISMO (El dolor del médico) */}
-                    <div className="bg-zinc-800/40 rounded-2xl border border-white/5 p-4 flex flex-col justify-between group hover:bg-zinc-800/60 transition-colors">
-                        <div className="flex justify-between items-start">
+                    <div className="bg-zinc-800/40 rounded-2xl border border-white/5 p-4 flex flex-row md:flex-col justify-between items-center md:items-stretch gap-4 md:gap-0 group hover:bg-zinc-800/60 transition-colors min-h-[80px] md:min-h-0">
+                        <div className="flex justify-between items-start w-full md:w-auto">
                             <div className="flex items-center gap-1.5 text-zinc-400">
                                 <AlertCircle size={12} />
                                 <span className="text-xs font-medium uppercase">Ausentismo</span>
                             </div>
                             {/* Badge positivo porque bajó el ausentismo */}
-                            <div className="bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded text-[9px] font-semibold flex items-center gap-1">
+                            <div className="bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded text-[9px] font-semibold flex items-center gap-1 md:hidden lg:flex">
                                 <ArrowDownRight size={10} /> -4%
                             </div>
                         </div>
-                        <div>
+                        <div className="w-full md:w-auto text-right md:text-left">
                             <div className="text-2xl font-bold text-white tracking-tight">12.5%</div>
-                            <div className="w-full h-1.5 bg-zinc-700 rounded-full mt-2 overflow-hidden">
+                            <div className="w-full h-1.5 bg-zinc-700 rounded-full mt-2 overflow-hidden hidden md:block">
                                 <motion.div
                                     className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400"
                                     initial={{ width: 0 }}
@@ -50,24 +50,24 @@ const VisualGrowth = () => {
                                     transition={{ duration: 1, delay: 0.2 }}
                                 />
                             </div>
-                            <p className="text-xs text-zinc-500 mt-1">Objetivo: &lt;15%</p>
+                            <p className="text-xs text-zinc-500 mt-1 hidden md:block">Objetivo: &lt;15%</p>
                         </div>
                     </div>
 
                     {/* KPI 2: FACTURACIÓN / MIX (El dinero) */}
-                    <div className="bg-zinc-800/40 rounded-2xl border border-white/5 p-4 flex flex-col justify-between group hover:bg-zinc-800/60 transition-colors">
-                        <div className="flex items-center gap-1.5 text-zinc-400">
+                    <div className="bg-zinc-800/40 rounded-2xl border border-white/5 p-4 flex flex-col justify-between group hover:bg-zinc-800/60 transition-colors min-h-[100px] md:min-h-0">
+                        <div className="flex items-center gap-1.5 text-zinc-400 mb-2 md:mb-0">
                             <Wallet size={12} />
                             <span className="text-xs font-medium uppercase">Ingresos</span>
                         </div>
 
-                        <div className="space-y-2">
+                        <div className="space-y-2 w-full">
                             <div className="flex justify-between items-end">
                                 <div className="flex flex-col">
                                     <span className="text-xs text-zinc-500">Obras Sociales</span>
                                     <span className="text-sm font-semibold text-white">65%</span>
                                 </div>
-                                <div className="h-1 w-16 bg-zinc-700 rounded-full overflow-hidden mb-1.5">
+                                <div className="h-1 w-12 md:w-16 bg-zinc-700 rounded-full overflow-hidden mb-1.5">
                                     <motion.div className="h-full bg-blue-500" initial={{ width: 0 }} animate={{ width: "65%" }} transition={{ delay: 0.4 }} />
                                 </div>
                             </div>
@@ -76,7 +76,7 @@ const VisualGrowth = () => {
                                     <span className="text-xs text-zinc-500">Particulares</span>
                                     <span className="text-sm font-semibold text-white">35%</span>
                                 </div>
-                                <div className="h-1 w-16 bg-zinc-700 rounded-full overflow-hidden mb-1.5">
+                                <div className="h-1 w-12 md:w-16 bg-zinc-700 rounded-full overflow-hidden mb-1.5">
                                     <motion.div className="h-full bg-purple-500" initial={{ width: 0 }} animate={{ width: "35%" }} transition={{ delay: 0.6 }} />
                                 </div>
                             </div>

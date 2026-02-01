@@ -619,25 +619,25 @@ const PresentationSection = ({ data, themeColor = '#06B6D4' }) => {
 
     return (
         <section
-            className="py-32 px-6 relative bg-transparent overflow-hidden"
+            className="py-24 md:py-32 px-6 relative bg-transparent overflow-hidden"
             style={{ '--theme-color': themeColor }}
         >
             <div className="container mx-auto max-w-6xl relative z-10">
 
                 {/* 1. HEADER */}
-                <div className="mb-24 text-center max-w-3xl mx-auto">
+                <div className="mb-12 md:mb-24 text-center max-w-3xl mx-auto">
                     {subtitle && (
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-[#1A1A1E] md:bg-blue-950/30 border border-blue-900/50 md:backdrop-blur-sm"
+                            className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-white/5 border border-white/10"
                         >
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--theme-color)] opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--theme-color)]"></span>
                             </span>
-                            <span className="text-xs font-bold uppercase tracking-widest text-zinc-300">
+                            <span className="text-xs font-bold uppercase tracking-widest text-[var(--theme-color)]">
                                 {subtitle}
                             </span>
                         </motion.div>
@@ -647,7 +647,7 @@ const PresentationSection = ({ data, themeColor = '#06B6D4' }) => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-white mb-6 leading-tight"
+                        className="text-3xl md:text-6xl font-display font-medium text-white mb-4 md:mb-6 leading-tight"
                     >
                         {title}
                     </motion.h2>
@@ -657,7 +657,7 @@ const PresentationSection = ({ data, themeColor = '#06B6D4' }) => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed"
+                            className="text-base md:text-xl text-zinc-400 font-light leading-relaxed"
                         >
                             {paragraph}
                         </motion.p>
@@ -665,7 +665,7 @@ const PresentationSection = ({ data, themeColor = '#06B6D4' }) => {
                 </div>
 
                 {/* 2. EL ESCENARIO (LAYOUT FIX: FLEXBOX PURO) */}
-                <div className="relative w-full flex flex-col lg:flex-row items-center justify-center mb-24 min-h-[480px]">
+                <div className="relative w-full flex flex-col lg:flex-row items-center justify-center mb-12 md:mb-24 min-h-[480px]">
 
                     {/* IZQUIERDA: WHATSAPP */}
                     <motion.div
@@ -706,7 +706,7 @@ const PresentationSection = ({ data, themeColor = '#06B6D4' }) => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                    className="grid gap-4 md:gap-8 grid-cols-1 md:grid-cols-3"
                 >
                     <MiniFeature
                         icon={Database}

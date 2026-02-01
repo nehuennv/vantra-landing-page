@@ -3,7 +3,7 @@ import { useLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Activity, Users, CheckCircle2, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import HeroMedicalPhoto from '../../../assets/medical-web/hero-medical-photo.png';
+import HeroMedicalPhoto from '../../../assets/medical-web/hero-medical-photo.webp';
 
 // --- COMPONENTE FILA DE DATOS (Para el Dashboard estático de la derecha) ---
 const DataRow = ({ icon: Icon, label, value, color = "text-white", delay = 0 }) => (
@@ -157,15 +157,15 @@ const HeroSection = ({ data }) => {
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-[color:var(--product-primary)]"></span>
                                 </span>
                             </motion.span>
-                            <span className="text-xs font-semibold text-zinc-300 tracking-wide uppercase font-raleway">
+                            <span className="text-xs font-bold text-[var(--product-primary)] tracking-widest uppercase">
                                 {badge}
                             </span>
                         </motion.div>
                     )}
 
                     {/* 1. TÍTULO H1 (Tu código original) */}
-                    <motion.div className="max-w-2xl relative mb-6" variants={itemVariants}>
-                        <h1 className="font-display font-medium text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl leading-[0.95] tracking-tight text-white drop-shadow-2xl">
+                    <motion.div className="max-w-2xl relative mb-4 md:mb-6" variants={itemVariants}>
+                        <h1 className="font-display font-medium text-4xl sm:text-5xl md:text-7xl lg:text-7xl xl:text-8xl leading-[0.95] tracking-tight text-white drop-shadow-2xl">
                             {(() => {
                                 const parts = title.split(/<span[^>]*>|<\/span>/);
                                 if (parts.length < 2) return <div dangerouslySetInnerHTML={{ __html: title }} />;
@@ -189,7 +189,7 @@ const HeroSection = ({ data }) => {
                     {/* 2. DESCRIPCIÓN (Tu código original) */}
                     <motion.div
                         variants={itemVariants}
-                        className="text-lg md:text-xl text-zinc-400 font-light max-w-lg leading-relaxed mb-8"
+                        className="text-base md:text-xl text-zinc-400 font-light max-w-lg leading-relaxed mb-6 md:mb-8"
                     >
                         {/* Mobile Subtitle */}
                         {data.mobileSubtitle && (

@@ -407,17 +407,17 @@ const UnifiedServices = () => {
     };
 
     return (
-        <section className="relative py-24 lg:py-32 text-white overflow-hidden" id="unified-services">
+        <section className="relative py-24 md:py-32 text-white overflow-hidden" id="unified-services">
 
             <div className="container mx-auto px-4 lg:px-8 relative z-10">
 
                 {/* --- HEADER --- */}
-                <div className="mb-20 text-center max-w-4xl mx-auto">
-                    <h2 className="font-display text-5xl md:text-7xl leading-[0.9] text-white tracking-tight mb-6">
+                <div className="mb-10 md:mb-20 text-center max-w-4xl mx-auto">
+                    <h2 className="font-display text-3xl md:text-6xl leading-[1.1] text-white tracking-tight mb-6 font-medium">
                         Ingeniería Digital <br />
                         <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(180deg, #FFFFFF 0%, #EDF246 50%)', WebkitBackgroundClip: 'text' }}>Unificada.</span>
                     </h2>
-                    <p className="text-xl text-gray-400 font-light max-w-2xl mx-auto">
+                    <p className="text-base md:text-xl text-gray-400 font-light max-w-2xl mx-auto">
                         Fusionamos estrategia de negocio y código de alto rendimiento en un solo ecosistema.
                     </p>
                 </div>
@@ -545,10 +545,10 @@ const UnifiedServices = () => {
 
 
                     {/* TOP: PILLARS MODULE (Moved to Bottom & Hidden on Mobile) */}
-                    <div className="hidden lg:block rounded-2xl overflow-hidden border border-[#EDF246]/10 bg-black/30 md:bg-[#08080A]/80 md:backdrop-blur-3xl p-2">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-transparent">
+                    <div className="hidden lg:block rounded-3xl overflow-hidden border border-[#EDF246]/10 bg-black/30 md:bg-[#08080A]/80 md:backdrop-blur-3xl shadow-2xl">
+                        <div className="grid grid-cols-4 divide-x divide-white/5">
                             {pillars.map((pillar) => (
-                                <div key={pillar.id} className="p-6 lg:p-8 group hover:bg-white/[0.02] hover: transition-all duration-300 ease-out rounded-xl">
+                                <div key={pillar.id} className="p-8 group hover:bg-white/[0.02] transition-colors duration-300">
                                     <div className="mb-4 text-gray-400 group-hover:text-[#EDF246] transition-colors duration-300">
                                         <pillar.icon size={28} strokeWidth={1.5} />
                                     </div>

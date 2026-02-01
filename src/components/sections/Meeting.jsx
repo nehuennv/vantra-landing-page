@@ -45,7 +45,7 @@ const Meeting = () => {
     };
 
     return (
-        <section className="relative py-32" id="contacto">
+        <section className="relative py-24 md:py-32" id="contacto">
 
             {/* Background Decorations */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#EDF246]/5 rounded-full blur-[120px] pointer-events-none -z-10" />
@@ -66,13 +66,13 @@ const Meeting = () => {
                                 <span className="w-2 h-2 rounded-full bg-[#EDF246] animate-pulse" />
                                 Contacto Directo
                             </div>
-                            <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-[0.9] -ml-1">
+                            <h2 className="font-display text-3xl md:text-6xl text-white mb-8 leading-[0.9] -ml-1 font-medium">
                                 <span className="text-transparent whitespace-nowrap block" style={{ WebkitTextStroke: '1px #ffffff', color: 'rgba(255,255,255,0.05)' }}>
                                     Hablemos de
                                 </span>
                                 <span className="text-transparent bg-clip-text block" style={{ backgroundImage: 'linear-gradient(180deg, #FFFFFF 0%, #EDF246 50%)', WebkitBackgroundClip: 'text' }}>Escalar.</span>
                             </h2>
-                            <p className="text-xl text-gray-400 mb-8 font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
+                            <p className="text-base md:text-xl text-gray-400 mb-8 font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
                                 No somos vendedores, somos ingenieros. Cuéntanos qué necesitas y nuestro sistema te asignará al especialista correcto.
                             </p>
 

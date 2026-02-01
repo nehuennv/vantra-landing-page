@@ -62,7 +62,7 @@ const itemVariants = {
 
 const Services = () => {
   return (
-    <section className="relative py-24" id="servicios">
+    <section className="relative py-24 md:py-32" id="servicios">
 
       {/* Header */}
       <motion.div
@@ -70,7 +70,7 @@ const Services = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className="container mx-auto px-6 md:px-12 mb-20 relative z-10"
+        className="container mx-auto px-6 md:px-12 mb-10 md:mb-20 relative z-10"
       >
         <div className="relative max-w-5xl">
           {/* Decorative Glow */}
@@ -84,14 +84,14 @@ const Services = () => {
               QUE HACEMOS
             </h2>
 
-            <h3 className="font-display text-5xl md:text-7xl lg:text-8xl text-white leading-[1.1] mb-8">
+            <h3 className="font-display text-3xl md:text-6xl text-white leading-[1.1] mb-8 font-medium">
               No ofrecemos servicios <br />
               <span className="text-transparent" style={{ WebkitTextStroke: '1px #ffffff', color: 'rgba(255,255,255,0.05)' }}>
                 aislados.
               </span>
             </h3>
 
-            <p className="text-gray-400 max-w-3xl text-lg md:text-xl leading-relaxed">
+            <p className="text-gray-400 max-w-3xl text-base md:text-xl leading-relaxed font-light">
               Construimos sistemas completos que hacen crecer tu negocio.
             </p>
           </div>

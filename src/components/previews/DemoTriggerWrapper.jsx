@@ -277,7 +277,7 @@ export default function DemoTriggerWrapper() {
 
                             {/* --- CURSOR USUARIO (APARECE EN HOVER) --- */}
                             <motion.div
-                                className="absolute -right-8 top-10 drop-shadow-xl z-30 pointer-events-none"
+                                className="hidden md:block absolute -right-8 top-10 drop-shadow-xl z-30 pointer-events-none"
                                 variants={{
                                     idle: { opacity: 0, scale: 0.5, x: 20, y: 20, transition: { duration: 0.2 } },
                                     hover: { opacity: 1, scale: 1, x: 0, y: 0, transition: { type: "spring", stiffness: 300, damping: 20 } }

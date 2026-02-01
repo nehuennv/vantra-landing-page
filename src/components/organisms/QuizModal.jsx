@@ -45,25 +45,25 @@ const QuizModal = ({ isOpen, onClose, onSchedule }) => {
 
                     {/* Modal Container */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        initial={{ opacity: 0, scale: 0.95, y: 10 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="fixed inset-0 z-[100000] flex items-center justify-center p-4 md:p-6 pointer-events-none overflow-y-auto"
+                        exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                        className="fixed inset-0 z-[100000] flex flex-col md:items-center md:justify-center md:p-6"
                     >
-                        {/* Content Wrapper */}
-                        {/* Changed h-[90vh] to max-h-[90vh] and h-auto to fix empty space issue */}
-                        <div className="w-full max-w-5xl max-h-[90vh] bg-[#09090b] rounded-[32px] overflow-hidden shadow-2xl relative border border-zinc-800 pointer-events-auto flex flex-col my-auto">
+                        {/* Content Wrapper - Full Screen Mobile / Card Desktop */}
+                        <div className="w-full h-full md:h-auto md:max-h-[90vh] md:max-w-5xl bg-[#09090b] md:rounded-[32px] overflow-hidden shadow-2xl relative border-0 md:border border-zinc-800 flex flex-col">
 
                             {/* Close Button */}
                             <button
                                 onClick={onClose}
-                                className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-8 h-8 md:w-10 md:h-10 rounded-full bg-zinc-900 md:bg-zinc-900/50 border border-zinc-700/50 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all md:backdrop-blur-md"
+                                className="absolute top-6 right-6 md:top-8 md:right-8 z-50 p-3 rounded-full bg-black/40 md:bg-zinc-900/50 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 md:hover:bg-zinc-800 transition-all backdrop-blur-md group"
                             >
-                                <X size={20} />
+                                <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
                             </button>
 
                             {/* Quiz Component */}
-                            <div className="flex-1 w-full relative overflow-y-auto custom-scrollbar">
+                            <div className="flex-1 w-full h-full relative overflow-y-auto custom-scrollbar">
                                 <InteractiveQuiz onSchedule={onSchedule} />
                             </div>
 

@@ -5,7 +5,7 @@ const DemoSection = ({ data }) => {
     const { title, subtitle, component: Component } = data;
 
     return (
-        <section className="relative py-32 px-4 overflow-visible">
+        <section className="relative py-24 md:py-32 px-4 overflow-visible">
 
             {/* 1. Ambient Glow (Luz de fondo para dar profundidad) */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[500px] bg-[var(--product-primary)]/20 blur-[120px] rounded-full pointer-events-none z-0" />
@@ -13,12 +13,12 @@ const DemoSection = ({ data }) => {
             <div className="container mx-auto relative z-10 flex flex-col items-center">
 
                 {/* Header Typography - Más limpio y centrado */}
-                <div className="text-center max-w-4xl mb-16 space-y-6">
+                <div className="text-center max-w-4xl mb-10 md:mb-16 space-y-4 md:space-y-6">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight"
+                        className="text-3xl md:text-6xl font-display font-medium text-white tracking-tight leading-tight"
                     >
                         {title}
                     </motion.h2>
@@ -27,7 +27,7 @@ const DemoSection = ({ data }) => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed"
+                        className="text-base md:text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed"
                     >
                         {subtitle}
                     </motion.p>

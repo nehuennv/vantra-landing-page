@@ -365,10 +365,10 @@ const PricingCarousel = () => {
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={currentIndex}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: 10 }}
-                                    transition={{ duration: 0.3 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.4, ease: "easeOut" }}
                                     className="flex flex-col h-full"
                                 >
                                     {/* Top Meta */}

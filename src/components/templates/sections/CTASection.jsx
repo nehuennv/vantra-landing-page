@@ -57,7 +57,7 @@ const CTASection = ({ data, theme, preSelectedPlan }) => {
     ];
 
     return (
-        <section className="pt-24 pb-56 px-6 relative overflow-hidden" id="cta-section">
+        <section className="pt-24 md:pt-32 pb-56 px-6 relative overflow-hidden" id="cta-section">
 
             <QuizModal
                 isOpen={isQuizOpen}
@@ -76,21 +76,21 @@ const CTASection = ({ data, theme, preSelectedPlan }) => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
                         >
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-800 bg-[var(--product-primary)]/5 text-[var(--product-primary)] text-xs font-bold tracking-widest uppercase mb-6">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[var(--product-primary)] text-xs font-bold tracking-widest uppercase mb-6">
                                 <span className="w-2 h-2 rounded-full bg-[var(--product-primary)] animate-pulse" />
-                                Action Required
+                                RESPUESTA RÁPIDA
                             </div>
-                            <h2 className="text-5xl md:text-7xl font-display font-medium text-white mb-6 tracking-tight leading-[0.9]">
+                            <h2 className="text-3xl md:text-7xl font-display font-medium text-white mb-4 md:mb-6 tracking-tight leading-[0.9]">
                                 {title}
                             </h2>
-                            <p className="text-xl text-gray-400 font-light mb-10 max-w-xl leading-relaxed">
+                            <p className="text-base md:text-xl text-gray-400 font-light mb-6 md:mb-10 max-w-xl leading-relaxed">
                                 {subtitle}
                             </p>
 
-                            <div className="space-y-6 mb-10">
+                            <div className="space-y-6 mb-6 md:mb-10">
                                 {benefits.map((item, i) => (
                                     <div key={i} className="flex items-center gap-4 group/item">
-                                        <div className="w-12 h-12 rounded-xl bg-[var(--product-primary)]/10 border border-zinc-800 flex items-center justify-center text-[var(--product-primary)] group-hover/item:scale-110 transition-transform duration-300">
+                                        <div className="w-12 h-12 rounded-xl bg-black/30 border border-white/5 flex items-center justify-center text-[var(--product-primary)] group-hover/item:scale-110 transition-transform duration-300">
                                             <item.icon size={20} />
                                         </div>
                                         <span className="text-gray-300 font-medium text-lg">{item.text}</span>
@@ -112,9 +112,9 @@ const CTASection = ({ data, theme, preSelectedPlan }) => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="relative"
                     >
-                        <div className="absolute -inset-0.5 bg-gradient-to-b from-zinc-700 to-zinc-900 rounded-[26px] opacity-30 blur-sm" />
+                        <div className="absolute -inset-0.5 bg-gradient-to-b from-[var(--product-primary)]/20 to-transparent rounded-[26px] opacity-30 blur-sm" />
                         {/* CARD PRINCIPAL (Formulario) -> Glassmorphism */}
-                        <div className="relative z-10 w-full max-w-lg mx-auto bg-[#08080A] md:bg-[#08080A]/80 md:backdrop-blur-3xl rounded-[32px] p-8 md:p-12 border border-white/10 shadow-2xl overflow-hidden">
+                        <div className="relative z-10 w-full max-w-lg mx-auto bg-black/30 backdrop-blur-3xl rounded-[32px] p-8 md:p-12 border border-white/10 shadow-[0_0_50px_-10px_rgba(var(--product-primary-rgb),0.1)] overflow-hidden">
                             <div className="absolute top-0 left-0 w-0 h-[2px] bg-[var(--product-primary)] transition-all duration-500 ease-out group-hover:w-full z-20" />
 
                             {/* Switch Header */}
@@ -131,12 +131,22 @@ const CTASection = ({ data, theme, preSelectedPlan }) => {
                                                 {isActive && (
                                                     <motion.div
                                                         layoutId="liquid-switch-bg"
-                                                        className="absolute inset-0 bg-[var(--product-primary)]/20 border border-zinc-800 rounded-lg"
+                                                        className="absolute inset-0 bg-[var(--product-primary)] rounded-lg shadow-sm"
                                                         transition={{ type: "spring", stiffness: 400, damping: 30 }}
                                                     />
                                                 )}
-                                                <span className="relative z-10 flex items-center justify-center gap-2">
-                                                    {view === 'form' ? 'Agendar Demo' : 'Test de Elegibilidad'}
+                                                <span className={`relative z-10 flex items-center justify-center gap-2 ${isActive ? 'text-black font-bold' : ''}`}>
+                                                    {view === 'form' ? (
+                                                        <>
+                                                            <span className="md:hidden">Demo</span>
+                                                            <span className="hidden md:inline">Agendar Demo</span>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <span className="md:hidden">Test</span>
+                                                            <span className="hidden md:inline">Test de Elegibilidad</span>
+                                                        </>
+                                                    )}
                                                 </span>
                                             </button>
                                         );
@@ -145,7 +155,7 @@ const CTASection = ({ data, theme, preSelectedPlan }) => {
                             </div>
 
                             {/* Body: Sin scroll forzado, altura dinámica */}
-                            <div className="flex flex-col relative w-full min-h-[500px]">
+                            <div className="flex flex-col relative w-full min-h-[640px]">
                                 <AnimatePresence mode="wait">
                                     {activeView === 'form' ? (
                                         <motion.div
@@ -154,7 +164,7 @@ const CTASection = ({ data, theme, preSelectedPlan }) => {
                                             animate={{ opacity: 1, x: 0 }}
                                             exit={{ opacity: 0, x: 20 }}
                                             transition={{ duration: 0.3 }}
-                                            className="p-6 md:p-8 w-full"
+                                            className="flex-1 flex flex-col w-full mt-6 md:mt-8"
                                         >
                                             <ConsultationFormInlined leadContext={leadContext} />
                                         </motion.div>
@@ -165,9 +175,9 @@ const CTASection = ({ data, theme, preSelectedPlan }) => {
                                             animate={{ opacity: 1, x: 0 }}
                                             exit={{ opacity: 0, x: -20 }}
                                             transition={{ duration: 0.3 }}
-                                            className="flex flex-col w-full min-h-[500px]"
+                                            className="flex flex-col w-full min-h-[640px]"
                                         >
-                                            <div className="p-6 md:p-8 h-full">
+                                            <div className="flex-1 flex flex-col h-full">
                                                 <QuizIntro onStart={() => setIsQuizOpen(true)} />
                                             </div>
                                         </motion.div>
@@ -263,130 +273,132 @@ const ConsultationFormInlined = ({ leadContext }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onSubmit={handleSubmit}
-            className="flex flex-col gap-6 relative z-10"
+            className="flex flex-1 flex-col h-full relative z-10"
         >
-            {/* SIN BORDE BLANCO EN EL ANÁLISIS */}
-            {leadContext?.dolor && (
-                <div className="bg-[var(--product-primary)]/10 p-3 rounded-xl flex items-start gap-3 animate-in slide-in-from-top-2">
-                    <Sparkles className="text-[var(--product-primary)] shrink-0 mt-0.5" size={16} />
-                    <div className="text-xs text-zinc-300">
-                        <span className="block font-bold text-[var(--product-primary)] mb-0.5">Diagnóstico Adjunto:</span>
-                        Optimizando para resolver: <span className="text-white italic">"{leadContext.dolor}"</span>
-                    </div>
-                </div>
-            )}
-
-            {/* Nombre Completo */}
-            <div className="group">
-                <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">Nombre Completo</label>
-                <div className="relative">
-                    <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[var(--product-primary)] transition-colors duration-300">
-                        <User size={20} />
-                    </div>
-                    <input
-                        required
-                        type="text"
-                        name="name"
-                        placeholder="Tu Nombre o Empresa"
-                        value={formState.name}
-                        onChange={handleChange}
-                        className="w-full h-16 bg-white/[0.03] border border-zinc-800 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-600 focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
-                    />
-                </div>
-            </div>
-
-            {/* DOS COLUMNAS: Email y Teléfono */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="group">
-                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">Email</label>
-                    <div className="relative">
-                        <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[var(--product-primary)] transition-colors duration-300">
-                            <Mail size={20} />
+            <div className="flex-1 space-y-6">
+                {/* SIN BORDE BLANCO EN EL ANÁLISIS */}
+                {leadContext?.dolor && (
+                    <div className="bg-[var(--product-primary)]/10 p-3 rounded-xl flex items-start gap-3 animate-in slide-in-from-top-2">
+                        <Sparkles className="text-[var(--product-primary)] shrink-0 mt-0.5" size={16} />
+                        <div className="text-xs text-zinc-300">
+                            <span className="block font-bold text-[var(--product-primary)] mb-0.5">Diagnóstico Adjunto:</span>
+                            Optimizando para resolver: <span className="text-white italic">"{leadContext.dolor}"</span>
                         </div>
-                        <input
-                            required
-                            type="email"
-                            name="email"
-                            placeholder="tu@email.com"
-                            value={formState.email}
-                            onChange={handleChange}
-                            className="w-full h-16 bg-white/[0.03] border border-zinc-800 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-600 focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
-                        />
                     </div>
-                </div>
-
-                <div className="group">
-                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">WhatsApp</label>
-                    <div className="relative">
-                        <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[var(--product-primary)] transition-colors duration-300">
-                            <Phone size={20} />
-                        </div>
-                        <input
-                            required
-                            type="tel"
-                            name="phone"
-                            placeholder="+54 9 11..."
-                            value={formState.phone}
-                            onChange={handleChange}
-                            className="w-full h-16 bg-white/[0.03] border border-zinc-800 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-600 focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
-                        />
-                    </div>
-                </div>
-            </div>
-
-            {/* Selección de Plan */}
-            <div className="group">
-                <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">Interés Principal</label>
-                <div className="relative">
-                    <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[var(--product-primary)] transition-colors duration-300">
-                        <Layers size={20} />
-                    </div>
-                    <select
-                        required
-                        name="product"
-                        value={formState.product}
-                        onChange={handleChange}
-                        className="w-full h-16 bg-white/[0.03] border border-zinc-800 rounded-2xl pl-14 pr-12 text-white focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base appearance-none cursor-pointer"
-                    >
-                        <option value="" disabled className="bg-[#08080A] text-gray-500">Seleccioná un servicio...</option>
-                        <option value="Sistema Completo" className="bg-[#08080A]">Sistema Completo</option>
-                        <option value="Automatización + Control" className="bg-[#08080A]">Automatización + Control</option>
-                        <option value="Gestión Interna" className="bg-[#08080A]">Gestión Interna</option>
-                        <option value="Consulta General" className="bg-[#08080A]">Otro / Consulta General</option>
-                    </select>
-                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 group-hover:text-white transition-colors">
-                        <ArrowRight className="rotate-90" size={18} />
-                    </div>
-                </div>
-            </div>
-
-            {error && (
-                <div className="flex items-center gap-2 text-red-400 text-xs bg-red-500/10 p-3 rounded-lg border border-red-500/20 animate-in fade-in">
-                    <AlertCircle size={14} />
-                    <span>{error}</span>
-                </div>
-            )}
-
-            <div className="flex-grow" />
-
-            <button
-                type="submit"
-                disabled={loading}
-                style={{ backgroundColor: 'var(--product-primary)' }}
-                className="w-full group relative flex items-center justify-center gap-3 text-black font-bold text-lg h-16 rounded-2xl mt-auto transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed hover:bg-[var(--product-primary)] hover:brightness-110 hover:shadow-[0_0_40px_-10px_rgba(var(--product-primary-rgb),0.5)]"
-            >
-                {loading ? (
-                    <>
-                        <Loader2 className="animate-spin" size={24} />
-                        <span className="tracking-wide">Procesando...</span>
-                    </>
-                ) : (
-                    <>
-                        <Send size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-                        <span className="tracking-wide">Confirmar Solicitud</span>
-                    </>
                 )}
-            </button>
+
+                {/* Nombre Completo */}
+                <div className="group">
+                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">Nombre Completo</label>
+                    <div className="relative">
+                        <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[var(--product-primary)] transition-colors duration-300">
+                            <User size={20} />
+                        </div>
+                        <input
+                            required
+                            type="text"
+                            name="name"
+                            placeholder="Tu Nombre o Empresa"
+                            value={formState.name}
+                            onChange={handleChange}
+                            className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-600 focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
+                        />
+                    </div>
+                </div>
+
+                {/* DOS COLUMNAS: Email y Teléfono */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="group">
+                        <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">Email</label>
+                        <div className="relative">
+                            <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[var(--product-primary)] transition-colors duration-300">
+                                <Mail size={20} />
+                            </div>
+                            <input
+                                required
+                                type="email"
+                                name="email"
+                                placeholder="tu@email.com"
+                                value={formState.email}
+                                onChange={handleChange}
+                                className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-600 focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="group">
+                        <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">WhatsApp</label>
+                        <div className="relative">
+                            <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[var(--product-primary)] transition-colors duration-300">
+                                <Phone size={20} />
+                            </div>
+                            <input
+                                required
+                                type="tel"
+                                name="phone"
+                                placeholder="+54 9 11..."
+                                value={formState.phone}
+                                onChange={handleChange}
+                                className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-5 text-white placeholder:text-gray-600 focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Selección de Plan */}
+                <div className="group">
+                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">Interés Principal</label>
+                    <div className="relative">
+                        <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[var(--product-primary)] transition-colors duration-300">
+                            <Layers size={20} />
+                        </div>
+                        <select
+                            required
+                            name="product"
+                            value={formState.product}
+                            onChange={handleChange}
+                            className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-12 text-white focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base appearance-none cursor-pointer"
+                        >
+                            <option value="" disabled className="bg-[#08080A] text-gray-500">Seleccionar...</option>
+                            <option value="Sistema Completo" className="bg-[#08080A]">Sistema Completo</option>
+                            <option value="Automatización + Control" className="bg-[#08080A]">Automatización + Control</option>
+                            <option value="Gestión Interna" className="bg-[#08080A]">Gestión Interna</option>
+                            <option value="Consulta General" className="bg-[#08080A]">Otro / Consulta General</option>
+                        </select>
+                        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 group-hover:text-white transition-colors">
+                            <ArrowRight className="rotate-90" size={18} />
+                        </div>
+                    </div>
+                </div>
+
+                {error && (
+                    <div className="flex items-center gap-2 text-red-400 text-xs bg-red-500/10 p-3 rounded-lg border border-red-500/20 animate-in fade-in">
+                        <AlertCircle size={14} />
+                        <span>{error}</span>
+                    </div>
+                )}
+            </div>
+
+            <div className="mt-auto">
+                <button
+                    type="submit"
+                    disabled={loading}
+                    style={{ backgroundColor: 'var(--product-primary)' }}
+                    className="w-full group relative flex items-center justify-center gap-3 text-black font-bold text-lg h-16 rounded-2xl transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed hover:bg-[var(--product-primary)] hover:brightness-110 hover:shadow-[0_0_40px_-10px_rgba(var(--product-primary-rgb),0.5)]"
+                >
+                    {loading ? (
+                        <>
+                            <Loader2 className="animate-spin" size={24} />
+                            <span className="tracking-wide">Procesando...</span>
+                        </>
+                    ) : (
+                        <>
+                            <Send size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+                            <span className="tracking-wide">Enviar Solicitud</span>
+                        </>
+                    )}
+                </button>
+            </div>
         </motion.form>
     );
 };

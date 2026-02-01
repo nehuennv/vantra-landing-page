@@ -5,38 +5,35 @@ import Button from '../ui/Button';
 
 const QuizIntro = ({ onStart }) => {
     return (
-        <div className="w-full h-full min-h-[480px] p-2 flex flex-col justify-between">
+        <div className="w-full h-full flex flex-1 flex-col pt-6  md:px-0">
 
             {/* --- HEADER --- */}
-            <div>
-                <h3 className="text-xl font-medium text-white mb-2">
-                    ¿Tu consultorio depende 100% de tu WhatsApp?
-                </h3>
+            <div className="space-y-4 mb-8">
 
-                <p className="text-zinc-400 text-sm leading-relaxed mb-8">
-                    En Vantra desarrollamos sistemas de previsibilidad. En menos de 2 minutos, vamos a identificar <strong>dónde se está perdiendo tiempo y dinero</strong> en tu operación diaria y qué sistema (A, B o C) necesitás para solucionarlo.
+                <p className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-sm">
+                    Descubrí en 2 minutos qué sistema necesita tu negocio para escalar sin caos operativo.
                 </p>
             </div>
 
             {/* --- VISUAL CUES (Puntos de dolor) --- */}
-            <div className="space-y-4 mb-8">
-                <div className="p-4 rounded-xl bg-[#1A1A1E] md:bg-white/5 md:backdrop-blur-sm border border-white/5 flex items-start gap-4">
-                    <div className="mt-1 p-2 bg-zinc-950/50 rounded-lg border border-white/10 text-zinc-400">
-                        <Clock size={18} />
+            <div className="grid grid-cols-1 gap-4">
+                <div className="group p-5 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-all duration-300 flex items-center gap-5 hover:border-white/10 hover:shadow-lg">
+                    <div className="p-3.5 bg-white/5 rounded-xl text-[var(--product-primary)] border border-white/10 group-hover:scale-110 transition-transform">
+                        <Clock size={24} />
                     </div>
                     <div>
-                        <p className="text-zinc-200 text-sm font-medium mb-1">Análisis de Tiempo</p>
-                        <p className="text-zinc-500 text-xs">Calculamos cuánto tiempo operativo podrías recuperar.</p>
+                        <p className="text-white text-base font-bold mb-1 group-hover:text-[var(--product-primary)] transition-colors">Análisis de Tiempo</p>
+                        <p className="text-zinc-500 text-sm">Calculá cuánto tiempo operativo podés recuperar por mes.</p>
                     </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#1A1A1E] md:bg-white/5 md:backdrop-blur-sm border border-white/5 flex items-start gap-4">
-                    <div className="mt-1 p-2 bg-zinc-950/50 rounded-lg border border-white/10 text-zinc-400">
-                        <Activity size={18} />
+                <div className="group p-5 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-all duration-300 flex items-center gap-5 hover:border-white/10 hover:shadow-lg">
+                    <div className="p-3.5 bg-white/5 rounded-xl text-[var(--product-primary)] border border-white/10 group-hover:scale-110 transition-transform">
+                        <Activity size={24} />
                     </div>
                     <div>
-                        <p className="text-zinc-200 text-sm font-medium mb-1">Escalabilidad</p>
-                        <p className="text-zinc-500 text-xs">Determinamos si estás listo para automatizar.</p>
+                        <p className="text-white text-base font-bold mb-1 group-hover:text-[var(--product-primary)] transition-colors">Escalabilidad</p>
+                        <p className="text-zinc-500 text-sm">Medí tu aptitud actual para automatizar procesos.</p>
                     </div>
                 </div>
             </div>
@@ -44,22 +41,15 @@ const QuizIntro = ({ onStart }) => {
             {/* --- CTA --- */}
             <div className="mt-auto">
                 <Button
-                    onClick={onStart} // Esta función la pasaremos luego para iniciar el quiz
-                    className="w-full py-4 text-base font-bold text-white rounded-xl flex items-center justify-center gap-3 group active:scale-[0.98] transition-all relative overflow-hidden"
+                    onClick={onStart}
+                    className="w-full h-16 text-lg font-bold text-black rounded-2xl flex items-center justify-center gap-3 transition-all active:scale-[0.98] hover:brightness-110 shadow-[0_0_40px_-10px_rgba(var(--product-primary-rgb),0.5)] group"
                     style={{
-                        backgroundColor: 'var(--product-primary)',
-                        color: '#fff',
-                        border: 'none',
-                        // Sombra sutil en el color primario, nada de verde ácido
-                        boxShadow: '0 0 30px -10px var(--product-primary-opacity-30, rgba(14, 165, 233, 0.3))'
+                        backgroundColor: 'var(--product-primary)'
                     }}
                 >
-                    <span>Iniciar Diagnóstico</span>
-                    <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                    <span className="tracking-wide">Iniciar Diagnóstico</span>
+                    <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <p className="text-center text-xs text-zinc-600 mt-3">
-                    Sin costo • Análisis inmediato • Privado
-                </p>
             </div>
         </div>
     );

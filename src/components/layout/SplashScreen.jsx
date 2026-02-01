@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, animate } from 'framer-motion';
 import LogoCompleto from '../../assets/logo/logo-completo.svg';
 // Importamos los assets pesados para precargarlos
-import BackgroundHome from '../../assets/complete-background.png';
-import BackgroundMed from '../../assets/complete-background-medical.png';
+import BackgroundHome from '../../assets/complete-background.webp';
+import BackgroundMed from '../../assets/complete-background-medical.webp';
 
 const SplashScreen = ({ onComplete }) => {
     const [progress, setProgress] = useState(0);

@@ -70,12 +70,12 @@ const Footer = () => {
                     </div>
 
                     {/* Right: Navigation & Action */}
-                    <div className="flex flex-col gap-12 lg:pl-12 border-l border-white/5 lg:border-none">
+                    <div className="flex flex-col gap-8 lg:pl-12 lg:border-none">
 
                         {/* Navigation Links Grid */}
-                        <div className="grid grid-cols-2 gap-8">
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-10">
                             <div className="flex flex-col gap-4">
-                                <h4 className="font-display text-lg text-white/40 mb-2">Explorar</h4>
+                                <h4 className="text-white text-sm uppercase tracking-widest font-normal border-b border-white/10 pb-3 mb-2">Explorar</h4>
                                 <NavLink to="/">Inicio</NavLink>
                                 <Link
                                     to="/#unified-services"
@@ -87,7 +87,7 @@ const Footer = () => {
                                 <NavLink to="/equipo">Equipo</NavLink>
                             </div>
                             <div className="flex flex-col gap-4">
-                                <h4 className="font-display text-lg text-white/40 mb-2">Vantra</h4>
+                                <h4 className="text-white text-sm uppercase tracking-widest font-normal border-b border-white/10 pb-3 mb-2">Vantra</h4>
                                 <NavLink to="/resto">Gastronomía</NavLink>
                                 <NavLink to="/med">Medicina</NavLink>
 

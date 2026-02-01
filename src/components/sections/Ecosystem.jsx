@@ -51,7 +51,7 @@ const Ecosystem = () => {
 
     return (
         <section
-            className="relative w-full py-24 px-4 md:px-8 flex justify-center items-center min-h-[900px]"
+            className="relative w-full py-24 md:py-32 px-4 md:px-8 flex justify-center items-center min-h-[900px]"
             id="ecosystem"
         >
             {/* Inject Keyframes for Timer Animation */}
@@ -96,7 +96,7 @@ const Ecosystem = () => {
                                 </AnimatePresence>
                             </span>
                         </h2>
-                        <p className="text-white/50 text-lg font-light leading-relaxed">
+                        <p className="text-white/50 text-base md:text-xl font-light leading-relaxed">
                             Tecnología invisible y potente. Diseñada para escalar tu negocio sin fricción.
                         </p>
                     </div>

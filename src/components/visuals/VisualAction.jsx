@@ -86,10 +86,10 @@ const VisualAction = () => {
             </div>
 
             {/* --- CUERPO DE LA AGENDA --- */}
-            <div className="flex-1 p-4 overflow-hidden relative">
+            <div className="flex-1 p-3 md:p-4 overflow-hidden relative">
 
                 {/* Línea de Tiempo Decorativa (Vertical) */}
-                <div className="absolute top-0 bottom-0 left-[3.5rem] w-[1px] bg-white/5 z-0" />
+                <div className="absolute top-0 bottom-0 left-[3rem] md:left-[3.5rem] w-[1px] bg-white/5 z-0" />
 
                 {/* Línea de "Hora Actual" (Animada) */}
                 <motion.div
@@ -98,7 +98,7 @@ const VisualAction = () => {
                     animate={{ top: "38%" }}
                     transition={{ duration: 8, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
                 >
-                    <div className="w-[3.5rem] text-[10px] text-red-400 font-bold text-right pr-2">09:42</div>
+                    <div className="w-[3rem] md:w-[3.5rem] text-[10px] text-red-400 font-bold text-right pr-2">09:42</div>
                     <div className="w-2 h-2 rounded-full bg-red-500 -ml-1 shadow-[0_0_8px_rgba(239,68,68,0.6)]" />
                     <div className="flex-1 h-[1px] bg-red-500/50" />
                 </motion.div>
@@ -170,7 +170,7 @@ const AgendaItem = ({ data }) => {
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
             className={`
-                flex items-center p-2.5 rounded-xl border relative overflow-hidden group
+                flex items-center p-2 md:p-2.5 rounded-xl border relative overflow-hidden group
                 ${isGap
                     ? 'border-dashed border-white/5 bg-white/[0.01]'
                     : isInProgress
@@ -190,7 +190,7 @@ const AgendaItem = ({ data }) => {
             )}
 
             {/* Columna Hora */}
-            <div className={`w-12 text-xs font-mono font-medium ${isGap ? 'text-zinc-600' : 'text-zinc-400'}`}>
+            <div className={`w-10 md:w-12 text-xs font-mono font-medium ${isGap ? 'text-zinc-600' : 'text-zinc-400'}`}>
                 {data.time}
             </div>
 
@@ -198,7 +198,7 @@ const AgendaItem = ({ data }) => {
             {isGap ? (
                 // SLOT VACÍO
                 <div className="flex-1 flex items-center gap-2 opacity-40">
-                    <div className="w-8 h-8 rounded-full border border-dashed border-zinc-500 flex items-center justify-center">
+                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full border border-dashed border-zinc-500 flex items-center justify-center">
                         <Plus size={12} className="text-zinc-500" />
                     </div>
                     <span className="text-xs text-zinc-500 italic">Disponible</span>
@@ -206,24 +206,24 @@ const AgendaItem = ({ data }) => {
             ) : (
                 // SLOT OCUPADO
                 <>
-                    <div className="flex-1 flex items-center gap-3">
+                    <div className="flex-1 flex items-center gap-2 md:gap-3">
                         <div className={`
-                            w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ring-1 ring-inset
+                            w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center text-xs font-bold ring-1 ring-inset shrink-0
                             ${isInProgress ? 'bg-violet-500 text-white ring-violet-400' : 'bg-zinc-800 text-zinc-400 ring-white/5'}
                             ${isConfirmed ? 'bg-green-500/20 text-green-400 ring-green-500/30' : ''}
                         `}>
                             {data.name.charAt(0)}
                         </div>
-                        <div>
-                            <div className={`text-base font-medium leading-none mb-1 ${isInProgress ? 'text-white' : 'text-zinc-200'}`}>
+                        <div className="min-w-0">
+                            <div className={`text-sm md:text-base font-medium leading-none mb-0.5 md:mb-1 truncate ${isInProgress ? 'text-white' : 'text-zinc-200'}`}>
                                 {data.name}
                             </div>
-                            <div className="text-xs text-zinc-500">{data.type}</div>
+                            <div className="text-[10px] md:text-xs text-zinc-500 truncate">{data.type}</div>
                         </div>
                     </div>
 
                     {/* Estado / Acción */}
-                    <div className="w-20 flex justify-end">
+                    <div className="w-auto pl-2 flex justify-end shrink-0">
                         {isConfirmed && (
                             <motion.div
                                 initial={{ scale: 0 }}

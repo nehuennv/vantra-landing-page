@@ -87,7 +87,7 @@ const ProblemSection = ({ data }) => {
     const shortTitle = "No es solo la agenda. Es la información.";
 
     return (
-        <section className="py-24 px-6 relative bg-transparent overflow-hidden">
+        <section className="py-24 md:py-32 px-6 relative bg-transparent overflow-hidden">
 
             {/* Fondo sutil rojo oscuro */}
             <div className="absolute inset-0 pointer-events-none">
@@ -97,14 +97,14 @@ const ProblemSection = ({ data }) => {
             <div className="container mx-auto max-w-5xl relative z-10">
 
                 {/* --- HEADER --- */}
-                <div className="mb-20 text-center max-w-4xl mx-auto">
+                <div className="mb-10 md:mb-20 text-center max-w-4xl mx-auto">
 
                     {subtitle && (
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-[#1A1A1E] md:bg-red-950/30 border border-red-900/50 md:backdrop-blur-sm"
+                            className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-white/5 border border-white/10"
                         >
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -117,12 +117,13 @@ const ProblemSection = ({ data }) => {
                     )}
 
                     {/* TÍTULO CORTO + RESALTADO ROJO */}
+                    {/* TÍTULO CORTO + RESALTADO ROJO */}
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-white mb-6 leading-tight"
+                        className="text-3xl md:text-6xl font-display font-medium text-white mb-4 md:mb-6 leading-tight"
                     >
                         El problema no es la agenda. <br className="hidden md:block" />
                         <span className="text-transparent bg-clip-text bg-gradient-to-b from-zinc-100 via-red-500 to-red-600">
@@ -136,7 +137,7 @@ const ProblemSection = ({ data }) => {
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-lg text-zinc-400 font-light leading-relaxed max-w-2xl mx-auto"
+                            className="text-base md:text-xl text-zinc-400 font-light leading-relaxed max-w-2xl mx-auto"
                         >
                             {paragraph}
                         </motion.p>

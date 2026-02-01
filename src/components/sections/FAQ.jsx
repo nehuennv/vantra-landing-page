@@ -80,7 +80,7 @@ const FAQCard = ({ item, isOpen, onClick }) => {
                         transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                     >
                         <div className="px-6 md:px-8 pb-8">
-                            <p className="text-gray-400 text-lg leading-relaxed font-light border-l-2 border-[#EDF246]/20 pl-6">
+                            <p className="text-gray-400 text-base md:text-lg leading-relaxed font-light border-l-2 border-[#EDF246]/20 pl-6">
                                 {item.a}
                             </p>
                         </div>
@@ -98,7 +98,7 @@ const FAQ = () => {
     const [openId, setOpenId] = useState(null); // Ninguno abierto por defecto
 
     return (
-        <section className="relative py-32" id="faq">
+        <section className="relative py-24 md:py-32" id="faq">
 
             {/* Spotlights Ambientales */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#EDF246]/5 blur-[120px] rounded-full pointer-events-none" />
@@ -107,11 +107,11 @@ const FAQ = () => {
             <div className="container mx-auto px-6 max-w-4xl relative z-10">
 
                 {/* Header */}
-                <div className="mb-20 md:text-center">
-                    <h2 className="font-display text-4xl md:text-6xl text-white mb-6">
+                <div className="mb-10 md:mb-20 md:text-center">
+                    <h2 className="font-display text-3xl md:text-6xl text-white mb-6 font-medium">
                         Despejamos <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(180deg, #FFFFFF 0%, #EDF246 50%)', WebkitBackgroundClip: 'text' }}>dudas.</span>
                     </h2>
-                    <p className="text-xl text-gray-400 font-light max-w-2xl mx-auto">
+                    <p className="text-base md:text-xl text-gray-400 font-light max-w-2xl mx-auto">
                         Entendemos que contratar tecnología puede ser complejo. Aquí lo hacemos simple.
                     </p>
                 </div>
@@ -132,7 +132,7 @@ const FAQ = () => {
                 <div className="mt-20 text-center">
                     <p className="text-gray-300 mb-6">¿Tu duda es más específica?</p>
                     <a
-                        href="https://wa.me/"
+                        href="https://wa.me/5491138830925?text=Hola!%20Me%20interesa%20conocer%20sus%20servicios"
                         className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#EDF246] text-black font-bold transition-all duration-300 shadow-[0_0_20px_rgba(237,242,70,0.3)] hover:shadow-[0_0_40px_rgba(237,242,70,0.6)] hover:-translate-y-1 hover:scale-105 active:scale-95 uppercase tracking-widest text-sm"
                     >
                         Hablar por WhatsApp
