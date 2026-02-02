@@ -32,7 +32,7 @@ export const useSubmitLead = () => {
             // Lo ejecutamos ANTES del fetch para asegurar que el evento salga
             // aunque el backend de error por "Usuario Duplicado" o "Error 500".
             if (window.fbq) {
-                console.log("📡 Facebook Pixel: Disparando evento 'Lead'...");
+
 
                 // Enviamos la versión COMPLETA con metadatos para mejor calidad de lead
                 window.fbq('track', 'Lead', {
@@ -73,6 +73,7 @@ export const useSubmitLead = () => {
                 const errorData = await response.json().catch(() => ({}));
 
                 if (response.status === 401) throw new Error("No autorizado. Token inválido.");
+                if (response.status === 409) throw new Error("El usuario ya está registrado (Email o teléfono duplicado).");
 
                 if (errorData.details && errorData.details.fieldErrors) {
                     const firstErrorKey = Object.keys(errorData.details.fieldErrors)[0];
@@ -83,7 +84,7 @@ export const useSubmitLead = () => {
             }
 
             // ✅ ÉXITO TOTAL (Pixel + DB)
-            console.log("✅ Lead guardado en BD correctamente.");
+
             setSuccess(true);
             return true;
 

@@ -102,6 +102,6 @@ export const vantraMedData = {
         title: 'Ordenemos tu consultorio.',
         subtitle: 'Agendá un diagnóstico breve. Revisamos tu flujo actual de turnos e información clínica y te decimos si Vantra te sirve.',
         benefits: ['Diagnóstico de flujo', 'Revisión de info clínica', 'Propuesta a medida'],
-        cta: { text: 'Solicitar Diagnóstico', action: () => console.log('Diagnostico') }
+        cta: { text: 'Solicitar Diagnóstico', action: () => { } }
     }
 };

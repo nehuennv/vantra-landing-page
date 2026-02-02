@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Linkedin } from 'lucide-react';
 
 import serafinImg from '../assets/team/Serafin Bastianelli - CEO & Founder.webp';
@@ -78,9 +78,17 @@ const cardVariants = {
     }
 };
 
+import SEO from '../components/layout/SEO';
+
 const Team = () => {
     return (
         <div className="w-full min-h-screen pt-32 relative bg-transparent">
+            <SEO
+                title="Equipo"
+                description="Conoce al equipo detrás de Vantra. Desarrolladores, diseñadores y creativos trabajando para impulsar tu negocio."
+                url="https://vantradigital.com/equipo"
+            />
+
 
             {/* TEXTURA DE FONDO (Para que no se sienta vacío) */}
             <div className="absolute inset-0 opacity-5 pointer-events-none"
@@ -95,7 +103,7 @@ const Team = () => {
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="font-display font-medium text-6xl text-white mb-4"
+                        className="font-display font-medium text-3xl md:text-6xl text-white mb-4"
                     >
                         El Equipo
                     </motion.h1>
@@ -111,7 +119,7 @@ const Team = () => {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-white/60 text-xl font-light max-w-2xl"
+                        className="text-zinc-400 text-base md:text-xl font-light max-w-2xl"
                     >
                         Los que estamos detrás de la pantalla haciendo que Vantra funcione. Gente real haciendo software real.
                     </motion.p>
@@ -179,33 +187,53 @@ const ScrambleText = ({ text, active }) => {
 // --- LA CARD (DISEÑO REVERSIONADO) ---
 const MemberCard = ({ member }) => {
     const isCMO = member.role.includes('CMO'); // Detectamos al CMO Misterioso
-    const [isHovered, setIsHovered] = React.useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const ref = useRef(null);
+
+    // Detección de Mobile
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Detectar si está en el centro del viewport (Solo para mobile)
+    const isInView = useInView(ref, {
+        margin: "-50% 0px -50% 0px", // Activa cuando el elemento está en el centro vertical
+        amount: "some"
+    });
+
+    // Lógica principal: Activo si es mobile y está en vista, o si es desktop y tiene hover
+    const isActive = isMobile ? isInView : isHovered;
 
     // --- DISEÑO 'TOP SECRET' PARA EL CMO ---
     if (isCMO) {
         return (
             <motion.div
+                ref={ref}
                 variants={cardVariants}
                 onHoverStart={() => setIsHovered(true)}
                 onHoverEnd={() => setIsHovered(false)}
-                className="group relative w-full aspect-square bg-black rounded-xl overflow-hidden cursor-pointer border border-[#EDF246]/30 hover:border-[#EDF246] transition-colors duration-300"
+                className={`group relative w-full aspect-square bg-black rounded-xl overflow-hidden cursor-pointer border transition-colors duration-300 ${isActive ? 'border-[#EDF246]' : 'border-[#EDF246]/30'}`}
             >
                 {/* BACKGROUND GRID ANIMATION */}
                 <div className="absolute inset-0 opacity-20 pointer-events-none"
                     style={{
                         backgroundImage: 'linear-gradient(#EDF246 1px, transparent 1px), linear-gradient(90deg, #EDF246 1px, transparent 1px)',
                         backgroundSize: '40px 40px',
-                        transform: isHovered ? 'scale(1.1)' : 'scale(1)',
+                        transform: isActive ? 'scale(1.1)' : 'scale(1)',
                         transition: 'transform 0.5s ease'
                     }}
                 />
 
-                {/* IMAGEN (Solo visible en hover con efecto) */}
+                {/* IMAGEN (Solo visible en hover/active con efecto) */}
                 <div className="absolute inset-0 bg-black transition-opacity duration-300">
                     <img
                         src={member.image}
                         alt="Restricted"
-                        className={`w-full h-full object-cover grayscale contrast-150 transition-opacity duration-500 ease-in-out ${isHovered ? 'opacity-40' : 'opacity-0'}`}
+                        className={`w-full h-full object-cover grayscale contrast-150 transition-opacity duration-500 ease-in-out ${isActive ? 'opacity-40' : 'opacity-0'}`}
                     />
                     {/* Noise Overlay */}
                     <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
@@ -215,8 +243,8 @@ const MemberCard = ({ member }) => {
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
                     <motion.div
                         animate={{
-                            scale: isHovered ? 1.5 : 1,
-                            opacity: isHovered ? 0 : 1
+                            scale: isActive ? 1.5 : 1,
+                            opacity: isActive ? 0 : 1
                         }}
                         transition={{ duration: 0.3 }}
                         className="bg-[#EDF246] text-black p-4 rounded-full"
@@ -237,14 +265,14 @@ const MemberCard = ({ member }) => {
 
                         {/* NAME SCRAMBLER */}
                         <h3 className="text-2xl font-bold text-[#EDF246] font-mono tracking-tighter truncate">
-                            <ScrambleText text="NO NAME REPORT" active={isHovered} />
+                            <ScrambleText text="NO NAME REPORT" active={isActive} />
                         </h3>
 
                         {/* STATUS INDICATOR */}
                         <div className="flex items-center gap-2 pt-2">
-                            <div className={`w-2 h-2 rounded-full ${isHovered ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
+                            <div className={`w-2 h-2 rounded-full ${isActive ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
                             <span className="text-xs text-white/60 font-mono">
-                                {isHovered ? "IDENTITY MATCH FOUND" : "AUTHENTICATION REQUIRED"}
+                                {isActive ? "IDENTITY MATCH FOUND" : "AUTHENTICATION REQUIRED"}
                             </span>
                         </div>
                     </div>
@@ -263,17 +291,20 @@ const MemberCard = ({ member }) => {
     // --- STANDARD CARD (Otras personas) ---
     return (
         <motion.div
+            ref={ref}
             variants={cardVariants}
-            className="group relative w-full aspect-square bg-[#050505] rounded-xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#EDF246]/50 transition-colors duration-300"
+            onHoverStart={() => setIsHovered(true)}
+            onHoverEnd={() => setIsHovered(false)}
+            className={`group relative w-full aspect-square bg-[#050505] rounded-xl overflow-hidden cursor-pointer border transition-colors duration-300 ${isActive ? 'border-[#EDF246]/50' : 'border-white/10'}`}
         >
             {/* IMAGEN */}
             <div className="absolute inset-0 bg-black">
                 <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-in-out"
+                    className={`w-full h-full object-cover transition-all duration-500 ease-in-out ${isActive ? 'grayscale-0 scale-105' : 'grayscale'}`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
+                <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-opacity duration-300 ${isActive ? 'opacity-60' : 'opacity-80'}`} />
             </div>
 
             {/* INFO */}
@@ -283,7 +314,7 @@ const MemberCard = ({ member }) => {
                         <p className="text-xs uppercase tracking-widest text-[#EDF246] mb-2 font-medium">
                             {member.role}
                         </p>
-                        <h3 className="text-2xl font-display text-white group-hover:text-[#EDF246] transition-colors">
+                        <h3 className={`text-2xl font-display transition-colors ${isActive ? 'text-[#EDF246]' : 'text-white'}`}>
                             {member.name}
                         </h3>
                     </div>
@@ -293,12 +324,12 @@ const MemberCard = ({ member }) => {
                             href={member.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2 rounded-lg bg-white/10 text-white hover:bg-[#EDF246] hover:text-black transition-all duration-300"
+                            className={`p-2 rounded-lg bg-white/10 text-white transition-all duration-300 ${isActive ? 'bg-[#EDF246] text-black' : 'hover:bg-[#EDF246] hover:text-black'}`}
                         >
                             <Linkedin size={20} />
                         </a>
                     ) : (
-                        // Fallback para tarjetas normales sin linkedin (como team members genéricos si los hubiera)
+                        // Fallback para tarjetas normales sin linkedin
                         <div className="w-9 h-9" />
                     )}
                 </div>

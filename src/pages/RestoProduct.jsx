@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useSpring } from 'framer-motion';
 import { ArrowLeft, Flame, Zap, Activity, Cpu, Server } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/layout/SEO'; // <--- IMPORTACIÓN AGREGADA
 
 // --- PALETA INDUSTRIAL ---
 const THEME = {
@@ -283,6 +284,15 @@ export default function RestoProduct() {
 
     return (
         <div className="relative w-full h-screen bg-[#000] text-white overflow-hidden flex flex-col justify-center items-center font-sans selection:bg-[#FD6A10] selection:text-black">
+
+            {/* --- AGREGADO SEO --- */}
+            <SEO
+                title="Gastronomía"
+                description="Software integral para restaurantes y bares. Comandas, stock, delivery y cobros en un solo sistema rápido."
+                keywords="software gastronomía, sistema para restaurantes, comandas digitales, stock restaurante, punto de venta"
+                url="https://vantradigital.com/resto"
+            />
+            {/* ------------------ */}
 
             {/* SOLO MONTAMOS LOS FILTROS SI YA TERMINÓ LA TRANSICIÓN */}
             {isReady && <ExtremeFilters />}

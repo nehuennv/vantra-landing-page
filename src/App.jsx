@@ -28,7 +28,7 @@ const FacebookPixelTracker = () => {
   useEffect(() => {
     // Verificamos si el script global de Facebook (fbq) existe
     if (window.fbq) {
-      // console.log("📡 Tracking PageView en:", location.pathname); // Descomentar para debug
+      // Tracking PageView logic
       window.fbq('track', 'PageView');
     }
   }, [location]); // Se ejecuta cada vez que cambia la ruta

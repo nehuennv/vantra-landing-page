@@ -30,14 +30,14 @@ const CTASection = ({ data, theme, preSelectedPlan }) => {
     // 2. Manejador Inteligente
     const handleSchedule = (incomingData) => {
         if (typeof incomingData === 'object' && incomingData !== null) {
-            console.log("🧩 Datos recibidos del Quiz:", incomingData);
+
             setLeadContext({
                 plan: incomingData.plan,
                 dolor: incomingData.dolor,
                 nicho: incomingData.nicho || 'Medicina'
             });
         } else {
-            console.log("⚡ Selección directa de plan:", incomingData);
+
             setLeadContext(prev => ({ ...prev, plan: incomingData }));
         }
 
@@ -227,9 +227,7 @@ const ConsultationFormInlined = ({ leadContext }) => {
             nicho: leadContext?.nicho || "Medicina"
         };
 
-        console.group("🚀 Enviando Lead a Vantra API");
-        console.log("Payload:", payload);
-        console.groupEnd();
+
 
         await submitLead(payload);
     };
