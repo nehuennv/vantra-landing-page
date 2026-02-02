@@ -85,7 +85,8 @@ const Team = () => {
         <div className="w-full min-h-screen pt-32 relative bg-transparent">
             <SEO
                 title="Equipo"
-                description="Conoce al equipo detrás de Vantra. Desarrolladores, diseñadores y creativos trabajando para impulsar tu negocio."
+                description="¿Quiénes construyen el futuro? Conoce a las mentes inquietas detrás de Vantra. Fusión de diseño, código e innovación digital."
+                keywords="Equipo Vantra, Desarrolladores Creativos, Agencia Digital, Cultura Tech, Diseño y Código"
                 url="https://vantradigital.com/equipo"
             />
 
@@ -216,7 +217,7 @@ const MemberCard = ({ member }) => {
                 variants={cardVariants}
                 onHoverStart={() => setIsHovered(true)}
                 onHoverEnd={() => setIsHovered(false)}
-                className={`group relative w-full aspect-square bg-black rounded-xl overflow-hidden cursor-pointer border transition-colors duration-300 ${isActive ? 'border-[#EDF246]' : 'border-[#EDF246]/30'}`}
+                className={`group relative w-full aspect-square bg-black rounded-xl overflow-hidden interactive border transition-colors duration-300 ${isActive ? 'border-[#EDF246]' : 'border-[#EDF246]/30'}`}
             >
                 {/* BACKGROUND GRID ANIMATION */}
                 <div className="absolute inset-0 opacity-20 pointer-events-none"
@@ -295,7 +296,7 @@ const MemberCard = ({ member }) => {
             variants={cardVariants}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className={`group relative w-full aspect-square bg-[#050505] rounded-xl overflow-hidden cursor-pointer border transition-colors duration-300 ${isActive ? 'border-[#EDF246]/50' : 'border-white/10'}`}
+            className={`group relative w-full aspect-square bg-[#050505] rounded-xl overflow-hidden interactive border transition-colors duration-300 ${isActive ? 'border-[#EDF246]/50' : 'border-white/10'}`}
         >
             {/* IMAGEN */}
             <div className="absolute inset-0 bg-black">

@@ -9,9 +9,9 @@ export default function MedProduct() {
         <>
             <SEO
                 title="Medicina"
-                description="Moderniza tu clínica con Vantra Medicina. Gestión de pacientes, turnos online y recetas digitales en una plataforma segura."
+                description="La evolución de tu consultorio. Gestión inteligente de pacientes y turnos automatizados con IA. Moderniza la experiencia médica con una plataforma intuitiva."
                 image="https://vantradigital.com/complete-background-medical.webp"
-                keywords="software médico, historia clínica digital, turnos online, recetas digitales, gestión clínica"
+                keywords="Software Médico IA, Historia Clínica Digital, Turnos Online, Automatización Clínicas, Salud Digital"
                 url="https://vantradigital.com/med"
             />
 

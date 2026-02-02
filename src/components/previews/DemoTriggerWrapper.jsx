@@ -142,7 +142,7 @@ export default function DemoTriggerWrapper() {
                 TRIGGER AREA
                ============================================== */}
             <motion.div
-                className="relative w-full aspect-[4/3] md:aspect-video rounded-[2rem] overflow-hidden cursor-pointer group bg-white shadow-2xl border border-slate-100"
+                className="relative w-full aspect-[4/3] md:aspect-video rounded-[2rem] overflow-hidden interactive group bg-white shadow-2xl border border-slate-100"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => setIsOpen(true)}

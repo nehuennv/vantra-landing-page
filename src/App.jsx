@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 
 // Componentes Layout & UI
 import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
+// Footer removed from App.jsx, now in PageTransition
 import GlobalAuroraBackground from './components/layout/GlobalAuroraBackground';
 import GlobalCursor from './components/layout/GlobalCursor';
 import GlobalSpotlight from './components/layout/GlobalSpotlight';
@@ -22,6 +23,7 @@ import Team from './pages/Team';
 // 🔥 COMPONENTE ESPÍA: RASTREADOR DE MOVIMIENTO
 // Este componente detecta cambios de ruta y dispara el evento 'PageView'
 // usando el script que pegamos en index.html
+// Componente de rastreo eliminado de la vista
 const FacebookPixelTracker = () => {
   const location = useLocation();
 
@@ -40,10 +42,13 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   return (
+    // ... keys
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }} basename={import.meta.env.BASE_URL}>
 
       {/* 🔥 AQUÍ ESTÁ LA CLAVE: Insertamos el rastreador dentro del Router */}
       <FacebookPixelTracker />
+
+
 
       <SmoothScroll>
 
@@ -72,9 +77,6 @@ function App() {
                 <AnimatedRoutes />
               </main>
 
-              {/* FOOTER PERSISTENTE */}
-              <Footer />
-
             </motion.div>
           )}
         </AnimatePresence>
@@ -89,7 +91,7 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="popLayout">
+    <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         {/* Layout ahora es transparente, solo envuelve rutas */}
         <Route element={<Layout />}>

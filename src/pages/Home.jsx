@@ -12,7 +12,9 @@ const Home = () => {
   return (
     <div style={{ '--product-primary': '#EDF246' }}>
       <SEO
-        description="Transformamos tu negocio con tecnología de vanguardia. Soluciones digitales para gastronomía, medicina y empresas modernas."
+        title="Software & IA"
+        description="Desarrollo de software a medida y soluciones potenciadas por Inteligencia Artificial. Diseñamos el futuro digital de tu empresa con tecnología disruptiva."
+        keywords="Desarrollo de Software, Inteligencia Artificial, Apps a Medida, Transformación Digital, Diseño Premium"
       />
 
       <Hero />

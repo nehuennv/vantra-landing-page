@@ -93,7 +93,7 @@ const CTASection = ({ data, theme, preSelectedPlan }) => {
                                         <div className="w-12 h-12 rounded-xl bg-black/30 border border-white/5 flex items-center justify-center text-[var(--product-primary)] group-hover/item:scale-110 transition-transform duration-300">
                                             <item.icon size={20} />
                                         </div>
-                                        <span className="text-gray-300 font-medium text-lg">{item.text}</span>
+                                        <span className="text-gray-300 font-medium text-base md:text-lg">{item.text}</span>
                                     </div>
                                 ))}
                             </div>
@@ -305,7 +305,7 @@ const ConsultationFormInlined = ({ leadContext }) => {
                 </div>
 
                 {/* DOS COLUMNAS: Email y Teléfono */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6">
                     <div className="group">
                         <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 ml-1">Email</label>
                         <div className="relative">
@@ -355,7 +355,7 @@ const ConsultationFormInlined = ({ leadContext }) => {
                             name="product"
                             value={formState.product}
                             onChange={handleChange}
-                            className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-12 text-white focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base appearance-none cursor-pointer"
+                            className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-12 text-white focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base appearance-none"
                         >
                             <option value="" disabled className="bg-[#08080A] text-gray-500">Seleccionar...</option>
                             <option value="Sistema Completo" className="bg-[#08080A]">Sistema Completo</option>

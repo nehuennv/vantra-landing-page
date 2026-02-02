@@ -68,7 +68,7 @@ const Services = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8 }}
         className="container mx-auto px-6 md:px-12 mb-10 md:mb-20 relative z-10"
       >
@@ -105,7 +105,7 @@ const Services = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {services.map((service, index) => {
             // Logic for Bento Spans: 0 & 3 -> Span 7, 1 & 2 -> Span 5

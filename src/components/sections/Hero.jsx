@@ -180,7 +180,7 @@ const Hero = () => {
 
             {/* Bloque interactivo completo */}
             <div
-              className="relative inline-flex items-center justify-center my-1 cursor-pointer"
+              className="relative inline-flex items-center justify-center my-1 interactive"
               onMouseEnter={() => setIsMultiplicaActive(true)}
               onMouseLeave={() => setIsMultiplicaActive(false)}
             >
@@ -238,7 +238,7 @@ const Hero = () => {
             }}
             onMouseEnter={() => setIsMultiplicaActive(true)}
             onMouseLeave={() => setIsMultiplicaActive(false)}
-            className="group relative px-9 py-4 bg-[#EDF246] text-[#050507] font-bold text-sm uppercase tracking-widest rounded-lg overflow-hidden transition-all hover:scale-105 shadow-[0_0_20px_rgba(237,242,70,0.3)] cursor-pointer w-full sm:w-auto"
+            className="group relative px-9 py-4 bg-[#EDF246] text-[#050507] font-bold text-sm uppercase tracking-widest rounded-lg overflow-hidden transition-all hover:scale-105 shadow-[0_0_20px_rgba(237,242,70,0.3)] w-full sm:w-auto"
           >
             <div className="relative z-10 flex items-center gap-3 justify-center">
               Configurar mi proyecto <ArrowRight size={18} />
@@ -255,7 +255,7 @@ const Hero = () => {
                 element.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="group px-9 py-4 rounded-lg border border-white/10 bg-black/30 text-white font-bold text-sm uppercase tracking-widest hover:bg-white/10 hover:border-white/20 active:scale-[0.98] transition-all duration-300 flex items-center justify-center md:backdrop-blur-md shadow-[0_0_0_transparent] hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] cursor-pointer w-full sm:w-auto"
+            className="group px-9 py-4 rounded-lg border border-white/10 bg-black/30 text-white font-bold text-sm uppercase tracking-widest hover:bg-white/10 hover:border-white/20 active:scale-[0.98] transition-all duration-300 flex items-center justify-center md:backdrop-blur-md shadow-[0_0_0_transparent] hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] w-full sm:w-auto"
           >
             Conocer servicios
           </button>

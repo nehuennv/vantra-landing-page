@@ -81,7 +81,7 @@ const ConsultationForm = ({ preSelectedPlan }) => {
                                 <div className="relative">
                                     <select
                                         name="service"
-                                        className={`${inputClasses} appearance-none cursor-pointer`}
+                                        className={`${inputClasses} appearance-none`}
                                         defaultValue={preSelectedPlan || ""}
                                         required
                                     >

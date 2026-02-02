@@ -183,7 +183,6 @@ const PricingSection = ({ data, onPlanSelect }) => {
                                                     ? 'var(--product-primary)'
                                                     : (isHovered ? 'white' : 'rgba(255,255,255,0.2)'),
 
-                                                cursor: 'pointer'
                                             }}
                                         >
                                             <span>Consultar</span>

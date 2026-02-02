@@ -110,7 +110,7 @@ const Ecosystem = () => {
                                 animate={{ opacity: 0.3, scale: 1 }}
                                 exit={{ opacity: 0, scale: 1.2 }}
                                 transition={{ duration: 1.2 }}
-                                className="absolute inset-0 -z-10 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen"
+                                className="absolute inset-0 -z-10 blur-[120px] rounded-full opacity-20 pointer-events-none mix-blend-screen mobile-gpu-fix"
                                 style={{ background: activeSector.color }}
                             />
                         </AnimatePresence>
@@ -121,7 +121,7 @@ const Ecosystem = () => {
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: -10, scale: 0.98 }}
                                 transition={{ duration: 0.5 }}
-                                className="w-full h-full relative"
+                                className="w-full h-full relative mobile-gpu-fix"
                             >
                                 <Link to={activeSector.href} className="w-full h-full block">
                                     <EcosystemDashboard theme={activeSector.theme} color={activeSector.color} />
@@ -255,7 +255,7 @@ const Ecosystem = () => {
                         >
                             <Link
                                 to={activeSector.href}
-                                className="w-full h-full block cursor-pointer group relative"
+                                className="w-full h-full block interactive group relative"
                             >
                                 {/* CONTENEDOR GLASS */}
                                 <EcosystemDashboard theme={activeSector.theme} color={activeSector.color} />

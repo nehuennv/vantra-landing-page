@@ -209,7 +209,7 @@ const Meeting = () => {
                                                         name="product"
                                                         value={formState.product}
                                                         onChange={handleChange}
-                                                        className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-12 text-white focus:outline-none focus:border-[#EDF246]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base appearance-none cursor-pointer"
+                                                        className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-12 text-white focus:outline-none focus:border-[#EDF246]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base appearance-none"
                                                     >
                                                         <option value="" disabled className="bg-[#08080A] text-gray-500">Seleccionar Tipo de Proyecto...</option>
                                                         <option value="landing" className="bg-[#08080A]">Landing Page (Conversión)</option>

@@ -65,7 +65,7 @@ const ServicesDisruptive = () => {
                             onClick={() => setActive(service.id)}
                             onMouseEnter={() => setActive(service.id)}
                             className={cn(
-                                "relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 ease-in-out border border-white/10",
+                                "relative rounded-3xl overflow-hidden interactive transition-all duration-500 ease-in-out border border-white/10",
                                 isActive ? "md:flex-[3] flex-[5]" : "md:flex-[1] flex-[1] hover:flex-[1.5]"
                             )}
                         >

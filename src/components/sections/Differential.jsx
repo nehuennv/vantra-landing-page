@@ -81,8 +81,8 @@ const Differential = () => {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="flex justify-center"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="flex justify-center mobile-gpu-fix"
                 >
 
                 </motion.div>

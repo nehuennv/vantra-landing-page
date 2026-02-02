@@ -1,6 +1,22 @@
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const GlobalSpotlight = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            // Detección consistente con SmoothScroll para asegurar misma experiencia
+            const ua = navigator.userAgent;
+            const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+            const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+            return isTouch && isMobileUA;
+        };
+        setIsMobile(checkMobile());
+    }, []);
+
+    if (isMobile) return null;
+
     return (
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none">
             {/* 

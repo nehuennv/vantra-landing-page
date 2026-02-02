@@ -216,7 +216,7 @@ const HeroSection = ({ data }) => {
                                         onClick={(e) => handleScroll(e, cta.primary.href)}
                                         onMouseEnter={() => setIsHighlighted(true)}
                                         onMouseLeave={() => setIsHighlighted(false)}
-                                        className="group relative px-8 py-4 bg-[color:var(--product-primary)] text-[color:var(--product-on-primary,#18181b)] font-bold text-sm uppercase tracking-widest rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(14,165,233,0.3)] hover:shadow-[0_0_40px_rgba(14,165,233,0.5)] flex items-center justify-center cursor-pointer"
+                                        className="group relative px-8 py-4 bg-[color:var(--product-primary)] text-[color:var(--product-on-primary,#18181b)] font-bold text-sm uppercase tracking-widest rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(14,165,233,0.3)] hover:shadow-[0_0_40px_rgba(14,165,233,0.5)] flex items-center justify-center"
                                     >
                                         <div className="relative z-10 flex items-center justify-center gap-3">
                                             {cta.primary.text} <ArrowRight size={18} />
@@ -245,7 +245,7 @@ const HeroSection = ({ data }) => {
                                             handleScroll(e, cta.secondary.href);
                                         }
                                     }}
-                                    className="px-8 py-4 rounded-xl bg-black/30 md:bg-white/5 border border-white/10 text-white font-semibold md:backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:border-white/20 active:scale-[0.98] flex items-center justify-center cursor-pointer"
+                                    className="px-8 py-4 rounded-xl bg-black/30 md:bg-white/5 border border-white/10 text-white font-semibold md:backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:border-white/20 active:scale-[0.98] flex items-center justify-center"
                                 >
                                     {cta.secondary.text}
                                 </a>
@@ -287,12 +287,13 @@ const HeroSection = ({ data }) => {
                         <img
                             src={HeroMedicalPhoto}
                             alt="Profesional Médico"
-                            className="h-full w-auto overflow-visible object-cover object-bottom drop-shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+                            className="h-full w-auto max-w-none lg:max-w-full overflow-visible object-contain object-bottom drop-shadow-[0_0_50px_rgba(0,0,0,0.5)]"
                         />
                     </motion.div>
 
                     {/* 3. DASHBOARD PANEL (A la derecha, firme, limpio, sin lag) */}
-                    <div className="absolute right-0 lg:-right-4 top-1/2 -translate-y-1/2 z-20 flex flex-col gap-4 w-64">
+                    {/* FIXED: Moving to bottom-right to avoid overlapping the face on 5:4 screens */}
+                    <div className="absolute right-0 lg:-right-4 bottom-[15%] z-20 flex flex-col gap-4 w-64 origin-bottom-right lg:scale-90 xl:scale-100">
 
                         {/* Panel Principal Flotante */}
                         <motion.div

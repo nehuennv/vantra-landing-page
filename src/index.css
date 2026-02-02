@@ -6,9 +6,10 @@
 @tailwind utilities;
 
 @layer base {
-  html, body {
+
+  html,
+  body {
     /* Optimizar scroll táctil */
-    touch-action: pan-y;
   }
 
   body {
@@ -42,6 +43,11 @@
     @apply bg-vantra-surface/30 backdrop-blur-md border border-white/10 shadow-xl;
   }
 
+  .mobile-gpu-fix {
+    @apply transform-gpu;
+    will-change: transform, opacity;
+  }
+
   .text-glow {
     text-shadow: 0 0 20px rgba(237, 242, 70, 0.3);
   }
@@ -72,14 +78,7 @@
 
 /* Ocultar cursor nativo en desktop para usar el GlobalCursor */
 @media (pointer: fine) {
-
-  body,
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  .interactive {
+  * {
     cursor: none !important;
   }
 }

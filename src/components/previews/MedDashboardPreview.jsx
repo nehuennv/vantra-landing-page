@@ -304,7 +304,7 @@ const DashboardView = ({ stats, appointments }) => {
                             </div>
                         ) : (
                             appointments.slice(0, 5).map((apt) => (
-                                <div key={apt.id} className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-all cursor-pointer group">
+                                <div key={apt.id} className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-all interactive group">
                                     <div className="flex flex-col items-center min-w-[3rem] py-1 bg-slate-50 rounded-lg border border-slate-100 group-hover:bg-white">
                                         <span className="text-xs font-medium text-slate-700">{apt.time}</span>
                                     </div>
@@ -416,7 +416,7 @@ const PatientsView = ({ patients, onAddPatient, onSelectPatient }) => {
                         </thead>
                         <tbody className="text-sm text-slate-600">
                             {filteredPatients.map((p) => (
-                                <tr key={p.id} onClick={() => onSelectPatient(p)} className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors cursor-pointer group">
+                                <tr key={p.id} onClick={() => onSelectPatient(p)} className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors interactive group">
                                     <td className="p-3 pl-6">
                                         <div className="flex items-center gap-3">
                                             <img src={p.avatar} alt="" className="w-7 h-7 rounded-full object-cover" />
@@ -616,13 +616,13 @@ const PatientHistoryModal = ({ patient, onClose }) => {
                                 Estudios Adjuntos
                             </h4>
                             <div className="grid grid-cols-2 gap-3">
-                                <div className="aspect-square bg-slate-100 rounded-xl border border-slate-200 flex items-center justify-center relative group overflow-hidden cursor-pointer">
+                                <div className="aspect-square bg-slate-100 rounded-xl border border-slate-200 flex items-center justify-center relative group overflow-hidden interactive">
                                     <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&q=80&w=300&h=300" alt="X-Ray" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
                                     <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-2 text-white text-[10px] translate-y-full group-hover:translate-y-0 transition-transform">
                                         Radiografía Tórax
                                     </div>
                                 </div>
-                                <div className="aspect-square bg-slate-50 rounded-xl border border-slate-200 border-dashed flex flex-col items-center justify-center text-slate-400 gap-2 hover:bg-slate-100 transition-colors cursor-pointer">
+                                <div className="aspect-square bg-slate-50 rounded-xl border border-slate-200 border-dashed flex flex-col items-center justify-center text-slate-400 gap-2 hover:bg-slate-100 transition-colors interactive">
                                     <Plus size={20} />
                                     <span className="text-[10px] font-medium">Adjuntar</span>
                                 </div>

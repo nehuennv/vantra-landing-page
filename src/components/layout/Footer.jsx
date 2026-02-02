@@ -98,7 +98,7 @@ const Footer = () => {
                         <Link
                             to="/#contacto"
                             onClick={(e) => handleNavigation(e, '/#contacto')}
-                            className="mt-auto p-8 rounded-2xl bg-black/30 md:bg-white/[0.02] border border-white/5 md:backdrop-blur-sm hover:bg-white/[0.04] transition-all duration-300 group cursor-pointer block"
+                            className="mt-auto p-8 rounded-2xl bg-black/30 md:bg-white/[0.02] border border-white/5 md:backdrop-blur-sm hover:bg-white/[0.04] transition-all duration-300 group interactive block"
                         >
                             <div className="flex items-center justify-between mb-4">
                                 <span className="text-white/60 text-sm font-light">¿Tenés un proyecto?</span>

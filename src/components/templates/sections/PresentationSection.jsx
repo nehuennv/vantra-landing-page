@@ -432,7 +432,7 @@ const DataStream = ({ themeColor, onReload, isLoading, isBlocked, simulationKey 
             </div>
 
             {/* SERVER CENTRAL */}
-            <div className={`relative z-30 cursor-pointer group`} onClick={onReload}>
+            <div className={`relative z-30 interactive group`} onClick={onReload}>
 
                 {/* ROTATING AURA (Loading State) */}
                 <AnimatePresence>
