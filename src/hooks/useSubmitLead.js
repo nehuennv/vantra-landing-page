@@ -1,6 +1,4 @@
 import { useState } from 'react';
-// 🔥 IMPORTANTE: Traemos nuestra utilidad de tracking
-import { trackEvent } from '../lib/meta-pixel';
 
 /**
  * Hook de conexión con API Vantra (Secured)
@@ -36,7 +34,7 @@ export const useSubmitLead = () => {
             // DEBUG: Ver qué está llegando realmente en producción
             console.log("--- DEBUG VANTRA ---");
             console.log("VITE_API_URL:", apiUrl);
-            // No loguear el token completo por seguridad, solo si existe o los primeros caracteres
+            // No loguear el token completo por seguridad
             console.log("VITE_API_TOKEN exists:", !!apiToken);
             console.log("Env keys:", Object.keys(import.meta.env));
             console.log("--------------------");
@@ -72,14 +70,19 @@ export const useSubmitLead = () => {
 
             // ✅ ÉXITO: La API respondió correctamente
 
-            // 🔥 TRACKING DE META (FACEBOOK)
-            // Disparamos el evento 'Lead' solo si la API guardó el contacto
-            trackEvent('Lead', {
-                content_name: 'Formulario Vantra Web',
-                currency: 'USD',
-                value: 0, // Puedes poner un valor estimado si quieres (ej: 10)
-                status: 'submitted_success'
-            });
+            // 🔥 TRACKING DE META (FACEBOOK) - Integración Directa
+            // Usamos window.fbq porque el script ya está cargado en el HTML global
+            if (window.fbq) {
+                console.log("📡 Enviando evento Lead a Facebook...");
+                window.fbq('track', 'Lead', {
+                    content_name: 'Formulario Vantra Web',
+                    currency: 'USD',
+                    value: 0, // Valor opcional del lead
+                    status: 'submitted_success'
+                });
+            } else {
+                console.warn("⚠️ Pixel de Facebook no detectado (posible bloqueo por AdBlock)");
+            }
 
             setSuccess(true);
             return true;

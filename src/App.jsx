@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react'; // 🔥 1. Agregamos useEffect aquí
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-
-// 🔥 2. Importamos la utilidad que creamos en el paso anterior
-import { initMetaPixel } from './lib/meta-pixel';
 
 // Componentes Layout & UI
 import Navbar from './components/layout/Navbar';
@@ -22,16 +19,32 @@ import RestoProduct from './pages/RestoProduct';
 import MedProduct from './pages/MedProduct';
 import Team from './pages/Team';
 
+// 🔥 COMPONENTE ESPÍA: RASTREADOR DE MOVIMIENTO
+// Este componente detecta cambios de ruta y dispara el evento 'PageView'
+// usando el script que pegamos en index.html
+const FacebookPixelTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Verificamos si el script global de Facebook (fbq) existe
+    if (window.fbq) {
+      // console.log("📡 Tracking PageView en:", location.pathname); // Descomentar para debug
+      window.fbq('track', 'PageView');
+    }
+  }, [location]); // Se ejecuta cada vez que cambia la ruta
+
+  return null; // No renderiza nada visual
+};
+
 function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
-  // 🔥 3. ENCENDEMOS EL PIXEL (Efecto de Montaje)
-  useEffect(() => {
-    initMetaPixel(); // Esto inyecta el script de Facebook una sola vez
-  }, []);
-
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }} basename={import.meta.env.BASE_URL}>
+
+      {/* 🔥 AQUÍ ESTÁ LA CLAVE: Insertamos el rastreador dentro del Router */}
+      <FacebookPixelTracker />
+
       <SmoothScroll>
 
         {/* LÓGICA DE SPLASH SCREEN VS CONTENIDO */}
@@ -70,6 +83,7 @@ function App() {
     </Router>
   );
 }
+
 // Sub-componente para manejar useLocation dentro del Router
 const AnimatedRoutes = () => {
   const location = useLocation();

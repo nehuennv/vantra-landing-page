@@ -3,15 +3,30 @@
 
 <head>
   <meta charset="UTF-8" />
-
   <meta name="facebook-domain-verification" content="ho7cx3nz4u3rd2ob2n917ds1nd0g0m" />
-
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vantra</title>
 
   <link rel="preload" as="image" href="/complete-background.webp" />
   <link rel="preload" as="image" href="/complete-background-medical.webp" />
+
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '3782601118709297');
+    fbq('track', 'PageView');
+  </script>
 </head>
 
 <body>
