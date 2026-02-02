@@ -15,34 +15,49 @@ export const useSubmitLead = () => {
         setError(null);
         setSuccess(false);
 
-        // 1. MAPEO DE DATOS
+        // 1. MAPEO DE DATOS COMPLETO
         const payload = {
             nombre: data.nombre,
             email: data.email,
             celular: data.celular,
-            // Opcionales
             opcion_interes: data.opcion || data.opcion_interes || null,
             dolor_principal: data.dolor_principal || null,
             nicho: data.nicho || null
         };
 
         try {
+            // -------------------------------------------------------
+            // 🚨 PASO 1 (PRIORITARIO): TRACKING DE META (FACEBOOK)
+            // -------------------------------------------------------
+            // Lo ejecutamos ANTES del fetch para asegurar que el evento salga
+            // aunque el backend de error por "Usuario Duplicado" o "Error 500".
+            if (window.fbq) {
+                console.log("📡 Facebook Pixel: Disparando evento 'Lead'...");
+
+                // Enviamos la versión COMPLETA con metadatos para mejor calidad de lead
+                window.fbq('track', 'Lead', {
+                    content_name: 'Formulario Vantra Web',
+                    currency: 'USD',
+                    value: 0,
+                    status: 'submitted_form',
+                    content_category: payload.nicho || 'General' // Extra: Categorizamos por nicho si existe
+                });
+            } else {
+                console.warn("⚠️ Pixel no detectado (Posible AdBlock), continuamos con el guardado.");
+            }
+
+            // -------------------------------------------------------
+            // 🚨 PASO 2: GUARDADO EN BASE DE DATOS (BACKEND)
+            // -------------------------------------------------------
+
             // Leemos las variables de entorno
             const apiUrl = import.meta.env.VITE_API_URL;
             const apiToken = import.meta.env.VITE_API_TOKEN;
 
-            // DEBUG
-            console.log("--- DEBUG VANTRA ---");
-            console.log("VITE_API_URL:", apiUrl);
-            console.log("VITE_API_TOKEN exists:", !!apiToken);
-            console.log("--------------------");
+            // Validación básica de config
+            if (!apiToken) throw new Error("Error de configuración: Falta el API Token.");
 
-            // --- VALIDACIÓN DE SEGURIDAD ---
-            if (!apiToken) {
-                throw new Error("Error de configuración: Falta el API Token.");
-            }
-
-            // --- MODO PRODUCCIÓN (Petición Real) ---
+            // Petición Real
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -53,39 +68,29 @@ export const useSubmitLead = () => {
             });
 
             if (!response.ok) {
-                if (response.status === 401) {
-                    throw new Error("No autorizado. Verifica el API Token.");
-                }
+                // Si el backend falla, intentamos leer el error específico
+                // (Ej: "El email ya está registrado")
                 const errorData = await response.json().catch(() => ({}));
+
+                if (response.status === 401) throw new Error("No autorizado. Token inválido.");
+
                 if (errorData.details && errorData.details.fieldErrors) {
                     const firstErrorKey = Object.keys(errorData.details.fieldErrors)[0];
                     throw new Error(errorData.details.fieldErrors[firstErrorKey][0]);
                 }
-                throw new Error('Error al procesar la solicitud.');
+
+                throw new Error('No se pudo guardar en la base de datos (pero el aviso llegó).');
             }
 
-            // ✅ ÉXITO: La API respondió correctamente
-
-            // 🔥 TRACKING DE META (FACEBOOK) - TU VERSIÓN COMPLETA
-            if (window.fbq) {
-                console.log("📡 Enviando evento Lead a Facebook (Full Data)...");
-
-                // Aquí volví a poner TU código original que es más completo
-                window.fbq('track', 'Lead', {
-                    content_name: 'Formulario Vantra Web',
-                    currency: 'USD',
-                    value: 0, // Valor opcional
-                    status: 'submitted_success'
-                });
-            } else {
-                console.warn("⚠️ Pixel de Facebook no detectado (posible bloqueo por AdBlock)");
-            }
-
+            // ✅ ÉXITO TOTAL (Pixel + DB)
+            console.log("✅ Lead guardado en BD correctamente.");
             setSuccess(true);
             return true;
 
         } catch (err) {
             console.error("API Error:", err);
+            // Mostramos el error en pantalla para que el usuario sepa qué pasó
+            // (Ej: "Ya te registraste con este email")
             setError(err.message || "Hubo un problema de conexión.");
             return false;
         } finally {
