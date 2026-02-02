@@ -1,4 +1,6 @@
 import { useState } from 'react';
+// 🔥 IMPORTANTE: Traemos nuestra utilidad de tracking
+import { trackEvent } from '../lib/meta-pixel';
 
 /**
  * Hook de conexión con API Vantra (Secured)
@@ -39,10 +41,6 @@ export const useSubmitLead = () => {
             console.log("Env keys:", Object.keys(import.meta.env));
             console.log("--------------------");
 
-            // --- MODO SIMULACIÓN (ELIMINADO POR SOLICITUD) ---
-            // Se fuerza el paso a producción. Si falta URL o Token, fallará en la validación siguiente o en el fetch.
-
-
             // --- VALIDACIÓN DE SEGURIDAD ---
             if (!apiToken) {
                 throw new Error("Error de configuración: Falta el API Token.");
@@ -53,7 +51,7 @@ export const useSubmitLead = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiToken}` // <--- AQUÍ ESTÁ LA MAGIA
+                    'Authorization': `Bearer ${apiToken}`
                 },
                 body: JSON.stringify(payload),
             });
@@ -71,6 +69,17 @@ export const useSubmitLead = () => {
                 }
                 throw new Error('Error al procesar la solicitud.');
             }
+
+            // ✅ ÉXITO: La API respondió correctamente
+
+            // 🔥 TRACKING DE META (FACEBOOK)
+            // Disparamos el evento 'Lead' solo si la API guardó el contacto
+            trackEvent('Lead', {
+                content_name: 'Formulario Vantra Web',
+                currency: 'USD',
+                value: 0, // Puedes poner un valor estimado si quieres (ej: 10)
+                status: 'submitted_success'
+            });
 
             setSuccess(true);
             return true;

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react'; // 🔥 1. Agregamos useEffect aquí
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+
+// 🔥 2. Importamos la utilidad que creamos en el paso anterior
+import { initMetaPixel } from './lib/meta-pixel';
 
 // Componentes Layout & UI
 import Navbar from './components/layout/Navbar';
@@ -22,6 +25,11 @@ import Team from './pages/Team';
 function App() {
   const [isLoading, setIsLoading] = React.useState(true);
 
+  // 🔥 3. ENCENDEMOS EL PIXEL (Efecto de Montaje)
+  useEffect(() => {
+    initMetaPixel(); // Esto inyecta el script de Facebook una sola vez
+  }, []);
+
   return (
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }} basename={import.meta.env.BASE_URL}>
       <SmoothScroll>
@@ -38,7 +46,7 @@ function App() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="flex flex-col min-h-screen relative overflow-hidden"
             >
-              {/* COMPONENTES GLOBALES (Se montan solo cuando termina la carga) */}
+              {/* COMPONENTES GLOBALES */}
               <GlobalCursor />
               <GlobalAuroraBackground />
               <GlobalSpotlight />
@@ -62,7 +70,6 @@ function App() {
     </Router>
   );
 }
-
 // Sub-componente para manejar useLocation dentro del Router
 const AnimatedRoutes = () => {
   const location = useLocation();

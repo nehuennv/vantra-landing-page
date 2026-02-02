@@ -11,7 +11,7 @@ const QuizIntro = ({ onStart }) => {
             <div className="space-y-4 mb-8">
 
                 <p className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-sm">
-                    Descubrí en 2 minutos qué sistema necesita tu negocio para escalar sin caos operativo.
+                    Descubrí en 1 minuto qué sistema necesita tu negocio para escalar sin caos operativo.
                 </p>
             </div>
 

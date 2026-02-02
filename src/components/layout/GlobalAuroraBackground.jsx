@@ -1,23 +1,21 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import BackgroundImage from '../../assets/complete-background.webp';
-import MedicalImage from '../../assets/complete-background-medical.webp';
 
 const GlobalAuroraBackground = () => {
     const location = useLocation();
 
     // Determine which background to show
     const isMedPage = location.pathname === '/med';
-    const activeImage = isMedPage ? MedicalImage : BackgroundImage;
+    const activeImage = isMedPage ? '/complete-background-medical.webp' : '/complete-background.webp';
     const activeKey = isMedPage ? 'med-bg' : 'home-bg';
 
 
     return (
         // OPTIMIZATION FIXED: Use Flexbox for centering to avoid transform conflicts
         <div
-            className="fixed inset-0 z-[-1] overflow-hidden bg-[#050507] pointer-events-none flex items-center justify-center"
-            style={{ contentVisibility: 'auto' }}
+            className="fixed inset-0 z-[-1] overflow-hidden bg-[#050507] pointer-events-none flex items-center justify-center will-change-transform"
+            style={{ backfaceVisibility: 'hidden' }}
         >
 
             {/* DARK BASE ATMOSPHERE */}
