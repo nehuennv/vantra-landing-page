@@ -31,12 +31,10 @@ export const useSubmitLead = () => {
             const apiUrl = import.meta.env.VITE_API_URL;
             const apiToken = import.meta.env.VITE_API_TOKEN;
 
-            // DEBUG: Ver qué está llegando realmente en producción
+            // DEBUG
             console.log("--- DEBUG VANTRA ---");
             console.log("VITE_API_URL:", apiUrl);
-            // No loguear el token completo por seguridad
             console.log("VITE_API_TOKEN exists:", !!apiToken);
-            console.log("Env keys:", Object.keys(import.meta.env));
             console.log("--------------------");
 
             // --- VALIDACIÓN DE SEGURIDAD ---
@@ -55,11 +53,9 @@ export const useSubmitLead = () => {
             });
 
             if (!response.ok) {
-                // Manejo especial para error de Token (401)
                 if (response.status === 401) {
                     throw new Error("No autorizado. Verifica el API Token.");
                 }
-
                 const errorData = await response.json().catch(() => ({}));
                 if (errorData.details && errorData.details.fieldErrors) {
                     const firstErrorKey = Object.keys(errorData.details.fieldErrors)[0];
@@ -70,14 +66,15 @@ export const useSubmitLead = () => {
 
             // ✅ ÉXITO: La API respondió correctamente
 
-            // 🔥 TRACKING DE META (FACEBOOK) - Integración Directa
-            // Usamos window.fbq porque el script ya está cargado en el HTML global
+            // 🔥 TRACKING DE META (FACEBOOK) - TU VERSIÓN COMPLETA
             if (window.fbq) {
-                console.log("📡 Enviando evento Lead a Facebook...");
+                console.log("📡 Enviando evento Lead a Facebook (Full Data)...");
+
+                // Aquí volví a poner TU código original que es más completo
                 window.fbq('track', 'Lead', {
                     content_name: 'Formulario Vantra Web',
                     currency: 'USD',
-                    value: 0, // Valor opcional del lead
+                    value: 0, // Valor opcional
                     status: 'submitted_success'
                 });
             } else {
