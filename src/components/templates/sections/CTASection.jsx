@@ -358,10 +358,9 @@ const ConsultationFormInlined = ({ leadContext }) => {
                             className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-12 text-white focus:outline-none focus:border-[var(--product-primary)]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base appearance-none"
                         >
                             <option value="" disabled className="bg-[#08080A] text-gray-500">Seleccionar...</option>
-                            <option value="Sistema Completo" className="bg-[#08080A]">Sistema Completo</option>
-                            <option value="Automatización + Control" className="bg-[#08080A]">Automatización + Control</option>
-                            <option value="Gestión Interna" className="bg-[#08080A]">Gestión Interna</option>
-                            <option value="Consulta General" className="bg-[#08080A]">Otro / Consulta General</option>
+                            <option value="implementar el Sistema Completo para tu Restaurante 🚀" className="bg-[#08080A]">Sistema Completo</option>
+                            <option value="sumar Automatización y Control a tu operación ⚡" className="bg-[#08080A]">Automatización + Control</option>
+                            <option value="profesionalizar tu Gestión Interna 📊" className="bg-[#08080A]">Gestión Interna</option>
                         </select>
                         <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 group-hover:text-white transition-colors">
                             <ArrowRight className="rotate-90" size={18} />

@@ -212,10 +212,22 @@ const Meeting = () => {
                                                         className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl pl-14 pr-12 text-white focus:outline-none focus:border-[#EDF246]/50 focus:bg-white/[0.05] transition-all duration-300 font-medium text-base appearance-none"
                                                     >
                                                         <option value="" disabled className="bg-[#08080A] text-gray-500">Seleccionar Tipo de Proyecto...</option>
-                                                        <option value="landing" className="bg-[#08080A]">Landing Page (Conversión)</option>
-                                                        <option value="ecommerce" className="bg-[#08080A]">E-commerce / Tienda</option>
-                                                        <option value="saas" className="bg-[#08080A]">WebApp / Dashboard</option>
-                                                        <option value="ai" className="bg-[#08080A]">IA Integration / Chatbots</option>
+
+                                                        <option value="crear una Landing Page de Alta Conversión 🚀" className="bg-[#08080A]">
+                                                            Landing Page (Conversión)
+                                                        </option>
+
+                                                        <option value="escalar tus ventas con una Tienda Online 🛍️" className="bg-[#08080A]">
+                                                            E-commerce / Tienda
+                                                        </option>
+
+                                                        <option value="optimizar tu gestión con un Dashboard a medida 💻" className="bg-[#08080A]">
+                                                            WebApp / Dashboard
+                                                        </option>
+
+                                                        <option value="innovar con Inteligencia Artificial y Chatbots 🤖" className="bg-[#08080A]">
+                                                            IA Integration / Chatbots
+                                                        </option>
                                                     </select>
                                                     {/* Custom Chevron */}
                                                     <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 group-hover:text-white transition-colors">

@@ -68,19 +68,23 @@ export const useSubmitLead = () => {
             });
 
             if (!response.ok) {
-                // Si el backend falla, intentamos leer el error específico
-                // (Ej: "El email ya está registrado")
-                const errorData = await response.json().catch(() => ({}));
-
+                // 1. CHEQUEOS DE STATUS CODE (RÁPIDOS)
                 if (response.status === 401) throw new Error("No autorizado. Token inválido.");
-                if (response.status === 409) throw new Error("El usuario ya está registrado (Email o teléfono duplicado).");
+
+                if (response.status === 409) {
+                    throw new Error("Este email o teléfono ya fue registrado anteriormente. Te contactaremos pronto.");
+                }
+
+                // 2. LEER DETALLES DEL BACKEND (SI EL ERROR ES OTRO)
+                const errorData = await response.json().catch(() => ({}));
 
                 if (errorData.details && errorData.details.fieldErrors) {
                     const firstErrorKey = Object.keys(errorData.details.fieldErrors)[0];
                     throw new Error(errorData.details.fieldErrors[firstErrorKey][0]);
                 }
 
-                throw new Error('No se pudo guardar en la base de datos (pero el aviso llegó).');
+                // 3. FALLBACK GENÉRICO
+                throw new Error('Hubo un problema al enviar tus datos. Por favor intenta nuevamente.');
             }
 
             // ✅ ÉXITO TOTAL (Pixel + DB)
