@@ -15,14 +15,14 @@ const TEAM = [
     {
         id: 1,
         name: 'Serafin Bastianelli',
-        role: 'CEO & Founder',
+        role: 'Founder & Paid Media Specialist',
         image: serafinImg,
         linkedin: 'https://www.linkedin.com/in/serafinbastianelli/'
     },
     {
         id: 2,
         name: 'Pedro Reverendo',
-        role: 'CTO & Ai Developer',
+        role: 'CTO & Backend Developer',
         image: pedroImg,
         linkedin: 'https://www.linkedin.com/in/pedroreverendo/'
     },
