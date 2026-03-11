@@ -47,6 +47,19 @@ export const useSubmitLead = () => {
             }
 
             // -------------------------------------------------------
+            // 🚨 PASO 1.5: TRACKING DE GOOGLE ADS
+            // -------------------------------------------------------
+            if (typeof window.gtag !== 'undefined') {
+                window.gtag('event', 'conversion', {
+                    'send_to': 'AW-17688174809/Gk3VCIbX6MobENnBsPJB',
+                    'value': 1.0,
+                    'currency': 'ARS'
+                });
+            } else {
+                console.warn("⚠️ Google Tag (gtag) no detectado.");
+            }
+
+            // -------------------------------------------------------
             // 🚨 PASO 2: GUARDADO EN BASE DE DATOS (BACKEND)
             // -------------------------------------------------------
 
