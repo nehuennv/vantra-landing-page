@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vantra — Transformamos la operación de tu empresa</title>
+<meta name="description" content="Vantra ayuda a empresas en crecimiento a profesionalizarse, digitalizarse y escalar con orden, tecnología y acompañamiento real.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#06060e;--bg2:#0a0a18;--bg3:#0e0e22;--card:#0c0c1e;--card-h:#10102a;
+--accent:#e94560;--accent2:#ff6b81;--accent-g:rgba(233,69,96,0.12);
+--blue:#3b82f6;--green:#10b981;--yellow:#f59e0b;--purple:#8b5cf6;
+--text:#e8e8f0;--text2:#a0a0b8;--text3:#6a6a80;
+--border:rgba(255,255,255,0.06);--border-a:rgba(233,69,96,0.25);
+--fd:'Bricolage Grotesque',sans-serif;--fb:'Outfit',sans-serif;
+--mw:1240px;--r:14px;--r2:20px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.65}
+a{text-decoration:none;color:inherit}
+.ct{max-width:var(--mw);margin:0 auto;padding:0 28px}
+section{padding:140px 0;position:relative}
+
+/* GRAIN OVERLAY */
+body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+background-size:128px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;backdrop-filter:blur(24px);background:rgba(6,6,14,0.85);border-bottom:1px solid var(--border);transition:all 0.3s}
+nav .ct{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--fd);font-size:1.5rem;font-weight:800;letter-spacing:-0.03em}.logo span{color:var(--accent)}
+.nl{display:flex;gap:28px;align-items:center}
+.nl a{font-size:0.88rem;color:var(--text3);transition:color 0.3s;font-weight:500}.nl a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.92rem;transition:all 0.3s;border:none;cursor:pointer;font-family:var(--fb);gap:8px}
+.btn-a{background:var(--accent);color:#fff}.btn-a:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(233,69,96,0.3)}
+.btn-o{background:transparent;color:var(--text);border:1px solid var(--border)}.btn-o:hover{border-color:var(--text3);background:rgba(255,255,255,0.03)}
+.btn-sm{padding:10px 22px;font-size:0.85rem}
+.btn-lg{padding:16px 40px;font-size:1rem}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:90px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;right:-25%;width:900px;height:900px;background:radial-gradient(circle,rgba(233,69,96,0.06) 0%,transparent 65%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-15%;width:700px;height:700px;background:radial-gradient(circle,rgba(59,130,246,0.04) 0%,transparent 60%);border-radius:50%}
+.hero .ct{position:relative;z-index:2}
+.h-badge{display:inline-flex;align-items:center;gap:10px;background:var(--accent-g);border:1px solid var(--border-a);padding:8px 22px;border-radius:100px;font-size:0.82rem;color:var(--accent);font-weight:600;margin-bottom:36px;animation:fu .8s ease}
+.h-badge::before{content:'';width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:var(--fd);font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:800;line-height:1.08;letter-spacing:-0.03em;margin-bottom:28px;animation:fu .8s ease .1s both}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero .sub{font-size:1.2rem;color:var(--text2);line-height:1.75;margin-bottom:44px;max-width:640px;animation:fu .8s ease .2s both}
+.h-ctas{display:flex;gap:14px;flex-wrap:wrap;animation:fu .8s ease .3s both}
+.h-proof{display:flex;gap:56px;margin-top:72px;padding-top:44px;border-top:1px solid var(--border);animation:fu .8s ease .4s both;flex-wrap:wrap}
+.h-stat .num{font-family:var(--fd);font-size:2.2rem;font-weight:800;color:#fff}.h-stat .num span{color:var(--accent)}
+.h-stat .lbl{font-size:0.82rem;color:var(--text3);margin-top:4px}
+@keyframes fu{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTION HEADERS */
+.sh{text-align:center;margin-bottom:72px}
+.sl{font-family:var(--fd);font-size:0.82rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.18em;margin-bottom:16px}
+.st{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-0.02em;line-height:1.12;margin-bottom:20px}
+.sd{font-size:1.08rem;color:var(--text2);max-width:620px;margin:0 auto;line-height:1.7}
+
+/* PROBLEM */
+.problem{background:var(--bg)}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.pains{display:flex;flex-direction:column;gap:16px}
+.pain{display:flex;gap:16px;padding:22px;border-radius:var(--r);border:1px solid var(--border);transition:all .35s;cursor:default}
+.pain:hover{border-color:var(--border-a);background:var(--card);transform:translateX(6px)}
+.pain-i{width:46px;height:46px;min-width:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.pain h4{font-family:var(--fd);font-weight:700;font-size:.98rem;margin-bottom:4px}
+.pain p{font-size:.87rem;color:var(--text3);line-height:1.5}
+.prob-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:52px;position:relative;overflow:hidden}
+.prob-box::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(233,69,96,0.06),transparent 70%);border-radius:50%}
+.prob-box blockquote{font-family:var(--fd);font-size:1.7rem;font-weight:700;line-height:1.3;margin-bottom:24px;letter-spacing:-0.02em;position:relative;z-index:1}
+.prob-box blockquote em{color:var(--accent);font-style:normal}
+.prob-box p{color:var(--text3);font-size:.98rem;line-height:1.7;position:relative;z-index:1}
+
+/* METHOD */
+.method{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.m-phases{margin-top:20px}
+.m-phase{border:1px solid var(--border);border-radius:var(--r2);margin-bottom:16px;overflow:hidden;transition:all .4s}
+.m-phase.active{border-color:var(--border-a)}
+.m-phase-header{display:flex;align-items:center;gap:20px;padding:28px 32px;cursor:pointer;transition:background .3s}
+.m-phase-header:hover{background:rgba(255,255,255,0.02)}
+.m-phase-num{font-family:var(--fd);font-size:2.4rem;font-weight:900;color:rgba(233,69,96,0.2);min-width:60px;transition:color .3s}
+.m-phase.active .m-phase-num{color:var(--accent)}
+.m-phase-info{flex:1}
+.m-phase-info h3{font-family:var(--fd);font-weight:800;font-size:1.15rem;margin-bottom:4px}
+.m-phase-info span{font-size:.85rem;color:var(--text3)}
+.m-phase-toggle{font-size:1.6rem;color:var(--accent);transition:transform .3s;min-width:28px;text-align:center}
+.m-phase.active .m-phase-toggle{transform:rotate(45deg)}
+.m-phase-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.m-phase.active .m-phase-body{max-height:800px}
+.m-phase-content{padding:0 32px 32px;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.m-detail h4{font-family:var(--fd);font-weight:700;font-size:.92rem;color:var(--accent);margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em}
+.m-detail ul{list-style:none}
+.m-detail li{padding:7px 0;font-size:.9rem;color:var(--text2);display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.m-detail li::before{content:'→';color:var(--accent);font-weight:700;min-width:16px}
+
+/* MODULES */
+.modules{background:var(--bg2)}
+.mod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.mod{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:36px 28px;transition:all .4s;position:relative;overflow:hidden}
+.mod:hover{border-color:var(--border-a);transform:translateY(-6px)}
+.mod::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transition:opacity .3s;opacity:0}
+.mod:hover::before{opacity:1}
+.mod:nth-child(1)::before{background:var(--accent)}
+.mod:nth-child(2)::before{background:var(--blue)}
+.mod:nth-child(3)::before{background:var(--green)}
+.mod:nth-child(4)::before{background:var(--yellow)}
+.mod-icon{font-size:2rem;margin-bottom:16px}
+.mod h3{font-family:var(--fd);font-weight:800;font-size:1.15rem;margin-bottom:8px}
+.mod .dur{font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:14px}
+.mod p{font-size:.88rem;color:var(--text3);line-height:1.6;margin-bottom:16px}
+.mod ul{list-style:none}
+.mod li{padding:5px 0;font-size:.83rem;color:var(--text2);display:flex;gap:8px;align-items:flex-start}
+.mod li::before{content:'✓';color:var(--green);font-weight:700;font-size:.8rem}
+
+/* SERVICE SECTIONS */
+.svc{padding:140px 0}
+.svc:nth-child(odd){background:var(--bg)}
+.svc:nth-child(even){background:var(--bg2)}
+.svc-header{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:80px}
+.svc-header .tag{display:inline-block;padding:6px 16px;border-radius:8px;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.svc-header h2{font-family:var(--fd);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:16px}
+.svc-header p{font-size:1.05rem;color:var(--text2);line-height:1.7}
+.svc-features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:16px}
+.svc-feat{display:flex;gap:12px;padding:16px;border-radius:var(--r);border:1px solid var(--border);background:var(--card)}
+.svc-feat span{font-size:1.4rem;min-width:32px}
+.svc-feat div h4{font-family:var(--fd);font-weight:700;font-size:.88rem;margin-bottom:3px}
+.svc-feat div p{font-size:.8rem;color:var(--text3);line-height:1.4}
+.svc-right{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:40px;position:relative;overflow:hidden}
+.svc-right h3{font-family:var(--fd);font-weight:800;font-size:1.2rem;margin-bottom:16px}
+.svc-right p{font-size:.92rem;color:var(--text2);line-height:1.6;margin-bottom:20px}
+.svc-list{list-style:none}
+.svc-list li{padding:8px 0;font-size:.88rem;color:var(--text2);border-bottom:1px solid var(--border);display:flex;gap:10px}
+.svc-list li::before{content:'→';color:var(--accent);font-weight:700}
+
+/* CASE STUDIES */
+.cases-row{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:48px}
+.case{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .4s}
+.case:hover{border-color:var(--border-a);transform:translateY(-4px)}
+.case-top{padding:32px 32px 0}
+.case-tag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:14px}
+.case h3{font-family:var(--fd);font-weight:700;font-size:1.15rem;margin-bottom:10px}
+.case>p{padding:0 32px;font-size:.88rem;color:var(--text3);line-height:1.6;margin-bottom:20px}
+.case-what{padding:0 32px 20px}
+.case-what h4{font-family:var(--fd);font-weight:700;font-size:.82rem;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+.case-what ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.case-what li{font-size:.82rem;color:var(--text2);display:flex;gap:6px;align-items:flex-start}
+.case-what li::before{content:'•';color:var(--accent);font-weight:700}
+.case-results{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);background:rgba(255,255,255,0.015)}
+.case-metric{padding:20px;text-align:center;border-right:1px solid var(--border)}
+.case-metric:last-child{border-right:none}
+.case-metric .val{font-family:var(--fd);font-size:1.4rem;font-weight:800;color:var(--accent)}
+.case-metric .lbl{font-size:.75rem;color:var(--text3);margin-top:4px}
+
+/* PROCESS */
+.process{background:var(--bg)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.proc-step{text-align:center;padding:36px 20px;position:relative;background:var(--card);border:1px solid var(--border);border-radius:var(--r2);transition:all .3s}
+.proc-step:hover{border-color:var(--border-a);transform:translateY(-4px)}
+.proc-num{font-family:var(--fd);font-size:3.5rem;font-weight:900;color:rgba(233,69,96,0.1);margin-bottom:8px}
+.proc-icon{font-size:2rem;margin-bottom:16px}
+.proc-step h4{font-family:var(--fd);font-weight:700;margin-bottom:10px;font-size:1.05rem}
+.proc-step p{font-size:.85rem;color:var(--text3);line-height:1.5}
+
+/* PRICING */
+.pricing{background:var(--bg2)}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:36px 28px;transition:all .4s;display:flex;flex-direction:column}
+.price-card:hover{border-color:var(--border-a);transform:translateY(-4px)}
+.price-card.pop{border-color:var(--border-a);background:linear-gradient(135deg,var(--card) 0%,rgba(233,69,96,0.04) 100%);position:relative}
+.price-card.pop::before{content:'MÁS POPULAR';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:4px 16px;border-radius:0 0 8px 8px;font-size:.7rem;font-weight:700;letter-spacing:.04em}
+.price-tier{font-family:var(--fd);font-size:.78rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.price-card h3{font-family:var(--fd);font-size:1.25rem;font-weight:800;margin-bottom:8px}
+.price-val{font-family:var(--fd);font-size:1.6rem;font-weight:800;color:var(--accent);margin-bottom:6px}
+.price-val small{font-size:.8rem;color:var(--text3);font-weight:400}
+.price-desc{font-size:.88rem;color:var(--text3);line-height:1.5;margin-bottom:20px;flex:1}
+.price-list{list-style:none;margin-bottom:24px}
+.price-list li{padding:6px 0;font-size:.84rem;color:var(--text2);display:flex;gap:8px;border-bottom:1px solid var(--border)}
+.price-list li::before{content:'✓';color:var(--green);font-weight:700}
+
+/* TESTIMONIALS */
+.test{background:var(--bg)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.test-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:36px;transition:all .3s}
+.test-card:hover{border-color:var(--border-a)}
+.test-stars{color:#fbbf24;margin-bottom:16px;letter-spacing:3px}
+.test-text{font-size:.94rem;color:var(--text2);line-height:1.7;margin-bottom:24px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-av{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:1rem;color:#fff}
+.test-info .nm{font-weight:600;font-size:.9rem}
+.test-info .rl{font-size:.78rem;color:var(--text3)}
+
+/* ABOUT */
+.about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:72px;align-items:center}
+.about p{font-size:1.05rem;color:var(--text2);line-height:1.8;margin-bottom:20px}
+.values{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.val{padding:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);transition:all .3s}
+.val:hover{border-color:var(--border-a)}
+.val h4{font-family:var(--fd);font-weight:700;font-size:.92rem;margin-bottom:6px}
+.val p{font-size:.82rem;color:var(--text3);line-height:1.5}
+
+/* FAQ */
+.faq-wrap{max-width:800px;margin:0 auto}
+.fq{border-bottom:1px solid var(--border)}
+.fq-q{width:100%;padding:24px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:none;border:none;color:var(--text);font-family:var(--fd);font-weight:600;font-size:1.02rem;text-align:left;gap:16px}
+.fq-q .ic{font-size:1.4rem;color:var(--accent);transition:transform .3s;min-width:20px}
+.fq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.fq-a p{padding:0 0 24px;font-size:.92rem;color:var(--text3);line-height:1.7}
+.fq.on .fq-a{max-height:400px}
+.fq.on .ic{transform:rotate(45deg)}
+
+/* CTA */
+.cta{padding:140px 0;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0a0a2e 0%,#150a22 50%,#0a0a1a 100%)}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(233,69,96,0.07) 0%,transparent 55%);border-radius:50%}
+.cta .ct{position:relative;z-index:2}
+.cta h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:18px;letter-spacing:-0.02em}
+.cta h2 em{color:var(--accent);font-style:normal}
+.cta p{font-size:1.1rem;color:var(--text2);max-width:560px;margin:0 auto 40px;line-height:1.7}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{padding:60px 0 28px;background:#030308;border-top:1px solid var(--border)}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:44px}
+.f-brand .f-logo{font-family:var(--fd);font-size:1.3rem;font-weight:800;margin-bottom:12px}.f-brand .f-logo span{color:var(--accent)}
+.f-brand p{font-size:.82rem;color:var(--text3);line-height:1.6;max-width:260px}
+.f-col h4{font-family:var(--fd);font-weight:700;font-size:.88rem;margin-bottom:16px}
+.f-col a{display:block;font-size:.82rem;color:var(--text3);padding:5px 0;transition:color .3s}.f-col a:hover{color:var(--accent)}
+.f-bot{text-align:center;padding-top:20px;border-top:1px solid var(--border);font-size:.78rem;color:var(--text3)}
+
+/* SCROLL REVEAL */
+.sr{opacity:0;transform:translateY(36px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.sr.vis{opacity:1;transform:translateY(0)}
+
+/* COUNTER ANIMATION */
+.counter{display:inline-block}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.mod-grid,.price-grid{grid-template-columns:repeat(2,1fr)}
+.svc-header{grid-template-columns:1fr}
+.svc-features{grid-template-columns:repeat(2,1fr)}
+.f-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+section{padding:90px 0}
+.nl{display:none}
+.prob-grid,.about-grid{grid-template-columns:1fr;gap:40px}
+.mod-grid,.price-grid{grid-template-columns:1fr}
+.proc-grid{grid-template-columns:1fr 1fr}
+.test-grid{grid-template-columns:1fr}
+.cases-row{grid-template-columns:1fr}
+.svc-features{grid-template-columns:1fr}
+.m-phase-content{grid-template-columns:1fr}
+.h-ctas{flex-direction:column}.btn-lg{width:100%;justify-content:center}
+.h-proof{gap:32px}
+.f-grid{grid-template-columns:1fr;gap:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="ct">
+<a href="#" class="logo">Vantra<span>.</span></a>
+<div class="nl">
+<a href="#metodo">Método</a>
+<a href="#modulos">Módulos</a>
+<a href="#web">Web</a>
+<a href="#software">Software</a>
+<a href="#media">Paid Media</a>
+<a href="#pricing">Precios</a>
+<a href="#faq">FAQ</a>
+<button class="btn btn-a btn-sm" onclick="window.open('https://wa.me/TUNUMERO','_blank')">Hablar con Vantra</button>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="ct">
+<div class="h-badge">Compañía de transformación operativa para empresas en crecimiento</div>
+<h1>Tu negocio creció.<br>Tu operación se quedó<br><em>en el mismo lugar.</em></h1>
+<p class="sub">Entramos en tu empresa, diagnosticamos qué te frena, y construimos los sistemas, procesos, tecnología y capacitación que necesitás para dejar de improvisar y empezar a escalar con orden real.</p>
+<div class="h-ctas">
+<button class="btn btn-a btn-lg" onclick="window.open('https://wa.me/TUNUMERO','_blank')">Quiero una Radiografía de mi empresa →</button>
+<button class="btn btn-o btn-lg" onclick="document.getElementById('metodo').scrollIntoView()">Conocé el Método Vantra</button>
+</div>
+<div class="h-proof">
+<div class="h-stat"><div class="num">+20<span>.</span></div><div class="lbl">Proyectos entregados</div></div>
+<div class="h-stat"><div class="num">5<span>+</span></div><div class="lbl">Industrias transformadas</div></div>
+<div class="h-stat"><div class="num">98<span>%</span></div><div class="lbl">Satisfacción de clientes</div></div>
+<div class="h-stat"><div class="num">3.7<span>x</span></div><div class="lbl">ROI promedio en campañas</div></div>
+</div>
+</div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+<div class="ct">
+<div class="sh"><div class="sl">El problema que resolvemos</div><div class="st">¿Tu empresa se siente así?</div></div>
+<div class="prob-grid">
+<div class="pains">
+<div class="pain sr"><div class="pain-i" style="background:rgba(233,69,96,0.1)">🔥</div><div><h4>Apagás incendios todo el día</h4><p>Cada semana es una urgencia nueva. No hay espacio para pensar en estrategia porque todo es reactivo y desorganizado.</p></div></div>
+<div class="pain sr"><div class="pain-i" style="background:rgba(59,130,246,0.1)">👤</div><div><h4>Sin vos, la empresa se detiene</h4><p>Si te vas dos semanas, todo se frena. No hay procesos documentados ni delegación real. Tu negocio depende de tu presencia física.</p></div></div>
+<div class="pain sr"><div class="pain-i" style="background:rgba(245,158,11,0.1)">📊</div><div><h4>Decidís por intuición, no por datos</h4><p>No sabés cuánto cuesta un cliente, cuál es tu margen real, ni dónde exactamente se pierde plata o se pierde tiempo.</p></div></div>
+<div class="pain sr"><div class="pain-i" style="background:rgba(16,185,129,0.1)">🔧</div><div><h4>Herramientas que no se hablan entre sí</h4><p>Excel por un lado, WhatsApp por otro, facturas en papel. La información está dispersa y nada está integrado.</p></div></div>
+<div class="pain sr"><div class="pain-i" style="background:rgba(139,92,246,0.1)">📈</div><div><h4>Crecés pero no escalás</h4><p>Facturás más pero no ganás más. El crecimiento trajo más caos, más gente preguntando cosas, más desorden.</p></div></div>
+</div>
+<div class="prob-box sr">
+<blockquote>El problema no es que te falten <em>herramientas</em>.<br>El problema es que nadie te ayudó a <em>pensar tu negocio como un sistema.</em></blockquote>
+<p>La mayoría de las empresas en crecimiento comparten el mismo dolor: crecieron más rápido que su capacidad de organizarse. Vantra existe para resolver exactamente eso. No vendemos software suelto. No corremos anuncios sin estrategia. Entramos en tu operación real y la transformamos.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- METHOD -->
+<section class="method" id="metodo">
+<div class="ct">
+<div class="sh"><div class="sl">Nuestro framework propietario</div><div class="st">El Método Vantra</div><div class="sd">Un sistema probado de 5 fases que estructura cada proyecto. No improvisamos. Diagnosticamos, diseñamos, construimos, enseñamos y acompañamos. Cada fase tiene objetivo, entregables y criterios de avance.</div></div>
+<div class="m-phases">
+
+<div class="m-phase active">
+<div class="m-phase-header" onclick="togglePhase(this)">
+<div class="m-phase-num">01</div>
+<div class="m-phase-info"><h3>Radiografía — Diagnóstico Profundo</h3><span>Duración típica: 1-2 semanas</span></div>
+<div class="m-phase-toggle">+</div>
+</div>
+<div class="m-phase-body">
+<div class="m-phase-content">
+<div class="m-detail">
+<h4>Qué hacemos</h4>
+<ul>
+<li>Reunión de inmersión de 90 min: escuchamos tu negocio con profundidad total</li>
+<li>Mapeo de procesos actuales: cómo fluye la información, dónde se pierde</li>
+<li>Auditoría de herramientas: qué usás, cómo lo usás, qué te falta</li>
+<li>Análisis del embudo comercial: cómo captás, cómo vendés, cómo retenés</li>
+<li>Identificación de los 3-5 cuellos de botella principales</li>
+<li>Score de Madurez Digital: evaluación objetiva de 17 indicadores</li>
+</ul>
+</div>
+<div class="m-detail">
+<h4>Qué recibís</h4>
+<ul>
+<li>Documento de Radiografía: diagnóstico escrito con hallazgos priorizados</li>
+<li>Mapa Visual de tu operación actual</li>
+<li>Score de Madurez Digital (85 puntos posibles, 6 dimensiones)</li>
+<li>Reunión de presentación con recomendaciones concretas</li>
+<li>Hoja de ruta sugerida con prioridades claras</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="m-phase">
+<div class="m-phase-header" onclick="togglePhase(this)">
+<div class="m-phase-num">02</div>
+<div class="m-phase-info"><h3>Arquitectura — Diseño de Solución</h3><span>Duración típica: 1 semana</span></div>
+<div class="m-phase-toggle">+</div>
+</div>
+<div class="m-phase-body">
+<div class="m-phase-content">
+<div class="m-detail">
+<h4>Qué hacemos</h4>
+<ul>
+<li>Definición de prioridades por impacto y viabilidad</li>
+<li>Selección de herramientas y tecnologías apropiadas a tu nivel</li>
+<li>Diseño del roadmap de implementación por fases</li>
+<li>Definición de alcance, tiempos, responsables y métricas</li>
+<li>Presupuesto detallado sin letra chica ni sorpresas</li>
+</ul>
+</div>
+<div class="m-detail">
+<h4>Qué recibís</h4>
+<ul>
+<li>Roadmap de Transformación: plan visual con fases y tiempos</li>
+<li>Propuesta de Arquitectura técnica y operativa</li>
+<li>Documento de Alcance: qué se incluye, qué no, compromisos</li>
+<li>Presupuesto desglosado por fase</li>
+<li>Cronograma de implementación con hitos medibles</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="m-phase">
+<div class="m-phase-header" onclick="togglePhase(this)">
+<div class="m-phase-num">03</div>
+<div class="m-phase-info"><h3>Construcción — Implementación y Desarrollo</h3><span>Duración típica: 4-16 semanas</span></div>
+<div class="m-phase-toggle">+</div>
+</div>
+<div class="m-phase-body">
+<div class="m-phase-content">
+<div class="m-detail">
+<h4>Qué hacemos</h4>
+<ul>
+<li>Desarrollo de software a medida (CRM, ERP, portales, paneles)</li>
+<li>Configuración de herramientas y plataformas</li>
+<li>Automatizaciones operativas y agentes inteligentes con IA</li>
+<li>Desarrollo web y activos digitales</li>
+<li>Setup de campañas y estructura de adquisición</li>
+<li>Reuniones semanales de avance vía portal Vantra</li>
+</ul>
+</div>
+<div class="m-detail">
+<h4>Qué recibís</h4>
+<ul>
+<li>Producto funcional, testeado y entregado</li>
+<li>Portal del cliente con visibilidad en tiempo real</li>
+<li>Documentación técnica y funcional completa</li>
+<li>Registro de avance semanal con evidencia</li>
+<li>Acceso a canal directo de comunicación con el equipo</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="m-phase">
+<div class="m-phase-header" onclick="togglePhase(this)">
+<div class="m-phase-num">04</div>
+<div class="m-phase-info"><h3>Transferencia — Capacitación y Adopción</h3><span>Duración típica: 2-4 semanas</span></div>
+<div class="m-phase-toggle">+</div>
+</div>
+<div class="m-phase-body">
+<div class="m-phase-content">
+<div class="m-detail">
+<h4>Qué hacemos</h4>
+<ul>
+<li>Capacitación práctica sobre los sistemas implementados</li>
+<li>Entrenamiento del equipo en nuevos procesos y herramientas</li>
+<li>Portal de aprendizaje: guías, tutoriales y documentación</li>
+<li>Sesiones de Q&A y ajustes según feedback de uso real</li>
+<li>Evaluación de adopción: ¿el equipo realmente lo usa?</li>
+</ul>
+</div>
+<div class="m-detail">
+<h4>Qué recibís</h4>
+<ul>
+<li>Kit de Operación: guías paso a paso, videos, templates</li>
+<li>Sesiones de capacitación grabadas para consulta futura</li>
+<li>Portal de aprendizaje personalizado para tu empresa</li>
+<li>Reporte de Adopción: qué se adoptó, qué necesita refuerzo</li>
+<li>Plan de sostenibilidad: cómo mantener lo construido</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="m-phase">
+<div class="m-phase-header" onclick="togglePhase(this)">
+<div class="m-phase-num">05</div>
+<div class="m-phase-info"><h3>Evolución — Acompañamiento y Crecimiento</h3><span>Duración: continuo</span></div>
+<div class="m-phase-toggle">+</div>
+</div>
+<div class="m-phase-body">
+<div class="m-phase-content">
+<div class="m-detail">
+<h4>Qué hacemos</h4>
+<ul>
+<li>Reuniones periódicas de revisión y optimización</li>
+<li>Monitoreo de métricas definidas en Fase 2</li>
+<li>Identificación de nuevas oportunidades de mejora</li>
+<li>Mantenimiento técnico y soporte activo</li>
+<li>Evolución del sistema: nuevos módulos y funcionalidades</li>
+</ul>
+</div>
+<div class="m-detail">
+<h4>Qué recibís</h4>
+<ul>
+<li>Reportes periódicos de evolución con datos reales</li>
+<li>Nuevos roadmaps de mejora cuando sea necesario</li>
+<li>Mantenimiento garantizado de sistemas implementados</li>
+<li>Acceso continuo a soporte y consulta estratégica</li>
+<li>Prioridad en nuevos desarrollos y expansiones</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- MODULES -->
+<section class="modules" id="modulos">
+<div class="ct">
+<div class="sh"><div class="sl">Programa de Transformación</div><div class="st">4 módulos adaptados a tu realidad</div><div class="sd">Acompañamiento semanal de 1 a 1 donde aprendés, ordenás y ejecutás sobre tu propio negocio. Cada módulo dura 1 mes con 4 sesiones semanales de 60 minutos.</div></div>
+<div class="mod-grid">
+<div class="mod sr">
+<div class="mod-icon">🎯</div>
+<h3>Módulo Comercial</h3>
+<div class="dur">4 semanas · $800-1.200 USD</div>
+<p>Armamos tu proceso de ventas desde cero o lo profesionalizamos. Embudo, captación, seguimiento, CRM y métricas.</p>
+<ul>
+<li>Mapeo y diagnóstico del embudo actual</li>
+<li>Diseño del proceso de ventas paso a paso</li>
+<li>Guion comercial + manejo de objeciones</li>
+<li>Implementación de CRM y seguimiento</li>
+<li>Plan de crecimiento comercial a 90 días</li>
+</ul>
+</div>
+<div class="mod sr">
+<div class="mod-icon">⚙️</div>
+<h3>Módulo Operativo</h3>
+<div class="dur">4 semanas · $800-1.200 USD</div>
+<p>Documentamos procesos, definimos roles, reducimos dependencia del dueño e implementamos rituales de equipo.</p>
+<ul>
+<li>Mapeo de procesos clave + dependencias</li>
+<li>Documentación de SOPs (procedimientos)</li>
+<li>Diseño de roles y responsabilidades</li>
+<li>Sistema de comunicación interna</li>
+<li>Tablero de control operativo + delegación</li>
+</ul>
+</div>
+<div class="mod sr">
+<div class="mod-icon">💻</div>
+<h3>Módulo Digital</h3>
+<div class="dur">4 semanas · $800-1.500 USD</div>
+<p>Auditamos tu stack de herramientas, automatizamos tareas repetitivas e integramos sistemas para que los datos fluyan.</p>
+<ul>
+<li>Auditoría completa de herramientas digitales</li>
+<li>Implementación de automatizaciones clave</li>
+<li>Integración entre sistemas existentes</li>
+<li>Evaluación y mejora de presencia web</li>
+<li>Plan de evolución tecnológica a 90 días</li>
+</ul>
+</div>
+<div class="mod sr">
+<div class="mod-icon">📢</div>
+<h3>Módulo Marketing</h3>
+<div class="dur">4 semanas · $800-1.500 USD</div>
+<p>Definimos posicionamiento, estrategia de contenido, estructura de paid media con embudo y métricas reales.</p>
+<ul>
+<li>Auditoría de marketing + análisis competitivo</li>
+<li>Definición de posicionamiento y propuesta de valor</li>
+<li>Estrategia de contenido + calendario editorial</li>
+<li>Estructura de Paid Media con embudo TOFU/MOFU/BOFU</li>
+<li>Plan de marketing a 90 días con presupuesto</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICE: WEB -->
+<section class="svc" id="web" style="background:var(--bg)">
+<div class="ct">
+<div class="svc-header">
+<div>
+<div class="tag" style="background:rgba(16,185,129,0.12);color:#34d399">Desarrollo Web</div>
+<h2>Sitios web que no solo se ven bien.<br>Venden, comunican y convierten.</h2>
+<p>No hacemos webs genéricas. Diseñamos ecosistemas digitales pensados desde la estrategia de tu negocio: qué necesitás comunicar, a quién, cómo convertir visitantes en clientes, y cómo medir resultados.</p>
+<div class="svc-features" style="margin-top:24px">
+<div class="svc-feat"><span>🎨</span><div><h4>Diseño UX/UI Premium</h4><p>Interfaces que comunican y retienen</p></div></div>
+<div class="svc-feat"><span>⚡</span><div><h4>Performance Optimizada</h4><p>Velocidad de carga que Google premia</p></div></div>
+<div class="svc-feat"><span>📱</span><div><h4>100% Responsive</h4><p>Impecable en cualquier dispositivo</p></div></div>
+<div class="svc-feat"><span>🔍</span><div><h4>SEO Estructural</h4><p>Preparada para posicionar orgánicamente</p></div></div>
+<div class="svc-feat"><span>📊</span><div><h4>Tracking Completo</h4><p>Analytics, conversiones, comportamiento</p></div></div>
+<div class="svc-feat"><span>🔄</span><div><h4>Integraciones</h4><p>CRM, WhatsApp, calendarios, pagos</p></div></div>
+</div>
+</div>
+<div class="svc-right">
+<h3>Qué construimos</h3>
+<p>Cada proyecto web pasa por las 5 fases del Método Vantra. Primero entendemos tu negocio, después diseñamos la solución correcta.</p>
+<ul class="svc-list">
+<li>Sitios institucionales y corporativos</li>
+<li>Landing pages de alta conversión</li>
+<li>E-commerce y tiendas online</li>
+<li>Ecosistemas de captación de leads</li>
+<li>Portales de clientes y áreas privadas</li>
+<li>Micrositios para campañas específicas</li>
+<li>Rediseño y optimización de sitios existentes</li>
+</ul>
+</div>
+</div>
+
+<div style="margin-bottom:20px"><div class="sl">Casos de éxito · Desarrollo Web</div></div>
+<div class="cases-row">
+<div class="case sr">
+<div class="case-top"><span class="case-tag" style="background:rgba(16,185,129,0.15);color:#34d399">E-COMMERCE</span><h3>Heyblack — Tienda de indumentaria femenina</h3></div>
+<p>Diseño y optimización del ecosistema digital completo para marca de moda femenina. Landing de conversión, integración con Meta Ads y flujo de compra optimizado.</p>
+<div class="case-what"><h4>Lo que hicimos</h4><ul><li>Diseño UX/UI orientado a conversión</li><li>Integración con pasarela de pagos</li><li>Setup de tracking y pixel de Meta</li><li>Landing de captación para campañas</li><li>Optimización mobile-first</li><li>Integración con WhatsApp Business</li></ul></div>
+<div class="case-results">
+<div class="case-metric"><div class="val">+120%</div><div class="lbl">Ventas directas</div></div>
+<div class="case-metric"><div class="val">3.8x</div><div class="lbl">ROAS promedio</div></div>
+<div class="case-metric"><div class="val">-45%</div><div class="lbl">Tasa de rebote</div></div>
+</div>
+</div>
+<div class="case sr">
+<div class="case-top"><span class="case-tag" style="background:rgba(16,185,129,0.15);color:#34d399">WEB INSTITUCIONAL</span><h3>Constructora Bienestar — Edificios residenciales</h3></div>
+<p>Presencia digital completa para constructora: web institucional, sistema de captación de leads inmobiliarios y conexión con flujo de ventas automatizado vía WhatsApp.</p>
+<div class="case-what"><h4>Lo que hicimos</h4><ul><li>Web institucional con galería de proyectos</li><li>Landing pages por desarrollo/edificio</li><li>Formularios inteligentes de captación</li><li>Integración con flujo de WhatsApp</li><li>Tracking completo de conversiones</li><li>Optimización SEO local</li></ul></div>
+<div class="case-results">
+<div class="case-metric"><div class="val">+200%</div><div class="lbl">Consultas web</div></div>
+<div class="case-metric"><div class="val">100%</div><div class="lbl">Leads trazables</div></div>
+<div class="case-metric"><div class="val"><1min</div><div class="lbl">Respuesta automática</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICE: SOFTWARE -->
+<section class="svc" id="software" style="background:var(--bg2)">
+<div class="ct">
+<div class="svc-header">
+<div>
+<div class="tag" style="background:rgba(99,102,241,0.12);color:#818cf8">Software & Automatización</div>
+<h2>Sistemas que trabajan por vos.<br>Tecnología que ordena tu empresa.</h2>
+<p>Desarrollamos software a medida, automatizaciones inteligentes y agentes de IA que resuelven problemas operativos reales. No hacemos tecnología por hacer. Hacemos tecnología que transforma cómo funciona tu negocio.</p>
+<div class="svc-features" style="margin-top:24px">
+<div class="svc-feat"><span>🧠</span><div><h4>Agentes de IA</h4><p>Asistentes inteligentes que trabajan 24/7</p></div></div>
+<div class="svc-feat"><span>🔄</span><div><h4>Automatizaciones</h4><p>Eliminamos tareas manuales repetitivas</p></div></div>
+<div class="svc-feat"><span>📋</span><div><h4>Sistemas de Gestión</h4><p>CRM, ERP, portales a medida</p></div></div>
+<div class="svc-feat"><span>🔗</span><div><h4>Integraciones</h4><p>Conectamos tus herramientas existentes</p></div></div>
+<div class="svc-feat"><span>📊</span><div><h4>Paneles & Dashboards</h4><p>Visualización de datos en tiempo real</p></div></div>
+<div class="svc-feat"><span>📱</span><div><h4>Apps & Portales</h4><p>Plataformas web para tu equipo o clientes</p></div></div>
+</div>
+</div>
+<div class="svc-right">
+<h3>Tipos de soluciones</h3>
+<p>Cada sistema se diseña a partir de tus procesos reales. No vendemos software genérico. Construimos exactamente lo que tu operación necesita.</p>
+<ul class="svc-list">
+<li>Software de facturación e inventario integrado</li>
+<li>CRM personalizado con pipeline de ventas</li>
+<li>Agentes conversacionales (WhatsApp, web, redes)</li>
+<li>Sistemas de gestión de pedidos y logística</li>
+<li>Portales internos de equipo y gestión</li>
+<li>Automatizaciones con n8n, Make, Zapier</li>
+<li>Paneles de control con métricas del negocio</li>
+<li>Integraciones API con herramientas existentes</li>
+</ul>
+</div>
+</div>
+
+<div style="margin-bottom:20px"><div class="sl">Casos de éxito · Software & Automatización</div></div>
+<div class="cases-row">
+<div class="case sr">
+<div class="case-top"><span class="case-tag" style="background:rgba(99,102,241,0.15);color:#818cf8">SOFTWARE A MEDIDA</span><h3>Sistema de facturación integrada</h3></div>
+<p>Desarrollo de sistema completo de facturación conectado a la operación del negocio, eliminando procesos manuales, reduciendo errores y dando trazabilidad total a cada transacción.</p>
+<div class="case-what"><h4>Lo que hicimos</h4><ul><li>Desarrollo de sistema de facturación custom</li><li>Integración con operación existente</li><li>Dashboard de métricas financieras</li><li>Automatización de reportes</li><li>Capacitación completa del equipo</li><li>Portal de documentación para el cliente</li></ul></div>
+<div class="case-results">
+<div class="case-metric"><div class="val">-70%</div><div class="lbl">Tiempo de facturación</div></div>
+<div class="case-metric"><div class="val">0</div><div class="lbl">Errores manuales</div></div>
+<div class="case-metric"><div class="val">100%</div><div class="lbl">Trazabilidad</div></div>
+</div>
+</div>
+<div class="case sr">
+<div class="case-top"><span class="case-tag" style="background:rgba(236,72,153,0.15);color:#f472b6">AUTOMATIZACIÓN + IA</span><h3>Agente conversacional para e-commerce</h3></div>
+<p>Agente inteligente conectado a WhatsApp que filtra consultas, califica leads automáticamente y agenda llamadas comerciales sin intervención humana. Opera 24/7.</p>
+<div class="case-what"><h4>Lo que hicimos</h4><ul><li>Diseño del flujo conversacional completo</li><li>Desarrollo del agente con IA generativa</li><li>Integración con API de WhatsApp Business</li><li>Conexión con e-commerce para consultas de stock</li><li>Sistema de calificación automática de leads</li><li>Dashboard de métricas de conversación</li></ul></div>
+<div class="case-results">
+<div class="case-metric"><div class="val">+300%</div><div class="lbl">Leads calificados</div></div>
+<div class="case-metric"><div class="val"><1min</div><div class="lbl">Tiempo de respuesta</div></div>
+<div class="case-metric"><div class="val">24/7</div><div class="lbl">Operación continua</div></div>
+</div>
+</div>
+<div class="case sr">
+<div class="case-top"><span class="case-tag" style="background:rgba(59,130,246,0.15);color:#60a5fa">CRM + AUTOMATIZACIÓN</span><h3>CRM con API de Meta para constructora</h3></div>
+<p>Sistema de gestión comercial que captura leads automáticamente desde Meta Ads, los clasifica por nivel de interés, organiza agendas de llamada y genera reportes de pipeline completos.</p>
+<div class="case-what"><h4>Lo que hicimos</h4><ul><li>CRM personalizado con clasificación de leads</li><li>Integración directa con API de Meta</li><li>Flujo de WhatsApp automatizado con ManyChat</li><li>Agenda de llamadas estructurada por prioridad</li><li>Dashboard de pipeline y conversión</li><li>Sistema de reportes automáticos</li></ul></div>
+<div class="case-results">
+<div class="case-metric"><div class="val">+45%</div><div class="lbl">Tasa de conversión</div></div>
+<div class="case-metric"><div class="val">100%</div><div class="lbl">Leads organizados</div></div>
+<div class="case-metric"><div class="val">Auto</div><div class="lbl">Seguimiento total</div></div>
+</div>
+</div>
+<div class="case sr">
+<div class="case-top"><span class="case-tag" style="background:rgba(99,102,241,0.15);color:#818cf8">GESTIÓN INTERNA</span><h3>Sistema de gestión de pedidos</h3></div>
+<p>Plataforma interna que reemplazó planillas manuales por un sistema centralizado de gestión de pedidos con stock, estados, historial y visibilidad en tiempo real para todo el equipo.</p>
+<div class="case-what"><h4>Lo que hicimos</h4><ul><li>Sistema de gestión de pedidos centralizado</li><li>Control de stock e inventario en tiempo real</li><li>Panel de estados y seguimiento</li><li>Historial completo por cliente</li><li>Notificaciones automáticas de cambio de estado</li><li>Reportes de operación y productividad</li></ul></div>
+<div class="case-results">
+<div class="case-metric"><div class="val">-60%</div><div class="lbl">Tiempo de gestión</div></div>
+<div class="case-metric"><div class="val">Real</div><div class="lbl">Visibilidad en tiempo</div></div>
+<div class="case-metric"><div class="val">-85%</div><div class="lbl">Errores de pedido</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICE: PAID MEDIA -->
+<section class="svc" id="media" style="background:var(--bg)">
+<div class="ct">
+<div class="svc-header">
+<div>
+<div class="tag" style="background:rgba(245,158,11,0.12);color:#fbbf24">Paid Media & Crecimiento</div>
+<h2>Campañas que no queman plata.<br>Performance con estrategia real.</h2>
+<p>No corremos anuncios porque sí. Diseñamos estructuras de adquisición con lógica de embudo, segmentación estratégica, creatividades que convierten y métricas que te permiten tomar decisiones reales sobre tu inversión.</p>
+<div class="svc-features" style="margin-top:24px">
+<div class="svc-feat"><span>🎯</span><div><h4>Embudo Completo</h4><p>TOFU/MOFU/BOFU con lógica de negocio</p></div></div>
+<div class="svc-feat"><span>📱</span><div><h4>Meta Ads</h4><p>Facebook + Instagram con estructura pro</p></div></div>
+<div class="svc-feat"><span>🔍</span><div><h4>Google Ads</h4><p>Search, Display, YouTube, Performance Max</p></div></div>
+<div class="svc-feat"><span>🎨</span><div><h4>Creatividades</h4><p>Diseño orientado a conversión</p></div></div>
+<div class="svc-feat"><span>📊</span><div><h4>Reportes con Data</h4><p>KPIs reales: CPA, ROAS, CTR, LTV</p></div></div>
+<div class="svc-feat"><span>🔄</span><div><h4>Optimización Continua</h4><p>Iteración semanal basada en datos</p></div></div>
+</div>
+</div>
+<div class="svc-right">
+<h3>Cómo gestionamos campañas</h3>
+<p>Cada cliente de Paid Media recibe estrategia, no solo ejecución. Entendemos tu negocio primero, después armamos la estructura publicitaria correcta.</p>
+<ul class="svc-list">
+<li>Auditoría de campañas existentes y oportunidades</li>
+<li>Diseño de estructura de embudo publicitario</li>
+<li>Segmentación de audiencias por etapa de compra</li>
+<li>Producción de creatividades (estáticas + video)</li>
+<li>Setup y configuración de tracking completo</li>
+<li>Gestión diaria de campañas con optimización</li>
+<li>Reportes mensuales con análisis y próximos pasos</li>
+<li>Reuniones estratégicas periódicas</li>
+</ul>
+</div>
+</div>
+
+<div style="margin-bottom:20px"><div class="sl">Casos de éxito · Paid Media</div></div>
+<div class="cases-row">
+<div class="case sr">
+<div class="case-top"><span class="case-tag" style="background:rgba(245,158,11,0.15);color:#fbbf24">META + GOOGLE ADS</span><h3>Globaltech — Telecomunicaciones B2B</h3></div>
+<p>Diseño e implementación de embudo completo Meta Ads + Google Ads para empresa de telecomunicaciones corporativas. Segmentación B2B con captación de tomadores de decisión.</p>
+<div class="case-what"><h4>Lo que hicimos</h4><ul><li>Estructura de embudo TOFU/MOFU/BOFU</li><li>Campañas Meta Ads con segmentación B2B</li><li>Campañas Google Search para demanda activa</li><li>Creatividades orientadas a decisores</li><li>Landing pages de conversión por servicio</li><li>Remarketing cross-platform</li></ul></div>
+<div class="case-results">
+<div class="case-metric"><div class="val">-40%</div><div class="lbl">Costo por lead</div></div>
+<div class="case-metric"><div class="val">+180%</div><div class="lbl">Leads mensuales</div></div>
+<div class="case-metric"><div class="val">4.2x</div><div class="lbl">ROI de campañas</div></div>
+</div>
+</div>
+<div class="case sr">
+<div class="case-top"><span class="case-tag" style="background:rgba(245,158,11,0.15);color:#fbbf24">META ADS</span><h3>Chana — Restaurante & Club Nocturno</h3></div>
+<p>Estrategia de posicionamiento y captación para marca gastronómica con doble operación (restaurante de día, club de noche). Campañas de awareness, eventos y reservas.</p>
+<div class="case-what"><h4>Lo que hicimos</h4><ul><li>Estrategia dual de marca (gastro + nightlife)</li><li>Campañas de awareness locales</li><li>Promoción de eventos con urgencia</li><li>Captación de reservas vía ads</li><li>Contenido UGC para credibilidad</li><li>Remarketing a visitantes anteriores</li></ul></div>
+<div class="case-results">
+<div class="case-metric"><div class="val">+250%</div><div class="lbl">Alcance mensual</div></div>
+<div class="case-metric"><div class="val">Sold out</div><div class="lbl">3 eventos consecutivos</div></div>
+<div class="case-metric"><div class="val">+90%</div><div class="lbl">Reservas online</div></div>
+</div>
+</div>
+<div class="case sr">
+<div class="case-top"><span class="case-tag" style="background:rgba(245,158,11,0.15);color:#fbbf24">META ADS</span><h3>Hifupro8D — Consultorio estética facial</h3></div>
+<p>Campañas de captación para consultorio premium de tratamientos HIFU. Foco en educación del procedimiento, generación de confianza y agenda de consultas.</p>
+<div class="case-what"><h4>Lo que hicimos</h4><ul><li>Campañas educativas sobre tratamiento HIFU</li><li>Contenido de antes/después con autorización</li><li>Segmentación demográfica + intereses</li><li>Landing de captación con agenda online</li><li>Seguimiento de leads por WhatsApp</li><li>Remarketing a interesados que no agendaron</li></ul></div>
+<div class="case-results">
+<div class="case-metric"><div class="val">+150%</div><div class="lbl">Consultas agendadas</div></div>
+<div class="case-metric"><div class="val">3.5x</div><div class="lbl">ROAS promedio</div></div>
+<div class="case-metric"><div class="val">-35%</div><div class="lbl">Costo por consulta</div></div>
+</div>
+</div>
+<div class="case sr">
+<div class="case-top"><span class="case-tag" style="background:rgba(245,158,11,0.15);color:#fbbf24">META ADS + CONTENIDO</span><h3>2gthr — Productora de música electrónica</h3></div>
+<p>Posicionamiento de marca y crecimiento de audiencia para productora de eventos y música electrónica. Estrategia de contenido + performance para escalar comunidad y venta de tickets.</p>
+<div class="case-what"><h4>Lo que hicimos</h4><ul><li>Estrategia de marca y posicionamiento digital</li><li>Campañas de awareness para comunidad</li><li>Promoción de eventos con countdown ads</li><li>Segmentación por intereses musicales</li><li>Contenido audiovisual de alta calidad</li><li>Estrategia de early-bird + urgencia</li></ul></div>
+<div class="case-results">
+<div class="case-metric"><div class="val">+320%</div><div class="lbl">Crecimiento comunidad</div></div>
+<div class="case-metric"><div class="val">Sold out</div><div class="lbl">Eventos principales</div></div>
+<div class="case-metric"><div class="val">4.5x</div><div class="lbl">ROI en tickets</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proceso">
+<div class="ct">
+<div class="sh"><div class="sl">Cómo arrancamos</div><div class="st">De la primera charla al primer resultado</div><div class="sd">4 pasos claros. Sin misterio, sin letra chica, sin sorpresas.</div></div>
+<div class="proc-grid">
+<div class="proc-step sr"><div class="proc-num">01</div><div class="proc-icon">💬</div><h4>Hablamos</h4><p>Nos contás tu situación real. Escuchamos tu negocio, tus dolores, tus objetivos. Una conversación honesta, sin compromiso.</p></div>
+<div class="proc-step sr"><div class="proc-num">02</div><div class="proc-icon">🔍</div><h4>Diagnosticamos</h4><p>Analizamos tu operación con el Método Vantra. Te mostramos exactamente qué te frena y qué priorizar primero.</p></div>
+<div class="proc-step sr"><div class="proc-num">03</div><div class="proc-icon">📋</div><h4>Proponemos</h4><p>Te presentamos un plan claro: alcance, fases, tiempos, entregables y precio. Todo transparente desde el día uno.</p></div>
+<div class="proc-step sr"><div class="proc-num">04</div><div class="proc-icon">🚀</div><h4>Ejecutamos</h4><p>Arrancamos con portal de seguimiento, reuniones semanales y entregables que podés ver y medir en tiempo real.</p></div>
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+<div class="ct">
+<div class="sh"><div class="sl">Inversión</div><div class="st">Servicios con precio claro</div><div class="sd">Cada empresa tiene necesidades distintas. Elegí el nivel que se adapte a tu momento actual o hablemos para armar algo personalizado.</div></div>
+<div class="price-grid">
+<div class="price-card sr">
+<div class="price-tier">Nivel 1</div>
+<h3>Radiografía</h3>
+<div class="price-val">USD $150-250</div>
+<p class="price-desc">Diagnóstico express. En 1-2 semanas sabés exactamente qué le pasa a tu empresa y qué hacer primero.</p>
+<ul class="price-list">
+<li>Reunión de inmersión 90 min</li>
+<li>Análisis de operación completa</li>
+<li>Documento de Radiografía</li>
+<li>Score de Madurez Digital</li>
+<li>Recomendaciones priorizadas</li>
+</ul>
+<button class="btn btn-o" style="width:100%" onclick="window.open('https://wa.me/TUNUMERO','_blank')">Solicitar</button>
+</div>
+<div class="price-card pop sr">
+<div class="price-tier">Nivel 2</div>
+<h3>Transformación</h3>
+<div class="price-val">USD $800-1.500<small>/mes</small></div>
+<p class="price-desc">Acompañamiento semanal 1 a 1 para profesionalizar tu operación. Programas de 2-4 meses.</p>
+<ul class="price-list">
+<li>4 sesiones semanales de 60 min</li>
+<li>Módulos adaptados a tu negocio</li>
+<li>Frameworks y templates personalizados</li>
+<li>Canal de consulta directa</li>
+<li>Carpeta de Transformación completa</li>
+<li>Seguimiento entre sesiones</li>
+</ul>
+<button class="btn btn-a" style="width:100%" onclick="window.open('https://wa.me/TUNUMERO','_blank')">Solicitar</button>
+</div>
+<div class="price-card sr">
+<div class="price-tier">Nivel 3</div>
+<h3>Implementación</h3>
+<div class="price-val">USD $2.500-15.000</div>
+<p class="price-desc">Proyectos de desarrollo: software, web, automatizaciones, agentes de IA. Lo construimos por vos.</p>
+<ul class="price-list">
+<li>Diagnóstico incluido</li>
+<li>Portal de seguimiento en tiempo real</li>
+<li>Reuniones semanales de avance</li>
+<li>Capacitación de entrega</li>
+<li>30 días de soporte post-entrega</li>
+<li>Documentación completa</li>
+</ul>
+<button class="btn btn-o" style="width:100%" onclick="window.open('https://wa.me/TUNUMERO','_blank')">Solicitar</button>
+</div>
+<div class="price-card sr">
+<div class="price-tier">Nivel 4</div>
+<h3>Evolución</h3>
+<div class="price-val">USD $300-1.500<small>/mes</small></div>
+<p class="price-desc">Acompañamiento continuo: paid media, mantenimiento, soporte, sesiones estratégicas periódicas.</p>
+<ul class="price-list">
+<li>Gestión de Paid Media</li>
+<li>Mantenimiento de sistemas</li>
+<li>Soporte técnico prioritario</li>
+<li>Sesiones estratégicas mensuales</li>
+<li>Optimización continua con data</li>
+</ul>
+<button class="btn btn-o" style="width:100%" onclick="window.open('https://wa.me/TUNUMERO','_blank')">Solicitar</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="test" id="test">
+<div class="ct">
+<div class="sh"><div class="sl">Lo que dicen nuestros clientes</div><div class="st">Confianza construida con resultados</div></div>
+<div class="test-grid">
+<div class="test-card sr"><div class="test-stars">★★★★★</div><p class="test-text">"Vantra no solo nos hizo un sistema, nos ayudó a entender cómo debía funcionar nuestro negocio. El nivel de criterio que trajeron fue algo que no encontramos en ningún otro proveedor."</p><div class="test-author"><div class="test-av">G</div><div class="test-info"><div class="nm">Globaltech</div><div class="rl">Telecomunicaciones B2B · Meta + Google Ads</div></div></div></div>
+<div class="test-card sr"><div class="test-stars">★★★★★</div><p class="test-text">"Pasamos de gestionar todo por WhatsApp y planillas a tener estructura real. En 3 meses cambió completamente cómo operamos. Lo mejor: nos enseñaron a sostenerlo solos."</p><div class="test-author"><div class="test-av">H</div><div class="test-info"><div class="nm">Heyblack</div><div class="rl">E-commerce · Indumentaria femenina</div></div></div></div>
+<div class="test-card sr"><div class="test-stars">★★★★★</div><p class="test-text">"Lo que más valoro es la cercanía y la profundidad. No te venden algo y desaparecen. Están con vos, te enseñan, te ordenan. Eso no tiene precio."</p><div class="test-author"><div class="test-av">C</div><div class="test-info"><div class="nm">Chana</div><div class="rl">Restaurante & Club · Paid Media</div></div></div></div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="nosotros">
+<div class="ct">
+<div class="about-grid">
+<div>
+<div class="sl">Quiénes somos</div>
+<div class="st" style="margin-bottom:24px">Somos Vantra</div>
+<p>Nacimos de una convicción: las empresas en crecimiento merecen un socio que las ayude a profesionalizarse de verdad. No un proveedor que ejecuta pedidos. No una agencia que manda reportes. Un partner que entiende el negocio, piensa con el dueño, enseña, acompaña y construye.</p>
+<p>Somos un equipo de estrategas, desarrolladores, diseñadores y especialistas en performance que combinan tecnología, educación aplicada y acompañamiento real para transformar cómo operan las empresas.</p>
+<p style="color:var(--accent);font-weight:600">No vendemos humo. Entramos, diagnosticamos con honestidad, construimos con excelencia y enseñamos para que no dependas de nadie.</p>
+</div>
+<div class="values">
+<div class="val sr"><h4>🎯 Criterio</h4><p>No hacemos lo que nos piden. Hacemos lo que el negocio necesita. Y lo explicamos con transparencia.</p></div>
+<div class="val sr"><h4>🤝 Cercanía</h4><p>Somos tu partner, no tu proveedor. Pensamos con vos, no para vos. Construimos juntos.</p></div>
+<div class="val sr"><h4>📐 Orden</h4><p>Vendemos orden y vivimos orden. Nuestros procesos internos son tan serios como los que construimos para vos.</p></div>
+<div class="val sr"><h4>🧠 Educación</h4><p>Enseñamos todo lo que sabemos. Cuanto más entiendas tu negocio, mejor decidís y más crecemos juntos.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--bg);padding:140px 0">
+<div class="ct">
+<div class="sh"><div class="sl">Preguntas frecuentes</div><div class="st">Todo lo que necesitás saber</div></div>
+<div class="faq-wrap">
+<div class="fq"><button class="fq-q" onclick="toggleFaq(this)"><span>¿Vantra es una agencia de marketing?</span><span class="ic">+</span></button><div class="fq-a"><p>No. Vantra es una compañía de transformación operativa. Hacemos mucho más que marketing: diagnosticamos negocios, construimos software a medida, automatizamos procesos, capacitamos equipos y acompañamos a los dueños a profesionalizar su operación. El marketing es una de nuestras capacidades, pero siempre al servicio de una estrategia de negocio completa.</p></div></div>
+<div class="fq"><button class="fq-q" onclick="toggleFaq(this)"><span>¿Para qué tipo de empresa es Vantra?</span><span class="ic">+</span></button><div class="fq-a"><p>Empresas en crecimiento que ya facturan, tienen equipo y movimiento real, pero sienten que su operación podría funcionar mucho mejor. PyMEs ambiciosas, empresas familiares, marcas en expansión, consultorios, fábricas, distribuidoras, empresas de servicios. Lo que une a nuestros clientes no es el rubro, sino el dolor: necesitan más orden, más estructura y más criterio.</p></div></div>
+<div class="fq"><button class="fq-q" onclick="toggleFaq(this)"><span>¿Cuánto cuesta trabajar con Vantra?</span><span class="ic">+</span></button><div class="fq-a"><p>Radiografía desde USD $150. Programas de Transformación desde USD $800/mes. Implementación desde USD $2,500. Evolución Continua desde USD $300/mes. Cada propuesta se personaliza según tu situación real. Siempre con alcance claro, sin sorpresas.</p></div></div>
+<div class="fq"><button class="fq-q" onclick="toggleFaq(this)"><span>¿Cuánto tiempo tarda un proyecto?</span><span class="ic">+</span></button><div class="fq-a"><p>Radiografía: 1-2 semanas. Programa de Transformación: 1-4 meses. Software/Automatización: 4-16 semanas. Siempre con tiempos definidos desde el inicio y portal de seguimiento donde ves el avance en tiempo real.</p></div></div>
+<div class="fq"><button class="fq-q" onclick="toggleFaq(this)"><span>¿Qué pasa después de terminar un proyecto?</span><span class="ic">+</span></button><div class="fq-a"><p>Cada proyecto incluye capacitación completa (Fase 4 del Método). Te dejamos guías, tutoriales y portal de aprendizaje. Además ofrecemos planes de Evolución Continua con mantenimiento, soporte y sesiones estratégicas. La relación con Vantra no termina, se profundiza.</p></div></div>
+<div class="fq"><button class="fq-q" onclick="toggleFaq(this)"><span>¿En qué se diferencia Vantra de una software factory?</span><span class="ic">+</span></button><div class="fq-a"><p>Una software factory recibe un pedido y ejecuta. Vantra entra en tu negocio, entiende el problema real, diseña la solución correcta, la implementa, te enseña a usarla y después te acompaña. No solo hacemos. También enseñamos, ordenamos y transformamos.</p></div></div>
+<div class="fq"><button class="fq-q" onclick="toggleFaq(this)"><span>¿Puedo contratar solo un servicio específico?</span><span class="ic">+</span></button><div class="fq-a"><p>Sí. Podés contratar solo paid media, solo una web, solo un desarrollo. Pero recomendamos siempre arrancar con la Radiografía (Nivel 1) para asegurarnos de que la solución que construyamos sea la correcta para tu negocio, no solo la que creías que necesitabas.</p></div></div>
+<div class="fq"><button class="fq-q" onclick="toggleFaq(this)"><span>¿Trabajan solo en Argentina?</span><span class="ic">+</span></button><div class="fq-a"><p>Operamos desde Argentina pero trabajamos de forma remota con clientes de cualquier ubicación. Nuestro modelo de sesiones por videollamada, portal de seguimiento y canal de consulta directa nos permite acompañar empresas sin importar dónde estén.</p></div></div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<div class="ct">
+<h2>Tu empresa merece funcionar<br>como un <em>sistema</em>, no como un caos.</h2>
+<p>Agendá una conversación con nuestro equipo. Sin compromiso, sin letra chica. Solo una charla honesta sobre tu negocio y cómo podemos ayudarte a dar el siguiente paso.</p>
+<div class="cta-btns">
+<button class="btn btn-a btn-lg" onclick="window.open('https://wa.me/TUNUMERO','_blank')">Agendar llamada gratuita →</button>
+<button class="btn btn-o btn-lg" onclick="window.open('https://wa.me/TUNUMERO','_blank')">Escribinos por WhatsApp</button>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="ct">
+<div class="f-grid">
+<div class="f-brand"><div class="f-logo">Vantra<span>.</span></div><p>Transformamos la operación de empresas en crecimiento con tecnología, estrategia, educación y acompañamiento real.</p></div>
+<div class="f-col"><h4>Servicios</h4><a href="#pricing">Radiografía Vantra</a><a href="#pricing">Programa de Transformación</a><a href="#pricing">Desarrollo e Implementación</a><a href="#pricing">Evolución Continua</a></div>
+<div class="f-col"><h4>Capacidades</h4><a href="#web">Desarrollo Web</a><a href="#software">Software & Automatización</a><a href="#media">Paid Media</a><a href="#modulos">Asesoría & Educación</a></div>
+<div class="f-col"><h4>Contacto</h4><a href="https://wa.me/TUNUMERO" target="_blank">WhatsApp</a><a href="https://instagram.com/vantradigital" target="_blank">Instagram</a><a href="mailto:hola@vantradigital.com">hola@vantradigital.com</a><a href="#nosotros">Sobre nosotros</a></div>
+</div>
+<div class="f-bot">&copy; 2026 Vantra. Todos los derechos reservados. | Buenos Aires, Argentina</div>
+</div>
+</footer>
+
+<script>
+function togglePhase(el){const p=el.parentElement;const was=p.classList.contains('active');document.querySelectorAll('.m-phase').forEach(x=>x.classList.remove('active'));if(!was)p.classList.add('active')}
+function toggleFaq(el){const p=el.parentElement;const was=p.classList.contains('on');document.querySelectorAll('.fq').forEach(x=>x.classList.remove('on'));if(!was)p.classList.add('on')}
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.sr').forEach((el,i)=>{el.style.transitionDelay=`${(i%6)*0.08}s`;obs.observe(el)});
+</script>
+</body>
+</html>
